@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"dg-pinned":true,"permalink":"/QingZhiLiangCheng's Home/","pinned":true,"tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-30T20:19:50.976+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-30T21:14:14.134+08:00"}
 ---
 
 ### LCU 计算机组成原理
@@ -9,8 +9,6 @@
 课程视频: [计算机组成原理（哈工大刘宏伟）135讲（全）高清_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1t4411e7LH/?spm_id_from=333.337.search-card.all.click)
 我的课程笔记:[[LCU principles of computer composition/LCU principles of computer composition\|LCU principles of computer composition]]
 我的LCU课程资料: https://pan.baidu.com/s/1wrDehpVJHtN8AU-xaIX0Gw?pwd=qzlc 
-
-
 
 ### CSAPP
 CSAPP -- 计算机圣经

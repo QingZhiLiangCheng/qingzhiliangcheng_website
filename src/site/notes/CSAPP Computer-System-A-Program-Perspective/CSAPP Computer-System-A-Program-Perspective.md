@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-03-30T14:49:13.150+08:00"}
+{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-03-30T15:23:45.622+08:00"}
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"emoji//1f3e2","dg-publish":true,"permalink":"/LCU principles of computer composition/LCU principles of computer composition/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T19:30:09.057+08:00","updated":"2025-03-30T15:05:19.764+08:00"}
+{"tags":["folder"],"sticker":"emoji//1f3e2","dg-publish":true,"dg-pinned":true,"permalink":"/LCU principles of computer composition/LCU principles of computer composition/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T19:30:09.057+08:00","updated":"2025-03-30T15:24:04.661+08:00"}
 ---
 
 [[LCU principles of computer composition/总线\|总线]]

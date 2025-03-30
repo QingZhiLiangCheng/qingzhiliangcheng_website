@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-30T19:57:04.279+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-30T20:14:15.800+08:00"}
 ---
 
 ### LCU 计算机组成原理
@@ -32,6 +32,7 @@ Andy老师把所有资源全公开了 包括每一年的上课录像 作业等�
 	Youtube: [Alibaba Cloud - 10 Billion Vector Search Power](https://www.youtube.com/watch?v=n9S4Ibh5O0E) 可以从课程网站点过去
 课程自动评分网站: [15-445/645 (Non-CMU) Dashboard | Gradescope](https://www.gradescope.com/courses/585997)
 我的笔记:[[DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems\|CMU 15-445：Database Systems]]
+我的视频: 
 Project代码和课程代码 我private了 Andy老师不让公开
 
 ### CS61B

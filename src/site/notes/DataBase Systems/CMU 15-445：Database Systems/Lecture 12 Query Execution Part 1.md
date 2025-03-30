@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:59:27.936+08:00","updated":"2025-03-30T23:05:19.358+08:00"}
+{"week":"第七周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:59:27.936+08:00","updated":"2025-03-30T23:08:35.862+08:00"}
 ---
 
 
@@ -41,9 +41,6 @@ next有点像cpp和Java中的迭代器中的next方法 -- 就是往后循环  �
 在切换函数的时候 有多少条记录就有多少个循环  大量的函数调用  大量的函数调用会有很多开销
 第二个是 如果有很多函数被调用  函数代码是没有机会保持在指令缓存中 会被交换出去  所以切换函数并不好
 ![Pasted image 20250322164223.png|600](/img/user/accessory/Pasted%20image%2020250322164223.png)
-<p align="center">
-<img width="500" src = "Pasted image 20250322164223.png">
-</p>
 
 事实上 有一系列数据库 还是保留了这种model
 

@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T15:51:02.660+08:00"}
+{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T16:58:33.403+08:00"}
 ---
 
 
@@ -127,5 +127,9 @@ noticed that is not the same as program or processor.
 如果两个process 在 时间上重叠 -- 并发(concurrent)
 否则 他们是连续(sequential)的
 ![Pasted image 20250331155056.png|400](/img/user/accessory/Pasted%20image%2020250331155056.png)
+我的理解是交替运行叫并发
+所以A和B是并发的 A和C是并发的
+但是B和C不是并发的 因为C开始的时候B已经执行完了
 
+然而 当用多个核心的时候 并发就是并行
 

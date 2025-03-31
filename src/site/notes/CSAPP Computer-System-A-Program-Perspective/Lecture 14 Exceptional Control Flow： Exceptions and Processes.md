@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T16:58:33.403+08:00"}
+{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T17:18:26.243+08:00"}
 ---
 
 
@@ -124,6 +124,8 @@ noticed that is not the same as program or processor.
 
 **Concurrent Processes**
 我们认为每一个进程代表一个 逻辑控制流  --  整个过程的全部指令
+当我们单步执行程序时，可以看到一系列PC值，这个PC序列就称为**逻辑控制流**
+这里注意一下前面一直提到的是物理控制流, 是在系统层次上的指令地址序列，而逻辑控制流是在程序级别上的，所以物理控制流包含逻辑控制流。 说简单点 就是物理控制流是整个系统这段时间的PC值序列 而逻辑控制流是这段时间里单个程序（可能是下图的Process A）的PC序列
 如果两个process 在 时间上重叠 -- 并发(concurrent)
 否则 他们是连续(sequential)的
 ![Pasted image 20250331155056.png|400](/img/user/accessory/Pasted%20image%2020250331155056.png)
@@ -131,5 +133,9 @@ noticed that is not the same as program or processor.
 所以A和B是并发的 A和C是并发的
 但是B和C不是并发的 因为C开始的时候B已经执行完了
 
-然而 当用多个核心的时候 并发就是并行
+尽管并发的进程可能并不是真正意义上的并行（即它们可能只是交替执行），但从逻辑或user的角度，我们可以把它们看作是“同时”运行的。
+这里区分一下并发和并行的区别:
+- 并发: 并发是指多个任务在同一时间段内交替执行 而不是真正的同时执行
+- 并行是指的多个任务真正同时执行
+![Pasted image 20250331170613.png|400](/img/user/accessory/Pasted%20image%2020250331170613.png)
 

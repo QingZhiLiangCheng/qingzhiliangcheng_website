@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T14:22:50.195+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T14:45:32.754+08:00"}
 ---
 
 ### LCU 计算机组成原理
@@ -27,9 +27,8 @@ Andy老师说：the most important thing you get to understand is I really only 
 Andy老师把所有资源全公开了 包括每一年的上课录像 作业等等各种资源 能让每个非CMU的同学学到
 我看的是CMU15445 fall2023
 👉课程网站:  [Schedule | CMU 15-445/645 : Intro to Database Systems (Fall 2023)](https://15445.courses.cs.cmu.edu/fall2023/schedule.html)
-课程视频: 
-- 👉b站: [【数据库系统导论 15-445 2023Fall】CMU—中英字幕_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Ex4y1p7bi/?spm_id_from=333.337.search-card.all.click)
-- 👉Youtube: [Alibaba Cloud - 10 Billion Vector Search Power](https://www.youtube.com/watch?v=n9S4Ibh5O0E) 可以从课程网站点过去
+👉b站课程视频: [【数据库系统导论 15-445 2023Fall】CMU—中英字幕_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Ex4y1p7bi/?spm_id_from=333.337.search-card.all.click)
+👉Youtube课程视频: [Alibaba Cloud - 10 Billion Vector Search Power](https://www.youtube.com/watch?v=n9S4Ibh5O0E) 可以从课程网站点过去
 👉课程自动评分网站: [15-445/645 (Non-CMU) Dashboard | Gradescope](https://www.gradescope.com/courses/585997)
 👉我的笔记:[[DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems\|CMU 15-445：Database Systems]]
 👉我的视频: 

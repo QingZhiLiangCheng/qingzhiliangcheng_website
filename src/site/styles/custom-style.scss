@@ -3,20 +3,14 @@ body {
       ADD YOUR CUSTOM STYLING HERE. (INSIDE THE body {...} section.)
       IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
    ***/
-    //  background-color: white;
-    //  .content {
-    //   font-size: 14px;
-    //  }
-    //  h1 {
-    //   color: black;
-    //  }
-
     /* 基础背景与字体 */
     background-color: #f8f9fa;
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
     line-height: 1.5; /* 修改行高为1.5倍 */
     color: #333;
-    
+    margin: 0; /* 移除默认的外边距 */
+    overflow-x: hidden; /* 禁止横向滚动 */
+
     .content {
         /* 内容区块样式 */
         max-width: 800px;
@@ -25,7 +19,9 @@ body {
         background: white;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        
+        overflow-wrap: break-word; /* 防止长单词溢出 */
+        word-wrap: break-word;
+
         /* 标题美化 */
         h1, h2, h3 {
             color: #2c3e50;
@@ -34,16 +30,16 @@ body {
             border-bottom: 2px solid #ecf0f1;
             padding-bottom: 0.5em;
         }
-        
+
         h1 { font-size: 2.2rem; }
         h2 { font-size: 1.8rem; }
-        
+
         /* 段落与列表 */
         p {
             margin: 0 0 1em 0; /* 段间距调整为1em */
             font-size: 16px;
         }
-        
+
         ul {
             padding-left: 1.5rem;
             li {
@@ -54,50 +50,50 @@ body {
                 }
             }
         }
-        
+
         /* 链接样式 */
         a {
             color: #2980b9;
             text-decoration: none;
             transition: color 0.3s ease;
-            
+
             &:hover {
                 color: #1a5276;
                 text-decoration: underline;
             }
         }
-        
 
-/* 替换原有 pre 样式 */
-pre {
-    background: #2d2d2d !important;
-    border-radius: 8px;
-    padding: 1.5rem !important;
-    margin: 1.5rem 0;
-    overflow-x: auto;
-    tab-size: 4;
-    font-family: 'Fira Code', monospace;
-    position: relative;
-    
-    code {
-        color: #cccccc;
-        font-size: 14px;
-        line-height: 1.5;
-        display: block;
-    }
-    
-    /* 添加语言标签 */
-    &::after {
-        content: attr(data-language);
-        position: absolute;
-        top: 0;
-        right: 1rem;
-        color: #666;
-        font-size: 0.8em;
-        text-transform: uppercase;
-    }
-}
-        
+        /* 替换原有 pre 样式 */
+        pre {
+            background: #2d2d2d !important;
+            border-radius: 8px;
+            padding: 1.5rem !important;
+            margin: 1.5rem -2rem; /* 负边距以填满宽度 */
+            overflow-x: auto; /* 允许横向滚动 */
+            tab-size: 4;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+
+            code {
+                color: #cccccc;
+                font-size: 14px;
+                line-height: 1.5;
+                display: block;
+                white-space: pre-wrap; /* 自动换行 */
+            }
+
+            /* 添加语言标签 */
+            &::after {
+                content: attr(data-language);
+                position: absolute;
+                top: 0;
+                right: 1rem;
+                color: #666;
+                font-size: 0.8em;
+                text-transform: uppercase;
+            }
+        }
+
         /* 引用样式 */
         blockquote {
             border-left: 4px solid #bdc3c7;
@@ -108,44 +104,37 @@ pre {
             font-style: italic;
         }
     }
-    
-   @media (max-width: 768px) {
-    body {
-        /* 移除默认外边距 */
-        margin: 0;
-        
-        .content {
-            /* 全宽布局 */
-            max-width: 100%;
+
+    @media (max-width: 768px) {
+        body {
+            /* 移除默认外边距 */
             margin: 0;
-            padding: 1rem;
-            border-radius: 0;
-            
-            /* 防止长文本溢出 */
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            
-            /* 调整标题间距 */
-            h1, h2, h3 {
-                margin: 1em 0;
-                font-size: 90%;
-            }
-            
-            /* 代码块适应小屏幕 */
-            pre {
-                margin-left: -1rem;
-                margin-right: -1rem;
+
+            .content {
+                /* 全宽布局 */
+                max-width: 100%;
+                margin: 0;
+                padding: 1rem;
                 border-radius: 0;
-                white-space: pre-wrap; /* 自动换行 */
+
+                /* 防止长文本溢出 */
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+
+                /* 调整标题间距 */
+                h1, h2, h3 {
+                    margin: 1em 0;
+                    font-size: 90%;
+                }
+
+                /* 代码块适应小屏幕 */
+                pre {
+                    margin-left: 0; /* 重置负边距 */
+                    margin-right: 0;
+                    border-radius: 0;
+                    white-space: pre-wrap; /* 自动换行 */
+                }
             }
         }
-    }
-}
-}
-
-@media (max-width: 768px) {
-    .content {
-        /* 确保内容不会超出屏幕边界 */
-        overflow: hidden;
     }
 }

@@ -67,18 +67,36 @@ body {
             }
         }
         
-        /* 代码块样式 */
-        pre {
-            background: #f4f6f8;
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            overflow-x: auto;
-            code {
-                font-family: 'Fira Code', monospace;
-                font-size: 14px;
-            }
-        }
+
+/* 替换原有 pre 样式 */
+pre {
+    background: #2d2d2d !important;
+    border-radius: 8px;
+    padding: 1.5rem !important;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    tab-size: 4;
+    font-family: 'Fira Code', monospace;
+    position: relative;
+    
+    code {
+        color: #cccccc;
+        font-size: 14px;
+        line-height: 1.5;
+        display: block;
+    }
+    
+    /* 添加语言标签 */
+    &::after {
+        content: attr(data-language);
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        color: #666;
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
+}
         
         /* 引用样式 */
         blockquote {
@@ -91,12 +109,36 @@ body {
         }
     }
     
-    /* 响应式调整 */
-    @media (max-width: 768px) {
+   @media (max-width: 768px) {
+    body {
+        /* 移除默认外边距 */
+        margin: 0;
+        
         .content {
-            p {
-                margin-bottom: 1em; /* 移动端保持段间距 */
+            /* 全宽布局 */
+            max-width: 100%;
+            margin: 0;
+            padding: 1rem;
+            border-radius: 0;
+            
+            /* 防止长文本溢出 */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            
+            /* 调整标题间距 */
+            h1, h2, h3 {
+                margin: 1em 0;
+                font-size: 90%;
+            }
+            
+            /* 代码块适应小屏幕 */
+            pre {
+                margin-left: -1rem;
+                margin-right: -1rem;
+                border-radius: 0;
+                white-space: pre-wrap; /* 自动换行 */
             }
         }
     }
+}
 }

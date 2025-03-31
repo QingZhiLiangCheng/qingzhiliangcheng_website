@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T15:28:04.714+08:00"}
+{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T15:51:02.660+08:00"}
 ---
 
 
@@ -123,5 +123,9 @@ noticed that is not the same as program or processor.
 现在实际上在我们的CPU有多个核  但仍然是上下文的切换
 
 **Concurrent Processes**
-我们认为每一个进程代表一个 逻辑控制流
+我们认为每一个进程代表一个 逻辑控制流  --  整个过程的全部指令
+如果两个process 在 时间上重叠 -- 并发(concurrent)
+否则 他们是连续(sequential)的
+![Pasted image 20250331155056.png|400](/img/user/accessory/Pasted%20image%2020250331155056.png)
+
 

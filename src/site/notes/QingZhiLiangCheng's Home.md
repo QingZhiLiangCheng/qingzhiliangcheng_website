@@ -1,12 +1,11 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T15:36:54.446+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T15:54:11.525+08:00"}
 ---
 
 ## Welcome to 情栀凉橙🍊的小破站
 
+>✒️签名
 「幸福就是 橙子🍊不去想苹果🍎的事情」
-
------
 
 ### LCU 计算机组成原理
 大二上课程

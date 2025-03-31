@@ -1,9 +1,9 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T15:59:58.637+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T16:05:48.689+08:00"}
 ---
 
-<font color="#f79646" size = 1.8rem >Welcome to </font>
-<font color="#f79646" size = 1.8rem >情栀凉橙🍊的小破站</font>
+<font color="#f79646" size = 8 >Welcome to </font>
+<font color="#f79646" size = 8 >情栀凉橙🍊的小破站</font>
 
 >✒️签名
 「幸福就是 橙子🍊不去想苹果🍎的事情」

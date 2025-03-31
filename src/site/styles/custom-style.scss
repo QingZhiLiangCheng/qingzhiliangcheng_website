@@ -11,11 +11,10 @@ body {
     //   color: black;
     //  }
 
-    body {
     /* 基础背景与字体 */
     background-color: #f8f9fa;
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
+    line-height: 1.5; /* 修改行高为1.5倍 */
     color: #333;
     
     .content {
@@ -30,7 +29,7 @@ body {
         /* 标题美化 */
         h1, h2, h3 {
             color: #2c3e50;
-            margin: 1.5em 0 1em;
+            margin: 1.5em 0 1em; /* 标题保持原有间距 */
             font-weight: 600;
             border-bottom: 2px solid #ecf0f1;
             padding-bottom: 0.5em;
@@ -41,7 +40,7 @@ body {
         
         /* 段落与列表 */
         p {
-            margin-bottom: 1.2em;
+            margin: 0 0 1em 0; /* 段间距调整为1em */
             font-size: 16px;
         }
         
@@ -49,6 +48,7 @@ body {
             padding-left: 1.5rem;
             li {
                 margin-bottom: 0.8rem;
+                line-height: 1.5; /* 列表项同步行高 */
                 &::marker {
                     color: #3498db;
                 }
@@ -94,23 +94,9 @@ body {
     /* 响应式调整 */
     @media (max-width: 768px) {
         .content {
-            margin: 1rem;
-            padding: 1.5rem;
-            h1 { font-size: 1.8rem; }
+            p {
+                margin-bottom: 1em; /* 移动端保持段间距 */
+            }
         }
     }
-    
-    /* 按钮样式（可选） */
-    .button {
-        display: inline-block;
-        padding: 0.6rem 1.2rem;
-        background: #3498db;
-        color: white;
-        border-radius: 6px;
-        transition: background 0.3s ease;
-        &:hover {
-            background: #2980b9;
-        }
-    }
-}
 }

@@ -1,6 +1,46 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T14:45:32.754+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T15:33:37.136+08:00"}
 ---
+
+## Welcome to 情栀凉橙🍊的小破站
+「幸福就是 橙子🍊不去想苹果🍎的事情」
+```contributionGraph
+title: ""
+graphType: default
+dateRangeValue: 1
+dateRangeType: LATEST_YEAR
+startOfWeek: 1
+showCellRuleIndicators: true
+titleStyle:
+  textAlign: left
+  fontSize: 15px
+  fontWeight: normal
+dataSource:
+  type: PAGE
+  value: ""
+  dateField: {}
+fillTheScreen: false
+enableMainContainerShadow: false
+cellStyleRules:
+  - id: Halloween_a
+    color: "#fdd577"
+    min: 1
+    max: 2
+  - id: Halloween_b
+    color: "#faaa53"
+    min: 2
+    max: 3
+  - id: Halloween_c
+    color: "#f07c44"
+    min: 3
+    max: 5
+  - id: Halloween_d
+    color: "#d94e49"
+    min: 5
+    max: 9999
+
+```
+
 
 ### LCU 计算机组成原理
 大二上课程

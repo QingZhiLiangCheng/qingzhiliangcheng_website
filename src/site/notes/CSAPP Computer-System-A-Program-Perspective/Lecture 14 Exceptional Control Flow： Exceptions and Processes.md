@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-30T15:04:08.394+08:00"}
+{"week":"第七周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-26T23:06:35.686+08:00","updated":"2025-03-31T15:28:04.714+08:00"}
 ---
 
 
@@ -120,4 +120,8 @@ noticed that is not the same as program or processor.
 ![Pasted image 20250330111319.png|300](/img/user/accessory/Pasted%20image%2020250330111319.png)
 这个所谓的地址空间和寄存器值是上下文
 所以所谓的上下文切换 是 地址空间和寄存器的变化
+现在实际上在我们的CPU有多个核  但仍然是上下文的切换
+
+**Concurrent Processes**
+我们认为每一个进程代表一个 逻辑控制流
 

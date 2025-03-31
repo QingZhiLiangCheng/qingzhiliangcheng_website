@@ -142,3 +142,10 @@ pre {
     }
 }
 }
+
+@media (max-width: 768px) {
+    .content {
+        /* 确保内容不会超出屏幕边界 */
+        overflow: hidden;
+    }
+}

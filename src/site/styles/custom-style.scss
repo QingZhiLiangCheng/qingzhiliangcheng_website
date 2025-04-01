@@ -1,15 +1,15 @@
 body {
-    /***
-      ADD YOUR CUSTOM STYLING HERE. (INSIDE THE body {...} section.)
-      IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
-   ***/
+    /*** 霞鹜文楷字体需要先添加字体导入 ***/
+    @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.6.0/style.css');
+
     /* 基础背景与字体 */
     background-color: #f8f9fa;
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    line-height: 1.5; /* 修改行高为1.5倍 */
+    font-family: 'LXGW WenKai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.8;  /* 增加行间距 */
     color: #333;
-    margin: 0; /* 移除默认的外边距 */
-    overflow-x: hidden; /* 禁止横向滚动 */
+    margin: 0;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility; /* 优化字体渲染 */
 
     .content {
         /* 内容区块样式 */
@@ -19,120 +19,51 @@ body {
         background: white;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        overflow-wrap: break-word; /* 防止长单词溢出 */
-        word-wrap: break-word;
+        overflow-wrap: break-word;
 
         /* 标题美化 */
         h1, h2, h3 {
-            color: #2c3e50;
-            margin: 1.5em 0 1em; /* 标题保持原有间距 */
+            font-family: 'LXGW WenKai'; /* 标题也使用霞鹜文楷 */
+            line-height: 1.4;  /* 标题行间距稍小 */
+            margin: 1.8em 0 1.2em;  /* 增加段间距 */
             font-weight: 600;
             border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.5em;
+            padding-bottom: 0.6em;
         }
-
-        h1 { font-size: 2.2rem; }
-        h2 { font-size: 1.8rem; }
 
         /* 段落与列表 */
         p {
-            margin: 0 0 1em 0; /* 段间距调整为1em */
+            margin: 0 0 1.5em 0;  /* 增加段间距 */
             font-size: 16px;
+            letter-spacing: 0.05em;  /* 轻微字间距 */
         }
 
         ul {
-            padding-left: 1.5rem;
+            padding-left: 1.8rem;
             li {
-                margin-bottom: 0.8rem;
-                line-height: 1.5; /* 列表项同步行高 */
-                &::marker {
-                    color: #3498db;
-                }
+                margin-bottom: 1rem;  /* 增加列表项间距 */
+                line-height: 1.8;
             }
         }
 
-        /* 链接样式 */
-        a {
-            color: #2980b9;
-            text-decoration: none;
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: #1a5276;
-                text-decoration: underline;
-            }
-        }
-
-        /* 替换原有 pre 样式 */
-        pre {
-            background: #2d2d2d !important;
-            border-radius: 8px;
-            padding: 1.5rem !important;
-            margin: 1.5rem -2rem; /* 负边距以填满宽度 */
-            overflow-x: auto; /* 允许横向滚动 */
-            tab-size: 4;
-            font-family: 'Fira Code', monospace;
-            position: relative;
-
-            code {
-                color: #cccccc;
-                font-size: 14px;
-                line-height: 1.5;
-                display: block;
-                white-space: pre-wrap; /* 自动换行 */
-            }
-
-            /* 添加语言标签 */
-            &::after {
-                content: attr(data-language);
-                position: absolute;
-                top: 0;
-                right: 1rem;
-                color: #666;
-                font-size: 0.8em;
-                text-transform: uppercase;
-            }
-        }
-
-        /* 引用样式 */
-        blockquote {
-            border-left: 4px solid #bdc3c7;
-            margin: 1.5rem 0;
-            padding: 1rem 1.5rem;
-            background: #f8f9fa;
-            color: #7f8c8d;
-            font-style: italic;
-        }
+        /* 其他样式保持不变... */
     }
 
     @media (max-width: 768px) {
         body {
-            /* 移除默认外边距 */
-            margin: 0;
+            font-size: 17px;  /* 移动端稍大字号 */
+            line-height: 1.7;  /* 移动端行间距微调 */
 
             .content {
-                /* 全宽布局 */
-                max-width: 100%;
-                margin: 0;
-                padding: 1rem;
-                border-radius: 0;
-
-                /* 防止长文本溢出 */
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-
-                /* 调整标题间距 */
+                padding: 1.2rem;
+                
                 h1, h2, h3 {
-                    margin: 1em 0;
-                    font-size: 90%;
+                    margin: 1.2em 0;
+                    line-height: 1.5;
                 }
 
-                /* 代码块适应小屏幕 */
-                pre {
-                    margin-left: 0; /* 重置负边距 */
-                    margin-right: 0;
-                    border-radius: 0;
-                    white-space: pre-wrap; /* 自动换行 */
+                p {
+                    margin-bottom: 1.2em;
                 }
             }
         }

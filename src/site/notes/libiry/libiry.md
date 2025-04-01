@@ -1,11 +1,11 @@
 ---
-{"sticker":"emoji//1f4d6","dg-publish":true,"permalink":"/libiry/libiry/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:32:33.931+08:00","updated":"2025-04-01T14:27:36.198+08:00"}
+{"sticker":"emoji//1f4d6","dg-publish":true,"permalink":"/libiry/libiry/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:32:33.931+08:00","updated":"2025-04-01T16:02:45.144+08:00"}
 ---
 
 >✒️签名
 「看书就像竹篮打水 看了就忘就像竹篮打水 终将一场空 但竹篮会一次比一次干净」
 
-我的第一本书是从2024.11.01开始看的 从之前的看小说 慢慢像 专业知识过度……
+我的第一本书是从2024.11.01开始看的 从之前的看小说 慢慢向 专业知识过度……
 现在已经养成了一种习惯
 
 我看过的书：

@@ -39,16 +39,29 @@ body {
     }
 
     /* 代码块样式 */
-    pre {
-      background: #2d3436;
-      color: #dfe6e9;
-      padding: 1.2rem;
-      border-radius: 6px;
-      overflow-x: auto;
-      code {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
-        line-height: 1.6;
+pre {
+      &::after {
+        content: "📋 点击复制";
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-family: 'LXGW WenKai';
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+
+      /* 模拟复制反馈 */
+      &:active::after {
+        content: "✅ 已复制！";
+        background: #2ecc71;
       }
     }
 

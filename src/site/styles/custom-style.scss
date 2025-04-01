@@ -39,31 +39,36 @@ body {
     }
 
     /* 代码块样式 */
-pre {
-      &::after {
-        content: "📋 点击复制";
-        position: absolute;
-        right: 12px;
-        top: 12px;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 4px 8px;
-        border-radius: 4px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-family: 'LXGW WenKai';
-      }
-
-      &:hover::after {
-        opacity: 1;
-      }
-
-      /* 模拟复制反馈 */
-      &:active::after {
-        content: "✅ 已复制！";
-        background: #2ecc71;
-      }
-    }
+        /* 替换原有 pre 样式 */
+         pre {
+             background: #2d2d2d !important;
+             border-radius: 8px;
+             padding: 1.5rem !important;
+             margin: 1.5rem -2rem; /* 负边距以填满宽度 */
+             overflow-x: auto; /* 允许横向滚动 */
+             tab-size: 4;
+             font-family: 'Fira Code', monospace;
+             position: relative;
+ 
+             code {
+                 color: #cccccc;
+                 font-size: 14px;
+                 line-height: 1.5;
+                 display: block;
+                 white-space: pre-wrap; /* 自动换行 */
+             }
+ 
+             /* 添加语言标签 */
+             &::after {
+                 content: attr(data-language);
+                 position: absolute;
+                 top: 0;
+                 right: 1rem;
+                 color: #666;
+                 font-size: 0.8em;
+                 text-transform: uppercase;
+             }
+         }
 
     /* 版本标签 (v20231227-2023fall) */
     .version-tag {

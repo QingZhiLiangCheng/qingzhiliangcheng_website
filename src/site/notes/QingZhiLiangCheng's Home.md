@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-01T16:02:55.226+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-01T22:13:26.016+08:00"}
 ---
 
 
@@ -10,7 +10,7 @@
 「看书就像竹篮打水 看了就忘就像竹篮打水 终将一场空 但竹篮会一次比一次干净」
 我的第一本书是从2024.11.01开始看的 从之前的看小说 慢慢向 专业知识过度……
 现在已经养成了一种习惯
-[[libiry/libiry\|libiry]]
+👉[[libiry/libiry\|libiry]]
 
 ### Cpp
 大一下学期 spring2024

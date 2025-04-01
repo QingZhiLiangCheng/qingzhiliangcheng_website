@@ -3,7 +3,7 @@
 body {
   background-color: #f8f9fa;
   font-family: 'LXGW WenKai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  line-height: 1.8;  /* 基础行间距 */
+  line-height: 1.8;
   color: #333;
   margin: 0;
   overflow-x: hidden;
@@ -18,13 +18,52 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     overflow-wrap: break-word;
 
-    /* 新增 br 换行间距控制 */
-    br {
-      content: "";
-      display: block;
-      margin-bottom: 1.2em;  /* 此处控制换行后的间距 */
+    /* ========== 根据图片内容新增样式 ========== */
+    /* 信息区块模块化 */
+    .info-block {
+      padding: 1.5rem;
+      margin: 1.5em 0;
+      border-radius: 8px;
+      background: #f8f9fa;
+      
+      /* 链接高亮 */
+      a {
+        color: #2980b9;
+        text-decoration: none;
+        border-bottom: 1px dashed #3498db;
+        &:hover {
+          color: #3498db;
+          border-bottom-style: solid;
+        }
+      }
     }
 
+    /* 代码块样式 */
+    pre {
+      background: #2d3436;
+      color: #dfe6e9;
+      padding: 1.2rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+    }
+
+    /* 版本标签 (v20231227-2023fall) */
+    .version-tag {
+      display: inline-block;
+      padding: 0.3em 0.8em;
+      background: #e74c3c;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.9em;
+      margin: 0.5em 0;
+    }
+
+    /* ========== 基础样式优化 ========== */
     h1, h2, h3 {
       font-family: 'LXGW WenKai';
       line-height: 1.4;
@@ -37,8 +76,7 @@ body {
     p {
       margin: 0 0 1.5em 0;
       font-size: 16px;
-      letter-spacing: 0.05em;
-      line-height: 1.8;  /* 确保段落内行间距 */
+      letter-spacing: 0.02em; /* 减小字间距更精致 */
     }
 
     ul {
@@ -46,30 +84,31 @@ body {
       li {
         margin-bottom: 1rem;
         line-height: 1.8;
+        &::marker {
+          color: #3498db; /* 列表点颜色统一 */
+        }
       }
     }
-  }
 
-  @media (max-width: 768px) {
-    font-size: 17px;
-    line-height: 1.7;
+    br { 
+      content: "";
+      display: block;
+      margin-bottom: 1.2em;
+    }
 
-    .content {
+    @media (max-width: 768px) {
       padding: 1.2rem;
-
-      /* 移动端调整 br 间距 */
-      br {
-        margin-bottom: 0.8em;  /* 移动端稍小间距 */
-      }
-
-      h1, h2, h3 {
+      br { margin-bottom: 0.8em; }
+      h1, h2, h3 { 
         margin: 1.2em 0;
         line-height: 1.5;
+        font-size: 1.3em; /* 移动端标题适当缩小 */
       }
-
-      p {
-        margin-bottom: 1.2em;
+      .info-block {
+        padding: 1rem;
+        margin: 1em 0;
       }
+      pre code { font-size: 13px; }  /* 移动端代码缩小 */
     }
   }
 }

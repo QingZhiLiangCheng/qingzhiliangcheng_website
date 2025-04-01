@@ -1,71 +1,75 @@
-body {
-    /*** 霞鹜文楷字体需要先添加字体导入 ***/
-    @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.6.0/style.css');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.6.0/style.css');
 
-    /* 基础背景与字体 */
-    background-color: #f8f9fa;
-    font-family: 'LXGW WenKai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-    line-height: 1.8;  /* 增加行间距 */
-    color: #333;
-    margin: 0;
-    overflow-x: hidden;
-    text-rendering: optimizeLegibility; /* 优化字体渲染 */
+body {
+  background-color: #f8f9fa;
+  font-family: 'LXGW WenKai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  line-height: 1.8;  /* 基础行间距 */
+  color: #333;
+  margin: 0;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+
+  .content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow-wrap: break-word;
+
+    /* 新增 br 换行间距控制 */
+    br {
+      content: "";
+      display: block;
+      margin-bottom: 1.2em;  /* 此处控制换行后的间距 */
+    }
+
+    h1, h2, h3 {
+      font-family: 'LXGW WenKai';
+      line-height: 1.4;
+      margin: 1.8em 0 1.2em;
+      font-weight: 600;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 0.6em;
+    }
+
+    p {
+      margin: 0 0 1.5em 0;
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      line-height: 1.8;  /* 确保段落内行间距 */
+    }
+
+    ul {
+      padding-left: 1.8rem;
+      li {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 17px;
+    line-height: 1.7;
 
     .content {
-        /* 内容区块样式 */
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 2rem;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        overflow-wrap: break-word;
+      padding: 1.2rem;
 
-        /* 标题美化 */
-        h1, h2, h3 {
-            font-family: 'LXGW WenKai'; /* 标题也使用霞鹜文楷 */
-            line-height: 1.4;  /* 标题行间距稍小 */
-            margin: 1.8em 0 1.2em;  /* 增加段间距 */
-            font-weight: 600;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 0.6em;
-        }
+      /* 移动端调整 br 间距 */
+      br {
+        margin-bottom: 0.8em;  /* 移动端稍小间距 */
+      }
 
-        /* 段落与列表 */
-        p {
-            margin: 0 0 1.5em 0;  /* 增加段间距 */
-            font-size: 16px;
-            letter-spacing: 0.05em;  /* 轻微字间距 */
-        }
+      h1, h2, h3 {
+        margin: 1.2em 0;
+        line-height: 1.5;
+      }
 
-        ul {
-            padding-left: 1.8rem;
-            li {
-                margin-bottom: 1rem;  /* 增加列表项间距 */
-                line-height: 1.8;
-            }
-        }
-
-        /* 其他样式保持不变... */
+      p {
+        margin-bottom: 1.2em;
+      }
     }
-
-    @media (max-width: 768px) {
-        body {
-            font-size: 17px;  /* 移动端稍大字号 */
-            line-height: 1.7;  /* 移动端行间距微调 */
-
-            .content {
-                padding: 1.2rem;
-                
-                h1, h2, h3 {
-                    margin: 1.2em 0;
-                    line-height: 1.5;
-                }
-
-                p {
-                    margin-bottom: 1.2em;
-                }
-            }
-        }
-    }
+  }
 }

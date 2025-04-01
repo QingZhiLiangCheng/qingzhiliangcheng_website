@@ -1,20 +1,44 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-03-31T16:08:56.386+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-01T14:19:16.664+08:00"}
 ---
 
 
 >✒️签名
 「幸福就是 橙子🍊不去想苹果🍎的事情」
 
+### Library
+「看书就像竹篮打水 看了就忘就像竹篮打水 终将一场空 但竹篮会一次比一次干净」
+我的第一本书是从2024.11.01开始看的 从之前的看小说 慢慢像 专业知识过度……
+现在已经养成了一种习惯
+[[libiry/libiry\|libiry]]
+
+### Cpp
+大一下学期 spring2024
+当时学cpp的时候还没有开始用obsidian
+所以没有留笔记
+这里只有当时的大作业
+👉前端Vue代码仓库: https://e.coding.net/g-bplq4380/hotel_management_system/hotel_management_system_vue.git
+👉后端cpp代码仓库: https://e.coding.net/g-bplq4380/hotel_management_system/hotel_management_system_background.git
+
+### LCU 数据结构
+📅date: 2024.09.20 - 2025.01.06完结✅
+大二上学期 spring2024
+当时才开始学着用obsidian这个笔记 记得很零散 而且水平有限
+只参考一下期末复习的专题就可以
+👉我的笔记：[[LCU DataStructure/LCU DataStructure\|LCU DataStructure]]
+👉数据结构课程设计两次小实验报告, 数据结构大作业, 数据结构期末复习的相关资料都在这个百度网盘链接中:  https://pan.baidu.com/s/1ynhy6GBWodQREPO1Wa0oWg?pwd=qzlc 提取码: qzlc 
+(🤣老实说 我的大作业使用Rust写了一个简单的虚拟货币交易系统 但是最后因为当时水平的原因并没有真正完成)
 ### LCU 计算机组成原理
-大二上课程
+📅date: 2024.10.30 - 2025.01.03完结✅
+大二上课程 fall2024
 我当时跟的是哈工大刘宏伟老师的课  但是没有完全跟完
 最后面我总结了考试的专题  大题都考到了
 👉课程视频: [计算机组成原理（哈工大刘宏伟）135讲（全）高清_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1t4411e7LH/?spm_id_from=333.337.search-card.all.click)
 👉我的课程笔记:[[LCU principles of computer composition/LCU principles of computer composition\|LCU principles of computer composition]]
-👉我的LCU课程资料: https://pan.baidu.com/s/1wrDehpVJHtN8AU-xaIX0Gw?pwd=qzlc 
+👉我的LCU课程资料: https://pan.baidu.com/s/1wrDehpVJHtN8AU-xaIX0Gw?pwd=qzlc 提取码: qzlc
 
 ### CSAPP
+📅date: 2024.12.24 - ing
 CSAPP -- 计算机圣经
 我是因为b站up主polebug才接触到这本书
 一开始是看到原版的书 但是看的很吃力 啃不动
@@ -26,6 +50,7 @@ CSAPP -- 计算机圣经
 👉我的视频: [CSAPP Lecture 13 Linking_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1YxZVY1EGJ/?spm_id_from=333.1387.homepage.video_card.click&vd_source=3256c9484ee0afb7fb8a95fc60db92c6)
 
 ### Database System
+📅date: 2024.1.20 - ing
 CMU15445是CMU三大神课之一
 Andy老师说：the most important thing you get to understand is I really only care about two things in my entire life. The first one is my wife and my biological daughter and the second one databases.
 Andy老师把所有资源全公开了 包括每一年的上课录像 作业等等各种资源 能让每个非CMU的同学学到
@@ -39,6 +64,7 @@ Andy老师把所有资源全公开了 包括每一年的上课录像 作业等�
 Project代码和课程代码 我private了 Andy老师不让公开
 
 ### CS61B
+📅date: 2025.03.02 - ing
 CS61B是伯克利大学这个系列的第二个课程。
 除此之外还有CS61A, CS61C
 CS61B主语言是Java 课程第一部分先介绍了Java的用法 后面才开始介绍数据结构
@@ -54,6 +80,7 @@ CS61B主语言是Java 课程第一部分先介绍了Java的用法 后面才开�
 👉CS61B Project 代码仓库: https://codehub.devcloud.cn-north-4.huaweicloud.com/51257dbf8a21492f89da2942785a5ec8/CS61BProject.git
 
 ### Algorithm
+📅date1: 2025.01.07 - 2025.2.14 停(之后没在往后看)
 我感觉市面上最好的算法书就是那本红皮的《Algorithm》
 Princeton的算法课就是由作者讲的
 Coursera上整理了好了所有的lecture, homework.

@@ -1,5 +1,5 @@
 ---
-{"week":"第二周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-03-30T15:17:05.742+08:00"}
+{"week":"第二周","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-04-02T21:48:53.358+08:00"}
 ---
 
 
@@ -82,6 +82,7 @@ other problems:
 	example if you can lock the page using M lock, but that only prevents the OS from swapping it out doesn't prevent it from writing out, so now it may write out a dirty page.
 	M-lock 并不会阻止操作系统将脏页写回到磁盘。也就是说，虽然你锁定了页面不让它被换出，但如果你对页面做了修改（使之成为脏页），操作系统仍然可以在任何时间点决定将这些修改后的数据写回到磁盘
 	脏页就是 更改后未更新到disk中的page
+	数据写入磁盘的顺序可能至关重要。例如，在事务处理中，必须确保按照一定的顺序提交数据以维护数据一致性。由于操作系统并不了解这种逻辑依赖关系，它可能会根据自己的调度策略异步地写回脏页，这可能导致不期望的数据写入顺序。
 2. DBMS doesn't know which pages are in memory. The OS will stall a thread on page fault.
 3. 没法获得错误代码  只能取回中断
 
@@ -186,12 +187,12 @@ if we want to add tuples, the slot array is going to grow from the begining to t
 if we delete tuple three.
 slot4 还是指向这个地方 我不需要告诉系统的其他地方 移动了4
 ![Pasted image 20250201215522.png|300](/img/user/accessory/Pasted%20image%2020250201215522.png)
-如果我想移动4过去压缩空间  只需要更新slot array  但是slot不会变 还是用slot4 只是指向的位置变了
+如果我想移动4过去压缩空间  只需要更新slot array  指向新的偏移量
 ![Pasted image 20250201215619.png|300](/img/user/accessory/Pasted%20image%2020250201215619.png)
 
 postgres这么做  mysql不这么做  SQLserver这么做
 
-在加入tuple的时候 可能会重新启用slot array3的位置
+在加入tuple的时候 可能会重新启用slot array3的位置 但是4指向的偏移量不会变 -- 只需要在header里面记录号 tuple5用的slot array3就好了
 这样使用可能会浪费一部分空间，比如图中2和3之间有一小块就被浪费了 但是这种方式我们无需调整槽位数组顺序时更新别的内容  足够弥补
 
 一种方法来表示tuple —— record id
@@ -207,11 +208,12 @@ postgres这么做  mysql不这么做  SQLserver这么做
 这都是slot number 就是槽号  不是tuple实际位置  因为是从第四个slot的地方 用指针去找tuple
 
 ![Pasted image 20250201223353.png](/img/user/accessory/Pasted%20image%2020250201223353.png)
-在postgres中有一个ctid的概念  开放 page number 和对应的slot number（这个指的是偏移量）而不是在slot array中的第几个
+在postgres中有一个ctid的概念  
+ctid： 表示**数据记录的物理行当信息**，指的是 一条记录位于哪个数据块的哪个位移上面。
 ![Pasted image 20250201223451.png](/img/user/accessory/Pasted%20image%2020250201223451.png)
 如果我们删除101  我们发现并没有调整其他数据的位置
 ![Pasted image 20250201223546.png](/img/user/accessory/Pasted%20image%2020250201223546.png)
-添加后 也没有占用slot2槽位
+添加后 也没有占用前面的空间
 如果启用垃圾回收  在postgres中叫做vacuum,将会压缩每一个页面 写出新的页面 新的文件
 ![Pasted image 20250201223753.png](/img/user/accessory/Pasted%20image%2020250201223753.png)
 
@@ -231,6 +233,121 @@ postgres这么做  mysql不这么做  SQLserver这么做
 Oracle有rowID
 ![Pasted image 20250201225152.png](/img/user/accessory/Pasted%20image%2020250201225152.png)
 ![Pasted image 20250201225238.png](/img/user/accessory/Pasted%20image%2020250201225238.png)
+
+**Postgres:**
+```SQL
+-- create
+CREATE TABLE r (
+    id  INTEGER,
+    val VARCHAR(10)
+);
+-- insert
+INSERT INTO r (id, val) VALUES
+(100, 'aaa'),
+(101, 'bbb'),
+(102, 'ccc');
+
+-- fetch 
+SELECT r.ctid, r.* FROM r;
+
+DELETE FROM r WHERE id = 101;
+-- 再次查询时会看到 (0,1) 和 (0,3) 的 ctid
+SELECT r.ctid, r.* FROM r;
+
+VACUUM FULL r;
+SELECT r.ctid, r.* FROM r;
+```
+![Pasted image 20250402211958.png|700](/img/user/accessory/Pasted%20image%2020250402211958.png)
+
+
+**SQLite**
+```SQL
+-- create
+CREATE TABLE r (
+    id  INTEGER,
+    val VARCHAR(10)
+);
+-- insert
+INSERT INTO r (id, val) VALUES
+(100, 'aaa'),
+(101, 'bbb'),
+(102, 'ccc');
+
+-- fetch 
+SELECT rowID, r.* FROM r;
+
+DELETE FROM r WHERE id = 101;
+
+SELECT rowID, r.* FROM r;
+```
+![Pasted image 20250402212315.png|700](/img/user/accessory/Pasted%20image%2020250402212315.png)
+
+**SQL Server**
+```SQL
+-- create
+CREATE TABLE r (
+    id  INTEGER,
+    val VARCHAR(10)
+);
+-- insert
+INSERT INTO r (id, val) VALUES
+(100, 'aaa'),
+(101, 'bbb'),
+(102, 'ccc');
+
+-- fetch 
+SELECT 
+    sys.fn_PhysLocFormatter(%%physloc%%) AS [File:Page:Slot],r.*
+FROM r;
+
+DELETE FROM r WHERE id = 101;
+
+SELECT 
+    sys.fn_PhysLocFormatter(%%physloc%%) AS [File:Page:Slot],r.*
+FROM r;
+
+INSERT INTO r values (999,'xxx');
+
+SELECT 
+    sys.fn_PhysLocFormatter(%%physloc%%) AS [File:Page:Slot],r.*
+FROM r;
+```
+![Pasted image 20250402213549.png|700](/img/user/accessory/Pasted%20image%2020250402213549.png)
+
+Oracle
+Oracle 的 `ROWID` 是 18 位字符，格式为：
+```
+OOOOOOFFFBBBBBBRRR
+```
+- ​**OOOOOO**：数据对象号（Data Object Number）
+- ​**FFF**：文件号（File ID）
+- ​**BBBBBB**：块号（Block Number）
+- ​**RRR**：行号（Row Number，即块内偏移量，从 0 开始）
+```SQL
+-- create
+CREATE TABLE r (
+    id  INTEGER,
+    val VARCHAR(10)
+);
+-- insert
+INSERT INTO r (id, val) VALUES
+(100, 'aaa'),
+(101, 'bbb'),
+(102, 'ccc');
+
+-- fetch 
+SELECT rowid, r.* FROM r;
+
+DELETE FROM r WHERE id = 101;
+
+SELECT rowid, r.* FROM r;
+
+INSERT INTO r (id, val) VALUES (999,'zzz');
+
+SELECT rowid, r.* FROM r;
+```
+![Pasted image 20250402214509.png|700](/img/user/accessory/Pasted%20image%2020250402214509.png)
+
 
 #### tuple layout
 tuple 本身只是一串字节序列
@@ -259,5 +376,6 @@ SELECT * FROM foo JOIN bar ON foo.a = bar.a;
 ![Pasted image 20250202150858.png](/img/user/accessory/Pasted%20image%2020250202150858.png)
 在应用程序中  它仍然看起来是两个单独的表  但在幕后  我可以嵌入他们可以使事情更快
 但是这样对应的更新也会more expensive  性能更差
+
 
 ![[03-storage1 node.pdf]]

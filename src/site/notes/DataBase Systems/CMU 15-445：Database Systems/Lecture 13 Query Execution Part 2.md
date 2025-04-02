@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 13 Query Execution Part 2/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:32:37.630+08:00","updated":"2025-04-02T14:27:29.558+08:00"}
+{"week":"第九周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 13 Query Execution Part 2/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:32:37.630+08:00","updated":"2025-04-02T14:27:29.558+08:00"}
 ---
 
 ![[13-queryexecution2.pdf]]

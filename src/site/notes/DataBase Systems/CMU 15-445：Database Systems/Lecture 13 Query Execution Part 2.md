@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 13 Query Execution Part 2/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:32:37.630+08:00","updated":"2025-04-02T09:42:15.288+08:00"}
+{"week":"第九周","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 13 Query Execution Part 2/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:32:37.630+08:00","updated":"2025-04-02T14:27:29.558+08:00"}
 ---
 
 ![[13-queryexecution2.pdf]]
@@ -190,6 +190,40 @@ Unix管道连接进程  第一个进程完成所有任务之前就开始发送�
 
 ### IO Parallelism
 前面讨论的是我有多个核心 我有多个节点 怎么使用它们的问题
+当数据库系统的瓶颈不在 CPU 而是磁盘时，再多的多核优化都是浪费的，需要进行 I/O 并行。 也就是说我们需要把IO任务分布到多个设备（比如说磁盘）中进行并行处理
+#### Multi-DIsk Parallelism
+多磁盘并行
+磁盘有寿命 也会出现比特腐烂 我们的服务器中通常是一组磁盘 共同构成一个IO子系统
+所以我们会复制副本 并且保持副本的一致性
+
+![Pasted image 20250402134437.png|300](/img/user/accessory/Pasted%20image%2020250402134437.png)
+
+这张图仅仅是数据库的逻辑视图
+假设我们有6个page 我们会有bufferpool bufferpool仅会获取这些page的pageID -> 许多DBMS会接管这一部分工作 -- 并在数据库层面上对对象进行布局
+RAID0 形式 -- 条带 如果轮询的分page  那么瓶颈就是磁盘
+RAID1 形式 -- 镜像 就是上图的 不同的存储设备存储着相同的数据
+
+但现代的做法是通过软件来实现这一切
+在软件层面 可以有一个软件控制分布在全球各地的磁盘 构成一个分布式系统
+在软件层面可以使用Erasure Codes(擦除码)（有点像校验码那种操作）
+在文件或对象级别拆分数据并添加冗余编码，无需依赖硬件控制器。
+将数据分块为`k`个片段，计算生成`m`个冗余校验块  -- - - 允许任意`m`个块丢失时仍能恢复原始数据。
+
+软件和硬件这些内容都会在高级数据库课程才展开介绍 只需要了解就行
+
+#### Database Partitioning
+数据库分区
+**Physical Database Partitioning**
+物理分区
+将整个数据库划分为 ​**互不相交的子集（Disjoint Subsets）​**，每个子集（如单个数据库实例）存储到独立的磁盘位置。
+实现: DBMS将每个数据库存储在了单独的目录中 允许管理页执行数据库的磁盘路径
+所有分区的变更日志（Log File）通常共享，确保事务一致性（ACID）
+**Logical Table Partitioning**
+逻辑分区
+将逻辑表拆分成多个物理段 每个段单独处理
+eg: 哈希函数均有分布数据
+
+这一部分也是高级数据库课程的内容 只需要了解就行
 
 
 

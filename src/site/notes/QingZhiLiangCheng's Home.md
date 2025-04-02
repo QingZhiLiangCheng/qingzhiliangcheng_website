@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/QingZhiLiangCheng's Home/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-01T22:13:26.016+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"tags":["gardenEntry","gardenEntry","gardenEntry"],"permalink":"/QingZhiLiangCheng's Home/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-02T14:41:48.645+08:00"}
 ---
 
 
@@ -88,3 +88,14 @@ Coursera上整理了好了所有的lecture, homework.
 👉Part I: [算法，第一部分 | Coursera](https://www.coursera.org/learn/algorithms-part1)
 👉Part II: [算法，第二部分 | Coursera](https://www.coursera.org/learn/algorithms-part2)
 👉我的笔记: [[algorithm/Algorithm Princeton/Algorithm Princeton\|Algorithm Princeton]]
+
+### MIT14.01 微观经济学
+📅date: 
+因为《纳瓦尔宝典》的缘故 我开始接触到微观经济学
+微观经济学主要关注个体经济单位（如家庭、工人和企业）的行为以及这些个体之间的相互作用的一门学科。
+我首先找到了昆曼的《经济学原理 微观经济学分册》
+然后接触到了MIT14.01 微观经济学的课程
+👉课程网站: [Principles of Microeconomics | Economics | MIT OpenCourseWare](https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/)
+课程网站中有课程视频 作业 问答 等各种资料
+👉我的笔记: [[MIT 14.01 Principles of Microeconomics/MIT 14.01 Principles of Microeconomics\|MIT 14.01 Principles of Microeconomics]]
+👉曼昆《经济学原理》读书笔记: [[libiry/books/《经济学原理 微观经济学分册》\|《经济学原理 微观经济学分册》]]

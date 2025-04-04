@@ -1,4 +1,8 @@
 @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.6.0/style.css');
+  img {
+    display: block; /* 将图片设置为块级元素 */
+    margin: auto;   /* 水平居中 */
+  }
 
 body {
   background-color: #f8f9fa;

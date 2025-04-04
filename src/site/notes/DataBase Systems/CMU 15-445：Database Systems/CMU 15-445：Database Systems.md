@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-01T10:49:17.907+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-04T10:31:39.359+08:00"}
 ---
 
 
@@ -9,9 +9,9 @@
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 04 Database Storage Part 2\|Lecture 04 Database Storage Part 2]]
 [[DataBase Systems/CMU 15-445：Database Systems/环境配置 下载代码  提交项目 代码规范\|环境配置 下载代码  提交项目 代码规范]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression\|Lecture 05 Storage Models & Compression]]
-⭐[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05-03 Summary\|Lecture 05-03 Summary]]
+[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05-03 Summary\|Lecture 05-03 Summary]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Memory & Disk IO Management\|Lecture 06 Memory & Disk IO Management]]
-⭐[[DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Summary\|Lecture 06 Summary]]
+[[DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Summary\|Lecture 06 Summary]]
 [[DataBase Systems/CMU 15-445：Database Systems/Project1 Buffer Pool\|Project1 Buffer Pool]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 07 Hash Tables\|Lecture 07 Hash Tables]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 08 Tree Indexes\|Lecture 08 Tree Indexes]]

@@ -1,5 +1,5 @@
 ---
-{"week":"第八周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:34:22.538+08:00","updated":"2025-04-02T15:42:34.993+08:00"}
+{"week":"第八周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:34:22.538+08:00","updated":"2025-04-04T10:46:29.888+08:00"}
 ---
 
 ![[15-ecf-signals.pdf]]
@@ -38,6 +38,7 @@ shell中有很多内建的命令 所以先通过`builtin_command()`来查看是�
 ### Signals
 信号就是一条小信息 -- 通知进程系统中发生了一次某种类型的事件
 完全由软件实现
+是个唯一的整数
 
 
 

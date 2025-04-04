@@ -1,10 +1,12 @@
 @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.6.0/style.css');
-  img {
-    display: block; /* 将图片设置为块级元素 */
-    margin: auto;   /* 水平居中 */
-  }
+
+img {
+  display: block;
+  margin: auto;
+}
 
 body {
+  font-size: 18px; /* 全局字体大小 */
   background-color: #f8f9fa;
   font-family: 'LXGW WenKai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   line-height: 1.8;
@@ -22,115 +24,61 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     overflow-wrap: break-word;
 
-    /* ========== 根据图片内容新增样式 ========== */
-    /* 信息区块模块化 */
-    .info-block {
-      padding: 1.5rem;
-      margin: 1.5em 0;
-      border-radius: 8px;
-      background: #f8f9fa;
-      
-      /* 链接高亮 */
-      a {
-        color: #2980b9;
-        text-decoration: none;
-        border-bottom: 1px dashed #3498db;
-        &:hover {
-          color: #3498db;
-          border-bottom-style: solid;
-        }
-      }
+    h1 {
+      font-size: 2.5rem;
     }
 
-    /* 代码块样式 */
-        /* 替换原有 pre 样式 */
-         pre {
-             background: #2d2d2d !important;
-             border-radius: 8px;
-             padding: 1.5rem !important;
-             margin: 1.5rem -2rem; /* 负边距以填满宽度 */
-             overflow-x: auto; /* 允许横向滚动 */
-             tab-size: 4;
-             font-family: 'Fira Code', monospace;
-             position: relative;
- 
-             code {
-                 color: #cccccc;
-                 font-size: 14px;
-                 line-height: 1.5;
-                 display: block;
-                 white-space: pre-wrap; /* 自动换行 */
-             }
- 
-             /* 添加语言标签 */
-             &::after {
-                 content: attr(data-language);
-                 position: absolute;
-                 top: 0;
-                 right: 1rem;
-                 color: #666;
-                 font-size: 0.8em;
-                 text-transform: uppercase;
-             }
-         }
-
-    /* 版本标签 (v20231227-2023fall) */
-    .version-tag {
-      display: inline-block;
-      padding: 0.3em 0.8em;
-      background: #e74c3c;
-      color: white;
-      border-radius: 4px;
-      font-size: 0.9em;
-      margin: 0.5em 0;
+    h2 {
+      font-size: 2rem;
     }
 
-    /* ========== 基础样式优化 ========== */
-    h1, h2, h3 {
-      font-family: 'LXGW WenKai';
-      line-height: 1.4;
-      margin: 1.8em 0 1.2em;
-      font-weight: 600;
-      border-bottom: 2px solid #ecf0f1;
-      padding-bottom: 0.6em;
+    h3 {
+      font-size: 1.75rem;
     }
 
     p {
+      font-size: 1.1rem;
       margin: 0 0 1.5em 0;
-      font-size: 16px;
-      letter-spacing: 0.02em; /* 减小字间距更精致 */
+      letter-spacing: 0.02em;
     }
 
     ul {
       padding-left: 1.8rem;
+
       li {
+        font-size: 1.1rem;
         margin-bottom: 1rem;
         line-height: 1.8;
+
         &::marker {
-          color: #3498db; /* 列表点颜色统一 */
+          color: #3498db;
         }
       }
     }
 
-    br { 
-      content: "";
+    pre code {
+      font-size: 16px;
+      line-height: 1.5;
       display: block;
-      margin-bottom: 1.2em;
+      white-space: pre-wrap;
     }
 
     @media (max-width: 768px) {
-      padding: 1.2rem;
-      br { margin-bottom: 0.8em; }
-      h1, h2, h3 { 
-        margin: 1.2em 0;
-        line-height: 1.5;
-        font-size: 1.3em; /* 移动端标题适当缩小 */
+      body {
+        font-size: 16px;
       }
-      .info-block {
-        padding: 1rem;
-        margin: 1em 0;
+
+      h1, h2, h3 {
+        font-size: 1.5em;
       }
-      pre code { font-size: 13px; }  /* 移动端代码缩小 */
+
+      p {
+        font-size: 1rem;
+      }
+
+      pre code {
+        font-size: 14px;
+      }
     }
   }
 }

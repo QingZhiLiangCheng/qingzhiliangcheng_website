@@ -4,6 +4,11 @@ img {
   display: block;
   margin: auto;
 }
+br {
+    content: ""; /* 添加伪内容 */
+    display: block;
+    margin-bottom: 20px; /* 设置间距 */
+  }
 
 body {
   font-size: 18px; /* 全局字体大小 */

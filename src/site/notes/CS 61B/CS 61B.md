@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f973","tags":["folder"],"dg-publish":true,"dg-pinned":true,"permalink":"/CS 61B/CS 61B/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-02T21:48:21.662+08:00","updated":"2025-03-30T15:25:10.063+08:00"}
+{"sticker":"emoji//1f973","tags":["folder"],"dg-publish":true,"dg-pinned":true,"permalink":"/CS 61B/CS 61B/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-02T21:48:21.662+08:00","updated":"2025-04-09T14:09:42.302+08:00"}
 ---
 
 [[CS 61B/Lecture 01 Introduce\|Lecture 01 Introduce]]
@@ -18,6 +18,8 @@
 Lecture 13 是个问答
 [[CS 61B/Lecture 14 Disjoint Sets\|Lecture 14 Disjoint Sets]]
 [[CS 61B/Lecture 15 Asymptotics II\|Lecture 15 Asymptotics II]]
+[[CS 61B/Lecture 16 ADTs, Sets, Maps, BSTs\|Lecture 16 ADTs, Sets, Maps, BSTs]]
+[[CS 61B/Lecture 17 B-Trees(2-3, 2-3-4 Trees)\|Lecture 17 B-Trees(2-3, 2-3-4 Trees)]]
 [[CS 61B/Project 1A LinkedListDeque61B\|Project 1A LinkedListDeque61B]]
 
 ![[cs61B spring2024.components]]

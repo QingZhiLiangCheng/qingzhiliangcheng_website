@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/ObsidianNote/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-03T15:43:54.674+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/ObsidianNote/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-07T14:31:14.822+08:00"}
 ---
 
 
@@ -49,7 +49,7 @@ CSAPP -- 计算机圣经
 👉我的课程笔记:[[CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective\|CSAPP Computer-System-A-Program-Perspective]]
 👉我的视频: [CSAPP Lecture 13 Linking_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1YxZVY1EGJ/?spm_id_from=333.1387.homepage.video_card.click&vd_source=3256c9484ee0afb7fb8a95fc60db92c6)
 
-### Database System
+### CMU15445 Intro to Database System
 📅date: 2024.1.20 - ing
 CMU15445是CMU三大神课之一
 Andy老师说：the most important thing you get to understand is I really only care about two things in my entire life. The first one is my wife and my biological daughter and the second one databases.
@@ -60,7 +60,7 @@ Andy老师把所有资源全公开了 包括每一年的上课录像 作业等�
 👉Youtube课程视频: [Alibaba Cloud - 10 Billion Vector Search Power](https://www.youtube.com/watch?v=n9S4Ibh5O0E) 可以从课程网站点过去
 👉课程自动评分网站: [15-445/645 (Non-CMU) Dashboard | Gradescope](https://www.gradescope.com/courses/585997)
 👉我的笔记:[[DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems\|CMU 15-445：Database Systems]]
-👉我的视频: 
+👉我的视频: [cmu15445 lecture 03 Database Storage Part1_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1gxZRYoEiR/?spm_id_from=333.1387.homepage.video_card.click)
 Project代码和课程代码 我private了 Andy老师不让公开
 
 ### CS61B
@@ -96,7 +96,7 @@ Coursera上整理了好了所有的lecture, homework.
 微观经济学是研究个体（个人、家庭或企业）的行为以及如何做出决策的经济学分支。
 我首先找到了昆曼的《经济学原理 微观经济学分册》
 然后接触到了MIT14.01 微观经济学的课程
-👉课程网站: [Principles of Microeconomics | Economics | MIT OpenCourseWare](https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/)
+👉课程网站: [Calendar | Principles of Microeconomics | Economics | MIT OpenCourseWare](https://www.ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2023/pages/calendar/)
 课程网站中有课程视频 作业 问答 等各种资料
 👉我的笔记: [[MIT 14.01 Principles of Microeconomics/MIT 14.01 Principles of Microeconomics\|MIT 14.01 Principles of Microeconomics]]
 👉曼昆《经济学原理》读书笔记: [[libiry/books/《经济学原理 微观经济学分册》\|《经济学原理 微观经济学分册》]]

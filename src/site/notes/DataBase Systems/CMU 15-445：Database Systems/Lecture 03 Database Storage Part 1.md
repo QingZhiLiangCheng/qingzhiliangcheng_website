@@ -1,13 +1,18 @@
 ---
-{"week":"第二周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-04-04T12:08:02.037+08:00"}
+{"week":"第二周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-04-05T21:32:47.348+08:00"}
 ---
 
 
 ![[03-storage1.pdf]]
 
-下面该视频托管在 YouTube 平台，如需观看，请确保您有访问 YouTube 的网络条件。
+课程视频托管在 YouTube 平台，如需观看，请确保您有访问 YouTube 的网络条件。
 或者访问b站: [F2023 #03 - Database Storage Part 1_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Ex4y1p7bi/?p=4&spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=3256c9484ee0afb7fb8a95fc60db92c6)
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/DJ5u5HrbcMk?si=fichKijC6ISkZpF7" title="YouTube video player" frameborder="2" border-radius = "2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/DJ5u5HrbcMk?si=fichKijC6ISkZpF7" 
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+        style="background-color: #000; border: 5px solid #fff; border-radius: 10px;">
+</iframe>
 
 我的视频:[cmu15445 lecture 03 Database Storage Part1_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1gxZRYoEiR/?spm_id_from=333.1391.0.0&vd_source=3256c9484ee0afb7fb8a95fc60db92c6) 
 <iframe width ="100%" height = "400" src="https://player.bilibili.com/player.html?isOutside=true&aid=114277302142472&bvid=BV1gxZRYoEiR&cid=29219817065&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"></iframe>

@@ -1,7 +1,6 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-04T10:31:39.359+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-08T16:02:12.731+08:00"}
 ---
-
 
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 01 Course Intro & Relational Model\|Lecture 01 Course Intro & Relational Model]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 02 Modern SQL\|Lecture 02 Modern SQL]]
@@ -20,5 +19,7 @@
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 11 Join Algorithms\|Lecture 11 Join Algorithms]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1\|Lecture 12 Query Execution Part 1]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 13 Query Execution Part 2\|Lecture 13 Query Execution Part 2]]
+[[DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization\|Lecture 14 Query Planning & Optimization]]
+
 
 ![[cmu15445 fall2023.components]]

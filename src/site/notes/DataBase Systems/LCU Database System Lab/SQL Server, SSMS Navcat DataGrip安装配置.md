@@ -1,11 +1,12 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-09T21:35:29.867+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-09T22:16:04.199+08:00"}
 ---
 
 ### SQL Server安装
 SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://www.microsoft.com/zh-cn/evalcenter/download-sql-server-2022)
 选择自定义安装 更改位置
 ![Pasted image 20250409184911.png|500](/img/user/accessory/Pasted%20image%2020250409184911.png)
+
 选择好安装位置后 点安装
 翻个墙速度会更快
 安装完成后会蹦出下面这个画面
@@ -35,19 +36,19 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 3. 选择端口然后 下一步,选择“TCP”,然后在下面"特定本地端口"处输入SQLserver的端口号(默认1433)
 
 
+
 ### 可视化工具选择一 SSMS
 安装SSMS
 当然也可以使用Navcat
 我建议使用SSMS 因为实验室环境是这个 而且SSMS是微软自己出的工具(虽然因为Visual Studio太占内存了我不太喜欢他们家的东西hhh)
 下载网址: [下载 SQL Server Management Studio （SSMS） | Microsoft Learn](https://learn.microsoft.com/zh-cn/ssms/download-sql-server-management-studio-ssms#download-ssms)
-一定要选中文版！！中文版！！
 ![Pasted image 20250409213517.png|400](/img/user/accessory/Pasted%20image%2020250409213517.png)
 除了选择安装地址 无脑下一步
-
-**修改中文**
-
+如果需要可以在设置里面却换成中文
 **连接数据库**
 连接本地数据库
+![Pasted image 20250409221553.png|400](/img/user/accessory/Pasted%20image%2020250409221553.png)
+
 连接
 
 ### 其他可视化工具 Navcat/ DataGrip

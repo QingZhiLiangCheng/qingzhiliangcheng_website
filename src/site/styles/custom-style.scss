@@ -21,24 +21,18 @@ body {
   text-rendering: optimizeLegibility;
 
   .content {
-    margin: 2rem auto;
-    padding: 2rem;
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     overflow-wrap: break-word;
 
-    h1 {
-      font-size: 2.5rem;
+    h1, h2, h3 {
+      line-height: 1.4;
+      margin: 1.8em 0 1.2em;
+      font-weight: 600;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 0.6em;
     }
-
-    h2 {
-      font-size: 2rem;
-    }
-
-    h3 {
-      font-size: 1.75rem;
-    }
+    
 
     p {
       font-size: 1.1rem;
@@ -74,6 +68,11 @@ body {
 
       h1, h2, h3 {
         font-size: 1.5em;
+        line-height: 1.4;
+      margin: 1.8em 0 1.2em;
+      font-weight: 600;
+      border-bottom: 2px solid #ecf0f1;
+      padding-bottom: 0.6em;
       }
 
       p {

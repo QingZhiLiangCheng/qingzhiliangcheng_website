@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:33:30.885+08:00","updated":"2025-04-09T11:17:18.519+08:00"}
+{"week":"第九周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:33:30.885+08:00","updated":"2025-04-09T19:41:11.220+08:00"}
 ---
 
 ![[14-optimization.pdf]]
@@ -92,7 +92,7 @@ eg. A join b = b join a
 另一个方法是 采取更智能的方式 以成本驱动的方式寻找组合
 在实际的优化器中 会同时采用这两种方法
 
-### rules
+### Rules
 只需要应用规则即可 无需知道任何信息
 **Rules1: Predicate Pushdown: 谓词下推**
 大多数情况将选择操作下推是一个好主意 -- 经验法则
@@ -111,7 +111,7 @@ eg. A join b = b join a
 除此之外 有数百条规则
 比如说图片中的有一个自然连接的交换 -- 换过来可能更好 -- 因为是谁作为外层循环的问题
 
-### architecture overview
+### Architecture Overview
 ![Pasted image 20250409081024.png|600](/img/user/accessory/Pasted%20image%2020250409081024.png)
 应用程序发送一个查询 给查询到达Parser(解析器) 解析器进行检查  生成抽象语法树
 Binder(装订器)会去检查目录 确定这样做是否有意义
@@ -185,7 +185,7 @@ example
 ![Pasted image 20250409092413.png|400](/img/user/accessory/Pasted%20image%2020250409092413.png)
 采用自顶向下的方法的好处在于 很快的就能得到一个正确的计划 属于从正确的东西不断进行改善
 
-**Nested Sub-Queries**
+#### Nested Sub-Queries
 前面提到的只适用于 单块查询 即 简单的 select from where而已
 但是事实上会有复杂的嵌套子查询等等
 当然我们可以先运行内层 再运行外层 但是更好地方法是尽可能重写查询 使其成为一个单块查询
@@ -196,3 +196,24 @@ example
 也可以分解查询
 ![Pasted image 20250409094020.png|400](/img/user/accessory/Pasted%20image%2020250409094020.png)
 
+### Cost Model
+成本模型
+结合一些内部陈本模型 -- 比较一个计划与另一个计划
+成本模型通常包含两个组成部分
+**Physical Costs**
+我们的单位可能是 消耗多少个CPU周期, 消耗多少次IO输入输出, 需要一个恰当的模型
+**Logical Costs**
+取决于输出的大小 操作符的大小 以及我们所选定的算法
+
+ **Statistics**
+ 预估执行查询的成本是通过在内部维护表相关信息来做的 DBMS 将有关表、属性和索引的内部统计信息存储在其内部目录中。不同的系统会在不同的时间更新它们
+
+**Selection Cardinality**
+选择基数
+我们需要估计一个选择操作符的基数
+比如说有一个谓词 age=9 但是我们不知道到底有多少数据满足这个条件
+而且这个数量会影响到后续的规划
+the selectivity(sel, 谓词选择性)是符合条件的元组的分数
+若能在数据库中存储15个h值 并为每个值精确计数  sel = 4/45
+![Pasted image 20250409193937.png|500](/img/user/accessory/Pasted%20image%2020250409193937.png)
+但这样做成本过高 因为存储详细值所需的空间可能与存储原始列所需的空间相同 因此可能会将数据库的规模翻倍 这并非明智之举

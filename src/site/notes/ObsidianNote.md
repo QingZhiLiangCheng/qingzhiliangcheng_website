@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"permalink":"/ObsidianNote/","tags":["gardenEntry"],"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-07T14:31:14.822+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"tags":["gardenEntry","gardenEntry"],"permalink":"/ObsidianNote/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-09T13:45:49.516+08:00"}
 ---
 
 
@@ -100,3 +100,9 @@ Coursera上整理了好了所有的lecture, homework.
 课程网站中有课程视频 作业 问答 等各种资料
 👉我的笔记: [[MIT 14.01 Principles of Microeconomics/MIT 14.01 Principles of Microeconomics\|MIT 14.01 Principles of Microeconomics]]
 👉曼昆《经济学原理》读书笔记: [[libiry/books/《经济学原理 微观经济学分册》\|《经济学原理 微观经济学分册》]]
+
+### LCU Database System Lab
+LCU的数据库课的lab使用的是SQL Server数据库
+老师提供了一个远程数据库 但是因为权限问题 有些操作需要在本地环境上实现
+所以我从怎么在自己电脑上安装一个SQL Server数据库环境开始 把lab的每一步都整理了下来
+👉lab的说明, 要求, 详细笔记见 [[DataBase Systems/LCU Database System Lab/LCU Database System Lab\|LCU Database System Lab]]

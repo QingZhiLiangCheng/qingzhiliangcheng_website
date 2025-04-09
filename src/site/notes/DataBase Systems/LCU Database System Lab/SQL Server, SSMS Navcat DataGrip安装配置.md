@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-09T22:30:42.631+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T00:03:19.330+08:00"}
 ---
 
 ### SQL Server安装
@@ -42,11 +42,15 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 当然也可以使用Navcat
 我建议使用SSMS 因为实验室环境是这个 而且SSMS是微软自己出的工具(虽然因为Visual Studio太占内存了我不太喜欢他们家的东西hhh)
 下载网址: [下载 SQL Server Management Studio （SSMS） | Microsoft Learn](https://learn.microsoft.com/zh-cn/ssms/download-sql-server-management-studio-ssms#download-ssms)
+一定下中文版中文版中文版！！！
 ![Pasted image 20250409213517.png|400](/img/user/accessory/Pasted%20image%2020250409213517.png)
 除了选择安装地址 无脑下一步
-如果需要可以在设置里面却换成中文
 **连接数据库**
+连接数据库之前先启动服务
+- 法一: cmd 管理页运行 运行`net start mssqlserver`
+- 法二:  在开始菜单中搜索_SQL Server配置管理器_，右键点击并选择“以管理员身份运行”。在配置管理器中，找到并右键点击需要启动的SQL Server服务，选择“启动”。
 连接本地数据库
+可能需要点信任服务器证书
 ![Pasted image 20250409221553.png|400](/img/user/accessory/Pasted%20image%2020250409221553.png)
 
 连接远程数据库

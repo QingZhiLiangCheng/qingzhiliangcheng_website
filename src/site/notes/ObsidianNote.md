@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"tags":["gardenEntry","gardenEntry"],"permalink":"/ObsidianNote/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-09T13:45:49.516+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":true,"tags":["gardenEntry"],"permalink":"/ObsidianNote/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-04-09T13:55:24.628+08:00"}
 ---
 
 
@@ -19,6 +19,7 @@
 这里只有当时的大作业
 👉前端Vue代码仓库: https://e.coding.net/g-bplq4380/hotel_management_system/hotel_management_system_vue.git
 👉后端cpp代码仓库: https://e.coding.net/g-bplq4380/hotel_management_system/hotel_management_system_background.git
+建议用封装继承多态, 函数模版, 虚函数, 运算符重载等实现一个List, LinkedList, ArrayList.
 
 ### LCU 数据结构
 📅date: 2024.09.20 - 2025.01.06完结✅
@@ -28,6 +29,7 @@
 👉我的笔记：[[LCU DataStructure/LCU DataStructure\|LCU DataStructure]]
 👉数据结构课程设计两次小实验报告, 数据结构大作业, 数据结构期末复习的相关资料都在这个百度网盘链接中:  https://pan.baidu.com/s/1ynhy6GBWodQREPO1Wa0oWg?pwd=qzlc 提取码: qzlc 
 (🤣老实说 我的大作业使用Rust写了一个简单的虚拟货币交易系统 但是最后因为当时水平的原因并没有真正完成)
+
 ### LCU 计算机组成原理
 📅date: 2024.10.30 - 2025.01.03完结✅
 大二上课程 fall2024

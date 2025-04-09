@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T00:07:40.211+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T00:12:20.968+08:00"}
 ---
 
 ### SQL Server安装
@@ -54,6 +54,7 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 ![Pasted image 20250409221553.png|400](/img/user/accessory/Pasted%20image%2020250409221553.png)
 
 连接远程数据库
+登录账户和密码相同，3班为dbuser202303，对应数据库db202303；4班为dbuser202304、对应数据库db202304；5班为dbuser202305，对应数据库db202305；6班为dbuser202306，对应数据库db202306
 ![Pasted image 20250409223038.png|400](/img/user/accessory/Pasted%20image%2020250409223038.png)
 
 

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-09T22:16:04.199+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-09T22:30:42.631+08:00"}
 ---
 
 ### SQL Server安装
@@ -49,7 +49,10 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 连接本地数据库
 ![Pasted image 20250409221553.png|400](/img/user/accessory/Pasted%20image%2020250409221553.png)
 
-连接
+连接远程数据库
+![Pasted image 20250409223038.png|400](/img/user/accessory/Pasted%20image%2020250409223038.png)
+
+
 
 ### 其他可视化工具 Navcat/ DataGrip
 Navcat比较好用 DataGrip是Jetbrain的 不过我感觉DataGrip上千条数据之后容易卡 个人不太推荐

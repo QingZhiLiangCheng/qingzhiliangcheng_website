@@ -25,12 +25,16 @@ body {
     border-radius: 12px;
     overflow-wrap: break-word;
 
-    h1, h2, h3 {
-      line-height: 1.4;
-      margin: 1.8em 0 1.2em;
-      font-weight: 600;
-      padding-bottom: 0.6em;
-    }
+  h1 {
+       font-size: 2.5rem;
+     }
+ 
+     h2 {
+       font-size: 2rem;
+     }
+ 
+     h3 {
+       font-size: 1.75rem;
     
 
     p {
@@ -67,10 +71,6 @@ body {
 
       h1, h2, h3 {
         font-size: 1.5em;
-        line-height: 1.4;
-      margin: 1.8em 0 1.2em;
-      font-weight: 600;
-      padding-bottom: 0.6em;
       }
 
       p {

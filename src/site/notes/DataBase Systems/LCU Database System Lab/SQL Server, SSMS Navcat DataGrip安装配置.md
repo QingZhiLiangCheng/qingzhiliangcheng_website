@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T00:03:19.330+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T00:07:40.211+08:00"}
 ---
 
 ### SQL Server安装
@@ -63,4 +63,4 @@ Navcat比较好用 DataGrip是Jetbrain的 不过我感觉DataGrip上千条数据
 Navicat下载地址: [Navicat | Download Navicat Premium 14-day trial versions for Windows, macOS and Linux](https://www.navicat.com/en/download/navicat-premium)
 除了选择安装地址 一路下一步就行
 然后最重要的是要破解一下
-补丁我放到百度网盘了:
+补丁我放到百度网盘了:  https://pan.baidu.com/s/1Zylc2bBdJRNFO2xwUDkzrw?pwd=QZLC 提取码: QZLC 

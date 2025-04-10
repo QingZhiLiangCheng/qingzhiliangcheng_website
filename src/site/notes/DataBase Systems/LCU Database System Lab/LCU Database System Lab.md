@@ -1,5 +1,5 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/LCU Database System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-10T09:03:50.692+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/LCU Database System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-10T11:58:16.682+08:00"}
 ---
 
 LCU的数据库课的lab使用的是SQL Server数据库
@@ -19,6 +19,6 @@ LCU的数据库课的lab使用的是SQL Server数据库
 
 **实验笔记**
 [[DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置\|SQL Server, SSMS Navcat DataGrip安装配置]]（如果不想再自己电脑上装SQL Server 可以跳过这一篇笔记 直接在实验室电脑上做实验也可以）
-[[DataBase Systems/LCU Database System Lab/实验1.1 模式定义与数据完整性操作\|实验1.1 模式定义与数据完整性操作]]
+[[DataBase Systems/LCU Database System Lab/lab1 模式定义与数据完整性操作\|lab1 模式定义与数据完整性操作]]
 
 

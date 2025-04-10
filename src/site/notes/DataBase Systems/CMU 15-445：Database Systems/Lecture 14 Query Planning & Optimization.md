@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:33:30.885+08:00","updated":"2025-04-09T19:41:11.220+08:00"}
+{"week":"第九周","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:33:30.885+08:00","updated":"2025-04-10T19:23:33.143+08:00"}
 ---
 
 ![[14-optimization.pdf]]
@@ -205,8 +205,8 @@ example
 **Logical Costs**
 取决于输出的大小 操作符的大小 以及我们所选定的算法
 
- **Statistics**
- 预估执行查询的成本是通过在内部维护表相关信息来做的 DBMS 将有关表、属性和索引的内部统计信息存储在其内部目录中。不同的系统会在不同的时间更新它们
+**Statistics**
+预估执行查询的成本是通过在内部维护表相关信息来做的 DBMS 将有关表、属性和索引的内部统计信息存储在其内部目录中。不同的系统会在不同的时间更新它们
 
 **Selection Cardinality**
 选择基数
@@ -217,3 +217,32 @@ the selectivity(sel, 谓词选择性)是符合条件的元组的分数
 若能在数据库中存储15个h值 并为每个值精确计数  sel = 4/45
 ![Pasted image 20250409193937.png|500](/img/user/accessory/Pasted%20image%2020250409193937.png)
 但这样做成本过高 因为存储详细值所需的空间可能与存储原始列所需的空间相同 因此可能会将数据库的规模翻倍 这并非明智之举
+而且在这其中 还假设了独立性
+如果两个谓词是独立的 我们可以直接结合起来 但情况并不总是这样
+需要一些高级方法
+Choice1: Histograms(直方图)
+依然是呈现详细的信息 但是占的空间大幅减少
+Equi-Width Histograms(等宽直方图): 分成桶 对每个桶存储总计数 大小相同 滑动计数
+![Pasted image 20250410190321.png|500](/img/user/accessory/Pasted%20image%2020250410190321.png)
+Equi-Depth Histograms(等深直方图) -- 桶的大小可以不同
+![Pasted image 20250410190519.png|500](/img/user/accessory/Pasted%20image%2020250410190519.png)
+利弊会在高级课程里面讲解 -- 但使用直方图是为了减少空间 且 精确
+
+**Choice2: Sketches(草图)**
+也是类似统计方面的一种技巧 -- 详细信息会在高级数据库课程涉及
+使用的关键算法叫HyperLogLog -- 是一种可以遍历估算出一个集合中不同值数量的算法
+
+**Choice3: Sampling(采样)**
+比如可以随机抽取百分之一的记录
+![Pasted image 20250410191014.png|400](/img/user/accessory/Pasted%20image%2020250410191014.png)
+
+### Conclusion
+审视SQL查询 -> 逻辑计划 -> 物理计划(包含了所有细节 eg使用什么算法……) -> 调度器 表达式计算 重写->优化器 自顶向下/自底向上 动态规划构建得到最优解(NP难问题 只是局部最优)（在这里还讲了怎么预测个数）
+
+Essential Query Optimization papers
+![Pasted image 20250410191715.png](/img/user/accessory/Pasted%20image%2020250410191715.png)
+如果想研究 可能要看5200个paper hhh
+左边这篇论文是启动方式
+左二 探讨的自顶向下
+左三 开创了整个优化领域先河的系统性艺术
+右一 混杂大量内连接和外连接

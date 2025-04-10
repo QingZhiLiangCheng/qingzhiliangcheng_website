@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T00:12:20.968+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T09:04:18.186+08:00"}
 ---
 
 ### SQL Server安装
@@ -49,11 +49,12 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 连接数据库之前先启动服务
 - 法一: cmd 管理页运行 运行`net start mssqlserver`
 - 法二:  在开始菜单中搜索_SQL Server配置管理器_，右键点击并选择“以管理员身份运行”。在配置管理器中，找到并右键点击需要启动的SQL Server服务，选择“启动”。
-连接本地数据库
+连接本地服务器
 可能需要点信任服务器证书
 ![Pasted image 20250409221553.png|400](/img/user/accessory/Pasted%20image%2020250409221553.png)
 
-连接远程数据库
+连接远程服务器
+服务器ip地址   10.200.7.129（实验室和宿舍都可以访问）
 登录账户和密码相同，3班为dbuser202303，对应数据库db202303；4班为dbuser202304、对应数据库db202304；5班为dbuser202305，对应数据库db202305；6班为dbuser202306，对应数据库db202306
 ![Pasted image 20250409223038.png|400](/img/user/accessory/Pasted%20image%2020250409223038.png)
 

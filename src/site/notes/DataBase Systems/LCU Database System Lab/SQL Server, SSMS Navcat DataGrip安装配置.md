@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T09:04:18.186+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T10:38:48.955+08:00"}
 ---
 
 ### SQL Server安装
@@ -18,8 +18,8 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 接受 下一步
 不要点使用Microsoft更新检查 下一步
 继续下一步
-![Pasted image 20250409194817.png|500](/img/user/accessory/Pasted%20image%2020250409194817.png)
 这里本来选中的 去掉之后 下一步
+![Pasted image 20250409194817.png|500](/img/user/accessory/Pasted%20image%2020250409194817.png)
 功能选择 然后下一步
 ![Pasted image 20250409194911.png|500](/img/user/accessory/Pasted%20image%2020250409194911.png)
 

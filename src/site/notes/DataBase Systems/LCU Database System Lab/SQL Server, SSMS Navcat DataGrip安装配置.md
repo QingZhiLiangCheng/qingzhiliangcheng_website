@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T10:38:48.955+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T10:41:39.632+08:00"}
 ---
 
 ### SQL Server安装
@@ -16,7 +16,7 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 我选的developer 然后下一步
 ![Pasted image 20250409194453.png|500](/img/user/accessory/Pasted%20image%2020250409194453.png)
 接受 下一步
-不要点使用Microsoft更新检查 下一步
+**不要点使用Microsoft更新检查 下一步**
 继续下一步
 这里本来选中的 去掉之后 下一步
 ![Pasted image 20250409194817.png|500](/img/user/accessory/Pasted%20image%2020250409194817.png)
@@ -24,11 +24,13 @@ SQL Server下载地址: [SQL Server 2022 | Microsoft Evaluation Center](https://
 ![Pasted image 20250409194911.png|500](/img/user/accessory/Pasted%20image%2020250409194911.png)
 
 再下一步
+
+这里本来是手动的 我改成自动了 然后下一步
 ![Pasted image 20250409195007.png|500](/img/user/accessory/Pasted%20image%2020250409195007.png)
-这里本来是手动的 我改成自动了
-![Pasted image 20250409195137.png|500](/img/user/accessory/Pasted%20image%2020250409195137.png)
 选择混合模式 设置密码 然后添加当前用户
 然后下一步 然后点击安装就行
+![Pasted image 20250409195137.png|500](/img/user/accessory/Pasted%20image%2020250409195137.png)
+
 
 如果出现防火墙警告的情况(忘了在哪里会出现了)
 1. 打开"高级安全 Windows 防火墙"(Win+R 输入 WF.msc)

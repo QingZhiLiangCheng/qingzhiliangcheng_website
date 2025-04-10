@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/lab1 模式定义与数据完整性操作/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-10T08:51:41.473+08:00","updated":"2025-04-10T11:54:33.179+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/lab1 模式定义与数据完整性操作/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-10T08:51:41.473+08:00","updated":"2025-04-10T14:18:46.613+08:00"}
 ---
 
 
@@ -154,6 +154,7 @@ CREATE TABLE sc2023406313 (
 
 ![Pasted image 20250410101648.png|500](/img/user/accessory/Pasted%20image%2020250410101648.png)
 远程服务器的spjdb没有权限  只能用自己的本地环境
+建在远程服务器的db202306中也行
 #### Step1: 创建S表（供应商信息表）
 
 | 主码  | 列名     | 数据类型     | 宽度  | 小数位 | 空否  | 取值范围 | 备  注  |
@@ -240,9 +241,11 @@ GRANT create table to st
 create schema Production2023406313；      --架构命名不能以数字开头
 create schema Person2023406313  AUTHORIZATION  st；
 ```
-注意这里有个坑是只能一句一句执行 两句一起运行会报错 或者用GO隔开
+注意这里有个坑是只能一句一句执行 两句一起运行会报错 
 ![Pasted image 20250410112018.png](/img/user/accessory/Pasted%20image%2020250410112018.png)
+**Solution1: 可以用GO隔开**
 ![Pasted image 20250410113508.png](/img/user/accessory/Pasted%20image%2020250410113508.png)
+**Solution2: 也可以一句一句运行**
 ![Pasted image 20250410112110.png|400](/img/user/accessory/Pasted%20image%2020250410112110.png)
 
 呃呃这个报错不用管 运行成功了
@@ -285,6 +288,10 @@ create table Production2023406313.t1(id int,name char(10)) -- 失败 why？
 #### Step1: 修改course表的cname列
 将表course的cname列的数据类型改为varchar(40)
 **Choice1: SQL语句**
+```SQL
+ALTER TABLE course2023406313
+ALTER COLUMN cname VARCHAR(40);
+```
 ![Pasted image 20250410115115.png|400](/img/user/accessory/Pasted%20image%2020250410115115.png)
 
 **Choice2: 可视化操作**
@@ -296,3 +303,262 @@ create table Production2023406313.t1(id int,name char(10)) -- 失败 why？
 Solution: 菜单栏->工具->选项->设计器->表设计器和数据库设计器，右侧面板，取消勾选“阻止保存要求重新创建表的更改”。
 ![Pasted image 20250410115346.png|550](/img/user/accessory/Pasted%20image%2020250410115346.png)
 在保存 就成功了
+#### Step2: 为student表新增列
+为表student增加一个新列: birthday(出生日期), 类型为datetime, 默认为空值.
+**Choice 1: SQL**
+```SQL
+ALTER TABLE student2023406313 ADD birthday DATETIME NULL;
+```
+![Pasted image 20250410125205.png|400](/img/user/accessory/Pasted%20image%2020250410125205.png)
+**Choice 2: 可视化**
+![Pasted image 20250410125234.png|500](/img/user/accessory/Pasted%20image%2020250410125234.png)
+可视化操作的时候记得保存
+**确认是否成功**
+![Pasted image 20250410133121.png](/img/user/accessory/Pasted%20image%2020250410133121.png)
+#### Step3: 修改sc表中grade取值范围
+将表sc中的grade列的取值范围改为小于等于150的正数.
+**Choice 1: SQL**
+SQL Server不支持修改  只能删除再创建
+```SQL
+ALTER TABLE sc2023406313 DROP CONSTRAINT chk_grade_range;
+
+ALTER TABLE sc2023406313
+ADD CONSTRAINT chk_grade_range
+CHECK (grade >= 0 AND grade <= 150);
+```
+![Pasted image 20250410130712.png|400](/img/user/accessory/Pasted%20image%2020250410130712.png)
+**Choice 2: 可视化**
+设计 -> 右击检查约束
+![Pasted image 20250410130641.png|500](/img/user/accessory/Pasted%20image%2020250410130641.png)
+可视化操作的时候记得保存
+
+#### Step4: 缺省约束
+为Student表的“Sex”字段创建一个缺省约束，缺省值为’男’
+**Choice 1: SQL**
+```SQL
+ALTER TABLE student2023406313
+ADD CONSTRAINT df_ssex_default DEFAULT '男' FOR ssex;
+```
+![Pasted image 20250410131322.png|500](/img/user/accessory/Pasted%20image%2020250410131322.png)
+**Choice 2: 可视化**
+如果之前有默认约束 记得删除
+![Pasted image 20250410131430.png|500](/img/user/accessory/Pasted%20image%2020250410131430.png)
+可视化操作的时候记得保存
+**确认是否成功**
+![Pasted image 20250410133425.png|400](/img/user/accessory/Pasted%20image%2020250410133425.png)
+
+#### Step5: 检查约束
+为“Sdept”字段创建一个检查约束，使得所在系必须是’CS’、’MA’或’IS’之一。
+**Choice 1: SQL**
+```SQL
+ALTER TABLE student2023406313 ADD 
+CONSTRAINT chk_sdept_values 
+CHECK (sdept IN ('CS', 'MA', 'IS'));
+```
+![Pasted image 20250410131807.png|400](/img/user/accessory/Pasted%20image%2020250410131807.png)
+**Choice 2: 可视化**
+![Pasted image 20250410132326.png|400](/img/user/accessory/Pasted%20image%2020250410132326.png)
+可视化操作的时候记得保存
+**确认是否成功**
+![Pasted image 20250410133619.png](/img/user/accessory/Pasted%20image%2020250410133619.png)
+
+#### Step6:  唯一性约束
+ 为Student表的“Sname”字段增加一个唯一性约束
+ **Choice 1: SQL**
+ ```SQL
+ ALTER TABLE student2023406313 ADD CONSTRAINT UQ_Sname UNIQUE (Sname);
+```
+![Pasted image 20250410133752.png](/img/user/accessory/Pasted%20image%2020250410133752.png)
+**Choice 2: 可视化**
+在表设计视图中，右键单击空白区域，选择 **索引/键**。
+![Pasted image 20250410133854.png|400](/img/user/accessory/Pasted%20image%2020250410133854.png)
+在弹出的 **索引/键** 对话框中，点击左上角的 **添加** 按钮。在右侧的属性窗口中：类型选择 `唯一键`。列：点击右侧的省略号按钮（`...`），在弹出的对话框中选择 `Sname` 字段。名称框中为约束指定一个有意义的名称（例如 `UQ_Sname`）
+![Pasted image 20250410134146.png|500](/img/user/accessory/Pasted%20image%2020250410134146.png)
+**确认**
+![Pasted image 20250410134239.png|400](/img/user/accessory/Pasted%20image%2020250410134239.png)
+#### Step7: 外键
+为SC表建立外键,依赖于Student表的fk_S_c约束。
+？？？
+我之前都建立了建表的时候
+
+#### Step8: 禁止启用约束
+禁止启用Student表的“Sdept”的CHECK约束ck_student。
+我当时创建的时候叫`CK_student2023406313_sdept`
+```SQL
+ALTER TABLE student2023406313
+NOCHECK CONSTRAINT CK_student2023406313_sdept;
+```
+![Pasted image 20250410134937.png|500](/img/user/accessory/Pasted%20image%2020250410134937.png)
+
+### Task6: 建立索引
+> 要求：
+> 分别建立以下索引(如果不能成功建立,请分析原因)
+> (1) 在student表的sname列上建立普通降序索引.
+> (2) 在course表的cname列上建立唯一索引.
+> (3) 在sc表的sno列上建立聚集索引.
+> (4) 在spj表的sno(升序), pno(升序)和jno(降序)三列上建立一个普通索引.
+
+远程服务器和本地服务器都能操作
+#### Step1: 建立普通降序索引
+在student表的sname列上建立普通降序索引.
+**Choice1: SQL**
+```SQL
+CREATE INDEX IX_Student_Sname_Desc 
+ON student2023406313 (sname DESC);
+```
+![Pasted image 20250410135638.png|500](/img/user/accessory/Pasted%20image%2020250410135638.png)
+**Choice2: 可视化**
+选择student2023406313表->右击设计->右击选择索引/键
+![Pasted image 20250410140047.png](/img/user/accessory/Pasted%20image%2020250410140047.png)
+可视化的时候记得保存
+**确认是否成功**
+![Pasted image 20250410140243.png|300](/img/user/accessory/Pasted%20image%2020250410140243.png)
+
+#### Step2: 唯一索引
+在course表的cname列上建立唯一索引.
+**Choice1: SQL**
+```SQL
+CREATE UNIQUE INDEX UQ_Course_Cname ON course2023406313 (cname);
+```
+![Pasted image 20250410140504.png|500](/img/user/accessory/Pasted%20image%2020250410140504.png)
+**Choice2: 可视化**
+![Pasted image 20250410140616.png|500](/img/user/accessory/Pasted%20image%2020250410140616.png)
+可视化的时候记得保存
+**确认是否成功**
+![Pasted image 20250410140654.png|400](/img/user/accessory/Pasted%20image%2020250410140654.png)
+
+#### Step3: 聚集索引
+在sc表的sno列上建立聚集索引.
+```SQL
+CREATE CLUSTERED INDEX IX_SC_Sno_Clustered ON SC2023406313 (sno);
+```
+![Pasted image 20250410140927.png](/img/user/accessory/Pasted%20image%2020250410140927.png)
+因为聚集索引(聚簇索引)已经存在了  这是随着主键创建的
+![Pasted image 20250410141053.png|500](/img/user/accessory/Pasted%20image%2020250410141053.png)
+
+#### Step4: 多列普通索引
+在spj表的sno(升序), pno(升序)和jno(降序)三列上建立一个普通索引.
+**Choice1: SQL**
+```SQL
+CREATE UNIQUE INDEX IX_SPJ_Sno_Pno_Jno
+ON spj2023406313 (Sno ASC, Pno ASC, Jno DESC);
+```
+![Pasted image 20250410141400.png|600](/img/user/accessory/Pasted%20image%2020250410141400.png)
+**Choice2: 可视化**
+![Pasted image 20250410141533.png|600](/img/user/accessory/Pasted%20image%2020250410141533.png)
+可视化的时候记得保存
+**确认是否成功**
+![Pasted image 20250410141604.png](/img/user/accessory/Pasted%20image%2020250410141604.png)
+
+### Task7: 有索引与无索引性能对比
+在“新建查询”窗口下，复制如下全部代码，直接点“执行”，在消息窗口的最下面，可以看到有索引和无索引的查询耗时
+```SQL
+create table TableIndex
+
+( ID int identity(1,1),
+
+DataValue decimal(18,2)
+
+)
+
+go
+
+/*---向TestIndex数据库表中插入20000条数据---*/
+
+declare @r numeric(15,8)
+
+declare @n int
+
+set @n =1
+
+while(1=1)
+
+   begin
+
+set @r = rand()
+
+insert into  TableIndex (DataValue) values(@r)
+
+set @n = @n + 1
+
+    if(@n>20000)
+
+break
+
+   end
+
+Go
+
+/*---查询插入的数据---*/
+
+select * from TableIndex
+
+Go
+
+/*----------------无索引查询-------------------*/
+
+/*---计算开始时间---*/
+
+set nocount on
+
+declare @d datetime
+
+set @d = getDate()
+
+/*---查询DataValue值在0.3~0.9的数据---*/
+
+select * from TableIndex
+
+where DataValue between 0.3 and 0.9
+
+/*---显示查询所需时间---*/
+
+declare @time int
+
+set @time = datediff(ms,@d,getDate())
+
+print '无索引查询耗时：'+ convert(varchar(10),@time)
+
+/*---------------添加索引-------------------*/
+
+/*---为DataValue列添加索引---*/
+
+if exists(select name from sysindexes where name = 'IX_DataValue')
+
+drop index TableIndex.IX_DataValue   --删除索引
+
+/*---添加索引---*/
+
+create clustered index IX_DataValue
+
+on TableIndex(DataValue)
+
+with fillfactor = 30
+
+Go
+
+/*----------------有索引查询-------------------*/
+
+/*---计算开始时间---*/
+
+set nocount on
+
+declare @d datetime
+
+set @d = getDate()
+
+/*---查询DataValue值在0.3~0.9的数据---*/
+
+select * from TableIndex with(index=IX_DataValue)
+
+where DataValue between 0.3 and 0.9
+
+/*---显示查询所需时间---*/
+
+declare @time int
+
+set @time = datediff(ms,@d,getDate())
+
+print '有索引查询耗时：'+ convert(varchar(10),@time)
+```
+![Pasted image 20250410141844.png](/img/user/accessory/Pasted%20image%2020250410141844.png)

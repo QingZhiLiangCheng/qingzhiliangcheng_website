@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/CS 61B/Lecture 17 B-Trees(2-3, 2-3-4 Trees)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:39:03.320+08:00","updated":"2025-04-09T15:34:20.496+08:00"}
+{"week":"第七周","dg-publish":true,"tags":[],"permalink":"/CS 61B/Lecture 17 B-Trees(2-3, 2-3-4 Trees)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:39:03.320+08:00","updated":"2025-04-11T08:42:10.686+08:00"}
 ---
 
 ### Binary Search Trees
@@ -68,6 +68,21 @@ if the root is full?
 这种数据结构的真正名称是 B 树。 每个节点限制为 3 个项目的 B 树也称为 2-3-4 树或 2-4 树（一个节点可以有 2、3 或 4 个子节点)
 B树主要用于两种特定情况：第一种，L较小，用于概念上平衡搜索树；第二种，L达到数千，用于包含大型记录的数据库和文件系统。
 
+summary
+B-Tree的特性:
+- 所有叶节点到根节点的距离相同 -- 因为不允许直接创建新的叶子结点 本质上是攒一会儿一起分裂的那种感觉
+- 一个包含k个项的非叶节点必须正好有k+1个子节点
+完美平衡
 
+### B-Tree Performance
+- Worst: $log_2N$ -- each node has 1 item
+![Pasted image 20250411082819.png](/img/user/accessory/Pasted%20image%2020250411082819.png)
+- best: $log_{L+1}N$ -- 假设L是每个node的最大数据量
+![Pasted image 20250411082908.png](/img/user/accessory/Pasted%20image%2020250411082908.png)
+总高度始终在logN量级
+#### Runtime for contains
+在最坏的情况下，我们必须检查每个节点最多𝐿个项目。我们知道高度是对数的，所以contains的运行时间受𝑂(𝐿log𝑁)限制。由于𝐿是一个常数，我们可以删除乘法因子，从而得到𝑂(log𝑁)的运行时间。
 
-
+#### Runtime for  add
+对于添加操作，可以进行类似的分析，但我们需要考虑必须拆分叶节点的情况。由于树的高度为𝑂(log⁡𝑁)，最坏情况下，我们需要进行log⁡𝑁次拆分操作（从叶节点到根节点的级联）。这只是在我们的运行时间中增加了一个log⁡𝑁的加性因子，因此总运行时间仍然是𝑂(log⁡𝑁)。
+也是常数倍的logN

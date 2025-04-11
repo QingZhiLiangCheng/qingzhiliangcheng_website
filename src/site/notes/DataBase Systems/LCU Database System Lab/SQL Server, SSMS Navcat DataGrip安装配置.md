@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T10:41:39.632+08:00"}
+{"dg-publish":true,"permalink":"/DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:57.918+08:00","updated":"2025-04-10T10:41:39.632+08:00"}
 ---
 
 ### SQL Server安装

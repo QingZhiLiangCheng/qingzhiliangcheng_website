@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"tags":[],"permalink":"/CS 61B/Lecture 18 Tree Rotation and Red Black Trees/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T11:07:21.076+08:00","updated":"2025-04-11T11:06:27.854+08:00"}
+{"week":"第七周","dg-publish":true,"tags":[],"permalink":"/CS 61B/Lecture 18 Tree Rotation and Red Black Trees/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T11:07:21.076+08:00","updated":"2025-04-11T11:21:57.770+08:00"}
 ---
 
 ### Rotating Trees
@@ -22,7 +22,7 @@ rotateRight(G): Let x be the left child of G. Make G the new right child of x.
 ```
 
 **rotateLeft(G):**
-![[image.avif]]
+![Pasted image 20250411112046.png](/img/user/accessory/Pasted%20image%2020250411112046.png)
 - G要向左倾斜
 - 谁当new root: P
 - 当P一上去之后 P会变成三个孩子 -- 但是注意到原来G也是两个孩子的 所以个k给G当他的新的右孩子
@@ -74,13 +74,13 @@ this lecture 专注于一种使用BST实现 但结构上与2-3tree完全相同 �
 但有时，在某些地方插入红色链接可能会导致我们打破LLRB（左倾红黑树）的一些不变性。
 **Case1: Insertion results in a learning**
 rotateLeft(node)
-![[image 1.avif]]
+![Pasted image 20250411112120.png](/img/user/accessory/Pasted%20image%2020250411112120.png)
 **Case 2: Double Insertion on the Left**
 rotateRight(Z)
-![[image 2.avif]]
+![Pasted image 20250411112138.png](/img/user/accessory/Pasted%20image%2020250411112138.png)
 **Case  3: Node has two Red Children**
 意味着其实应该 往上分裂 --- Solution: 颜色反转
-![[image 3.avif]]
+![Pasted image 20250411112155.png](/img/user/accessory/Pasted%20image%2020250411112155.png)
 
 可能需要持续调整
 ### Runtime Analysis

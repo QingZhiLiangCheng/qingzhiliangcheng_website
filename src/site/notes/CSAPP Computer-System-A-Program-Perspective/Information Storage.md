@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Information Storage/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-10-01T20:03:06.287+08:00","updated":"2025-04-11T21:21:13.265+08:00"}
+{"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Information Storage/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-10-01T20:03:06.287+08:00","updated":"2025-04-11T21:21:13.265+08:00"}
 ---
 
 

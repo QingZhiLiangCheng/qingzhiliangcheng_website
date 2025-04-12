@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System Lab/Lab1 单处理器系统的进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-12T21:18:26.088+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System Lab/Lab1 单处理器系统的进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-12T23:04:36.560+08:00"}
 ---
 
 Lab1主要模拟单处理器的进程调度
@@ -14,6 +14,7 @@ Lab1主要模拟单处理器的进程调度
 该算法也有两种处理优先级高的方法，非抢占式和抢占式：
 - 非抢占式：当就绪队列中出现优先级高的进程，运行完当前进程，再选择优先级高的进程。
 - 抢占式：当就绪队列中出现优先级高的进程，当前进程挂起，调度优先级高的进程运行。
+
 在Lab1中 模拟的是动态优先级 抢占式的最高优先级算法 每次执行优先数-1
 
 ### 代码分析与过程
@@ -35,6 +36,7 @@ struct pcb {
 - ntime: 进程总运行时间 -- 单位通常是时间片
 - rtime: 进程已经运行的时间
 - link: 指向下一个进程控制卡的指针 最后一个进程中的指针为“0”
+
 全局变量
 - ready：指向就绪队列的头节点。
 - p：当前正在运行的进程指针。

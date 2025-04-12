@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Integer Arithmetic/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-10-08T22:24:27.604+08:00","updated":"2025-04-12T10:15:42.620+08:00"}
+{"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Integer Arithmetic/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-10-08T22:24:27.604+08:00","updated":"2025-04-12T10:15:42.620+08:00"}
 ---
 
 

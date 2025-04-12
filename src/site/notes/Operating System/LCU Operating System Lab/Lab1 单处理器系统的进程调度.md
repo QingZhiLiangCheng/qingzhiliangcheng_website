@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System Lab/Lab1 单处理器系统的进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-12T21:02:04.463+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System Lab/Lab1 单处理器系统的进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-12T21:18:26.088+08:00"}
 ---
 
 Lab1主要模拟单处理器的进程调度
@@ -91,8 +91,7 @@ void main() {
 ```
 在输入进程完信息后 然后获取队列长度 然后开始进行模拟
 所以对于实验指导书给出的例子,输入完进程信息的状态是这样的
-![b558e4d1b8be2eec0ab66f6290e180a.png](/img/user/accessory/b558e4d1b8be2eec0ab66f6290e180a.png)
-
+![lab1 1(1).png](/img/user/accessory/lab1%201(1).png)
 然后通过space函数获取队列长度
 ```c
 int space()  
@@ -117,7 +116,7 @@ check(); // 查看当前状态
 running(); // 模拟运行
 ```
 
-![af1e686ecbe9bde6c731819f568e533.png](/img/user/accessory/af1e686ecbe9bde6c731819f568e533.png)
+![lab1 2(2).png](/img/user/accessory/lab1%202(2).png)
 
 然后调用了check函数 主要是通过disp函数查看当前运行和就绪队列状态
 ```c
@@ -162,9 +161,8 @@ void running() /* 建立进程就绪函数(进程运行时间到,置就绪状态
 ```
 running函数主要是通过给已运行时间+1, 降低优先数来模拟整个进程运行过程 然后放回队列(需要重新排序)
 当然如果已运行时间=总运行时间 那么就销毁这个pcb
-![6e2cd8eaa4c36ebc3c5f3d20505d50a.png](/img/user/accessory/6e2cd8eaa4c36ebc3c5f3d20505d50a.png)
-![40021baebd222851d5a7c036cb9c14e.png](/img/user/accessory/40021baebd222851d5a7c036cb9c14e.png)
-![af7523ebfbeb03ff3abcd12d1ab794c.png](/img/user/accessory/af7523ebfbeb03ff3abcd12d1ab794c.png)
+![lab1 3(2).png](/img/user/accessory/lab1%203(2).png)
+
 **当然这里你最后P2插回去到底是在P4前面还是P4后面 跟你的排序算法的实现有关系 都行**
 
 ### 实现Sort函数

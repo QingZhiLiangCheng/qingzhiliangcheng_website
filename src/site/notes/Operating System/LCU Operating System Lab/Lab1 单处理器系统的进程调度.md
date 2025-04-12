@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System Lab/Lab1 单处理器系统的进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-12T20:52:33.670+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System Lab/Lab1 单处理器系统的进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-12T21:02:04.463+08:00"}
 ---
 
 Lab1主要模拟单处理器的进程调度
@@ -91,7 +91,7 @@ void main() {
 ```
 在输入进程完信息后 然后获取队列长度 然后开始进行模拟
 所以对于实验指导书给出的例子,输入完进程信息的状态是这样的
-![lab1 1.png](/img/user/accessory/lab1%201.png)
+![b558e4d1b8be2eec0ab66f6290e180a.png](/img/user/accessory/b558e4d1b8be2eec0ab66f6290e180a.png)
 
 然后通过space函数获取队列长度
 ```c
@@ -117,7 +117,7 @@ check(); // 查看当前状态
 running(); // 模拟运行
 ```
 
-![lab1 2.png](/img/user/accessory/lab1%202.png)
+![af1e686ecbe9bde6c731819f568e533.png](/img/user/accessory/af1e686ecbe9bde6c731819f568e533.png)
 
 然后调用了check函数 主要是通过disp函数查看当前运行和就绪队列状态
 ```c
@@ -162,9 +162,9 @@ void running() /* 建立进程就绪函数(进程运行时间到,置就绪状态
 ```
 running函数主要是通过给已运行时间+1, 降低优先数来模拟整个进程运行过程 然后放回队列(需要重新排序)
 当然如果已运行时间=总运行时间 那么就销毁这个pcb
-![lab1 3.png](/img/user/accessory/lab1%203.png)
-![lab1 4.png](/img/user/accessory/lab1%204.png)
-![lab1 4 1.png](/img/user/accessory/lab1%204%201.png)
+![6e2cd8eaa4c36ebc3c5f3d20505d50a.png](/img/user/accessory/6e2cd8eaa4c36ebc3c5f3d20505d50a.png)
+![40021baebd222851d5a7c036cb9c14e.png](/img/user/accessory/40021baebd222851d5a7c036cb9c14e.png)
+![af7523ebfbeb03ff3abcd12d1ab794c.png](/img/user/accessory/af7523ebfbeb03ff3abcd12d1ab794c.png)
 **当然这里你最后P2插回去到底是在P4前面还是P4后面 跟你的排序算法的实现有关系 都行**
 
 ### 实现Sort函数
@@ -172,7 +172,7 @@ running函数主要是通过给已运行时间+1, 降低优先数来模拟整个
 第一个问题就是main函数返回值要改为int
 第二个问题是实验书中给了个`<conio.h>`的头文件 当时我报错了
 ![c630bafbf0d1a640eff4cfa8a3222de.png](/img/user/accessory/c630bafbf0d1a640eff4cfa8a3222de.png)
-我查了一下 这个头文件 -- `#include <conio.h>` 是一个头文件，主要用于 **DOS 和 Windows 环境下的控制台输入输出操作**。它提供了一些非标准的函数，用于处理键盘输入和屏幕输出。这些函数在早期的 C 语言开发中（特别是在 Turbo C 或 Borland C++ 等编译器中）非常常见，但在现代操作系统（如 Linux、macOS）或标准 C 编译器（如 GCC）中并不被支持。
+我查了一下 这个头文件 -- `<conio.h>` 是一个头文件，主要用于 **DOS 和 Windows 环境下的控制台输入输出操作**。它提供了一些非标准的函数，用于处理键盘输入和屏幕输出。这些函数在早期的 C 语言开发中（特别是在 Turbo C 或 Borland C++ 等编译器中）非常常见，但在现代操作系统（如 Linux、macOS）或标准 C 编译器（如 GCC）中并不被支持。
 hhh我的CLion是Ubuntu Linux环境下的
 可以把我的环境换回来
 ![Pasted image 20250412203148.png|500](/img/user/accessory/Pasted%20image%2020250412203148.png)

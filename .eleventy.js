@@ -15,14 +15,18 @@ const {
 } = require("./src/helpers/userSetup");
 
 const Image = require("@11ty/eleventy-img");
-function transformImage(src, cls, alt, sizes) {
-  // 不进行任何图片转换，直接返回原始图片路径和元信息
-  return {
-    src: src,        // 使用原始图片路径
-    cls: cls,        // 图片的 CSS 类名
-    alt: alt,        // 图片的替代文本
-    sizes: sizes,    // 响应式尺寸规则
+function transformImage(src, cls, alt, sizes, widths = ["auto"]) {
+  let options = {
+    widths: widths,
+    formats: ["webp", "jpeg"],
+    outputDir: "./dist/img/optimized",
+    urlPath: "/img/optimized",
   };
+
+  // generate images, while this is async we don’t wait
+  Image(src, options);
+  let metadata = Image.statsSync(src, options);
+  return metadata;
 }
 
 function getAnchorLink(filePath, linkTitle) {

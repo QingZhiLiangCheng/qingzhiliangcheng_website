@@ -1,10 +1,11 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":["folder"],"permalink":"/DataBase Systems/LCU Database System Lab/LCU Database System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-10T17:05:36.152+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"tags":["folder"],"permalink":"/DataBase Systems/LCU Database System Lab/LCU Database System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-14T15:26:55.347+08:00"}
 ---
 
 LCU的数据库课的lab使用的是SQL Server数据库
 老师提供了一个远程服务器 但是因为权限问题 有些操作需要在本地环境上实现
 所以我从怎么在自己电脑上安装一个SQL Server数据库环境开始(也可以用实验室的电脑做实验 就不用自己在自己的电脑上装SQL Server环境了 我这里是主张用自己的电脑) 把lab的每一步都整理了下来
+老师给的会有一些小坑hhh
 
 **实验说明**
 1. 服务器ip地址   10.200.7.129（实验室和宿舍都可以访问）
@@ -15,10 +16,12 @@ LCU的数据库课的lab使用的是SQL Server数据库
 6. 本说明可以在U+的资料模块下载。
 
 **实验要求**
-实验要求和最终实验报告百度网盘链接:  https://pan.baidu.com/s/1pzAJqBN0LuXk838H7WnD5Q?pwd=QZLC 提取码: QZLC 
+实验要求, 最终实验报告,课本pdf等见百度网盘链接:  https://pan.baidu.com/s/1pzAJqBN0LuXk838H7WnD5Q?pwd=QZLC 提取码: QZLC 
 
 **实验笔记**
 [[DataBase Systems/LCU Database System Lab/SQL Server, SSMS Navcat DataGrip安装配置\|SQL Server, SSMS Navcat DataGrip安装配置]]（如果不想再自己电脑上装SQL Server 可以跳过这一篇笔记 直接在实验室电脑上做实验也可以）
 [[DataBase Systems/LCU Database System Lab/lab1 模式定义与数据完整性操作\|lab1 模式定义与数据完整性操作]]
+[[DataBase Systems/LCU Database System Lab/lab2 SQL数据操作及查询\|lab2 SQL数据操作及查询]]
+
 
 

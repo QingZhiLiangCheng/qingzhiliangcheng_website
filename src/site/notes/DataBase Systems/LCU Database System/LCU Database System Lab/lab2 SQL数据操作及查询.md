@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System Lab/lab2 SQL数据操作及查询/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-14T14:07:04.241+08:00","updated":"2025-04-14T17:30:01.683+08:00"}
+{"dg-publish":true,"permalink":"/DataBase Systems/LCU Database System/LCU Database System Lab/lab2 SQL数据操作及查询/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-14T14:07:04.241+08:00","updated":"2025-04-14T17:30:01.683+08:00"}
 ---
 
 连接数据库见前面几篇笔记
@@ -7,7 +7,7 @@
 > 要求:
 > 使用INSERT语句将教材P82表中的数据添加到数据库STUDENTDB中
 
-StudentDB就是[[DataBase Systems/LCU Database System Lab/lab1 模式定义与数据完整性操作\|lab1 模式定义与数据完整性操作]]中在本地创建的数据库 远程服务器中也有
+StudentDB就是[[DataBase Systems/LCU Database System/LCU Database System Lab/lab1 模式定义与数据完整性操作\|lab1 模式定义与数据完整性操作]]中在本地创建的数据库 远程服务器中也有
 课本P82页的表 我猜这个表数据库所有的信息其实是课本P40页的表
 ![Pasted image 20250414143702.png|500](/img/user/accessory/Pasted%20image%2020250414143702.png)
 有需要看电子书的我放在了网盘 https://pan.baidu.com/s/1pzAJqBN0LuXk838H7WnD5Q?pwd=QZLC 提取码: QZLC

@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-13T17:23:03.202+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-15T21:42:42.846+08:00"}
 ---
 
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 01 Course Intro & Relational Model\|Lecture 01 Course Intro & Relational Model]]
@@ -22,5 +22,6 @@
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization\|Lecture 14 Query Planning & Optimization]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 15 Concurrency Control Theory\|Lecture 15 Concurrency Control Theory]]
 
+![[Database System Concepts 7th edition.pdf]]
 
 ![[cmu15445 fall2023.components]]

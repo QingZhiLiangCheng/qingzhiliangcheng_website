@@ -1,5 +1,5 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/LCU Database System/LCU Database System Lab/LCU Database System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-15T20:27:20.577+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"permalink":"/DataBase Systems/LCU Database System/LCU Database System Lab/LCU Database System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-15T20:27:20.577+08:00"}
 ---
 
 LCU的数据库课的lab使用的是SQL Server数据库

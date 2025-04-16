@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/Operating System/LCU Operating System/LCU Operating System Lab/LCU Operating System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-04-15T20:53:54.376+08:00"}
+{"dg-publish":true,"permalink":"/Operating System/LCU Operating System/LCU Operating System Lab/LCU Operating System Lab/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-04-15T20:53:54.376+08:00"}
 ---
 
 LCU的操作系统课的实验分为三个部分 分别是进程调度实验, 资源管理实验和存储器管理实验。三个实验主要就是用C/C++编写模拟程序，我感觉实验指导书给的很详细了，给了大量的代码，只需要补全部分代码即可，但需要去了解整个代码的含义和过程。

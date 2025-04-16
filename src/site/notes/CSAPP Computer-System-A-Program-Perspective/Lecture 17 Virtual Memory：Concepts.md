@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-11T15:36:37.962+08:00","updated":"2025-04-16T09:35:42.717+08:00"}
+{"week":"第九周","dg-publish":true,"tags":[],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-11T15:36:37.962+08:00","updated":"2025-04-16T15:10:59.834+08:00"}
 ---
 
 ![[17-vm-concepts.pdf]]
@@ -78,3 +78,64 @@ sbrk函数的功能就是更新page table  当这个页面真正正式第一次�
 - if sum(working set size) > main memory size: bad -- 来回复制页面
 
 ### VM as a Tool for Memory Management
+每个进程都有属于自己的虚拟地址空间 内核通过为每个进程提供自己独立的页表来实现这一点 在进程的上下文中 它是内核中的数据结构 是内核为进程所维护的
+每个进程的页表都映射进该进程的虚拟地址空间
+有趣的是在虚拟地址空间中连续的页面可以映射到DRAM的任意位置
+![Pasted image 20250416140245.png|500](/img/user/accessory/Pasted%20image%2020250416140245.png)
+程序员可以认为每个进程都有一个非常相似的虚拟地址空间: 有相同大小的地址空间 代码和数据分别从同一个地址开始  但其实进程使用的页面实际上可能会分散在内存中
+不同时刻 相同的虚拟页面可以存储在不同的物理页面中
+还有一个非常巧妙的功能: 允许多个虚拟页面映射到同一个物理页面 -- 这是一种使多个进程可以共享某些代码和数据的非常简单直接的方式 -- 这就是C语言共享库的实现方式 lib.c只需要加载到物理内存中一次
+这简化了链接Linking: 因为每个program有相同的address space，code, heap等都是开始于从一个address所以直接扔进去就行
+这简化了加载Loading: execve查看ELF文件，它知道文件中的代码和数据段有多大。它从固定的地址为代码和数据分配虚拟内存。为它们创建PTE，并把每个PET都置位无效的。这是一个trick。当MMU实际访问代码和数据时，就会碰到缺页异常，然后才把数据和代码拷贝至内存中。这个trick是既简单又有效的（想想程序中有一个很大的数组，实际只有访问到的那部分会分配内存）。
+
+### VM as a tool for memory protection
+虚拟地址空间的有些部分是只读的 比如 code section 某些部分只能在内核运行
+这是一个x86-64位机器 指针和地址都是64位的
+但实际上 真正的虚拟地址空间是48位的 高位全为0或全为1 -- Intel的规则 -- 高位都是1的地址是为内核保留的 高位都是0的地址是为用户代码保留的
+所以我们还可以在PTE中设置一些位
+- SUP: 用户代码是否可以访问某些虚拟页面 -- 管理页模式
+- Read/Write/Execute
+
+![Pasted image 20250416143042.png|500](/img/user/accessory/Pasted%20image%2020250416143042.png)
+
+
+
+### VM Address Translation
+硬件是如何做地址翻译的：根据虚拟地址的虚拟页号找到PET，再找到PET中的物理页号，将物理页号替换虚拟页号与虚拟页偏移量结合起来，就得到物理地址。
+![Pasted image 20250416143257.png|500](/img/user/accessory/Pasted%20image%2020250416143257.png)
+![Pasted image 20250416143243.png|500](/img/user/accessory/Pasted%20image%2020250416143243.png)
+000...000|000...000
+...
+000...000|111...111
+000...001|000...000 
+
+Page Hit
+![Pasted image 20250416144025.png|500](/img/user/accessory/Pasted%20image%2020250416144025.png)
+所以即使是页面命中的情况 我们仍然需要访问访存
+Page Fault
+![Pasted image 20250416144414.png|500](/img/user/accessory/Pasted%20image%2020250416144414.png)
+
+结合高速缓存和虚拟内存
+![Pasted image 20250416144654.png|500](/img/user/accessory/Pasted%20image%2020250416144654.png)
+页表在内存中，每次访问需要几十几百个周期。即使放在L1缓存，也要1~2个周期。在MMU中有一个关于PTE的小的缓存，称为翻译后备缓冲器（TLB）。它缓存了最近使用的PTE。访问TLB非常快。
+TLB使用虚拟地址的VPN部分来访问
+![Pasted image 20250416145738.png|500](/img/user/accessory/Pasted%20image%2020250416145738.png)
+组相连映射
+TLB Hit
+![Pasted image 20250416150004.png|500](/img/user/accessory/Pasted%20image%2020250416150004.png)
+少访问一次内存
+TLB Miss
+![Pasted image 20250416150115.png|500](/img/user/accessory/Pasted%20image%2020250416150115.png)
+实际上存储整个页表是非常大的  采用了层级结构来压缩
+ eg. 2-level page table
+ Lecel 1: always memory resident
+ Level 2: 大小相同  起始位置存储在Level 1中
+ 现在通常是四级页表
+ ![Pasted image 20250416150616.png|500](/img/user/accessory/Pasted%20image%2020250416150616.png)
+![Pasted image 20250416150644.png|500](/img/user/accessory/Pasted%20image%2020250416150644.png)
+使用4个页表就覆盖了整个进程的虚拟地址空间。
+- 如果一个一级页表是空的，那么二级页表也不会存在。这是一个很大的节约，因为一个典型程序4G的虚拟地址空间的大部分都是未分配的。
+- 只有一级页表才需要存放在主存/TLB，虚拟内存系统可以在需要时创建、调入或调出二级页表；且常用的二级页表才需要缓存在主存/TLB。
+
+MMU使用多级页表进行地址转换方式如下:
+![Pasted image 20250416151055.png|500](/img/user/accessory/Pasted%20image%2020250416151055.png)

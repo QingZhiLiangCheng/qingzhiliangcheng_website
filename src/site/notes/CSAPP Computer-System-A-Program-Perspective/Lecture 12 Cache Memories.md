@@ -1,5 +1,5 @@
 ---
-{"week":"第六周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 12 Cache Memories/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-19T16:46:34.597+08:00","updated":"2025-03-30T15:03:14.638+08:00"}
+{"week":"第六周","dg-publish":true,"tags":["week6","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 12 Cache Memories/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-19T16:46:34.597+08:00","updated":"2025-04-19T09:53:19.313+08:00"}
 ---
 
 ![[12-cache-memories.pdf]]

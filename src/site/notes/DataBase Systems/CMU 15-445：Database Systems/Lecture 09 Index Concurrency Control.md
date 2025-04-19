@@ -1,5 +1,5 @@
 ---
-{"week":"第五周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 09 Index Concurrency Control/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:46:26.149+08:00","updated":"2025-03-30T15:17:37.427+08:00"}
+{"week":"第五周","dg-publish":true,"tags":["week5","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 09 Index Concurrency Control/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:46:26.149+08:00","updated":"2025-04-19T09:54:50.920+08:00"}
 ---
 
 

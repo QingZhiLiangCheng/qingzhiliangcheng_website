@@ -1,5 +1,5 @@
 ---
-{"week":"第五周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 08 Tree Indexes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:46:24.188+08:00","updated":"2025-03-30T15:17:32.416+08:00"}
+{"week":"第五周","dg-publish":true,"tags":["week5","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 08 Tree Indexes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:46:24.188+08:00","updated":"2025-04-19T09:54:48.078+08:00"}
 ---
 
 

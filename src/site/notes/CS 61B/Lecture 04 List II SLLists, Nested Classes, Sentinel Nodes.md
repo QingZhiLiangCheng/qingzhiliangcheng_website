@@ -1,5 +1,5 @@
 ---
-{"week":"第二周","dg-publish":true,"permalink":"/CS 61B/Lecture 04 List II SLLists, Nested Classes, Sentinel Nodes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-05T09:11:09.202+08:00","updated":"2025-03-30T15:27:29.451+08:00"}
+{"week":"第二周","dg-publish":true,"tags":["cs61b","week2"],"permalink":"/CS 61B/Lecture 04 List II SLLists, Nested Classes, Sentinel Nodes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-05T09:11:09.202+08:00","updated":"2025-04-19T09:50:20.485+08:00"}
 ---
 
 

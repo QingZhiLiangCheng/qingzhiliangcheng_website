@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:33:30.885+08:00","updated":"2025-04-10T19:23:33.143+08:00"}
+{"week":"第九周","dg-publish":true,"tags":["week9","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:33:30.885+08:00","updated":"2025-04-19T09:55:08.615+08:00"}
 ---
 
 ![[14-optimization.pdf]]

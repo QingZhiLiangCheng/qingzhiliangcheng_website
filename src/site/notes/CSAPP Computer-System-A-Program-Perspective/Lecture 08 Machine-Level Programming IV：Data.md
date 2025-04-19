@@ -1,5 +1,5 @@
 ---
-{"week":"第四周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 08 Machine-Level Programming IV：Data/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:52:36.430+08:00","updated":"2025-03-30T14:55:33.232+08:00"}
+{"week":"第四周","dg-publish":true,"tags":["week4","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 08 Machine-Level Programming IV：Data/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:52:36.430+08:00","updated":"2025-04-19T09:53:09.378+08:00"}
 ---
 
 

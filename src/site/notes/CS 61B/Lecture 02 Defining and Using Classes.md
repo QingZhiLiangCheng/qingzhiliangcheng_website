@@ -1,5 +1,5 @@
 ---
-{"week":"第一周","dg-publish":true,"permalink":"/CS 61B/Lecture 02 Defining and Using Classes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-03T14:20:22.407+08:00","updated":"2025-03-30T15:27:25.363+08:00"}
+{"week":"第一周","dg-publish":true,"tags":["cs61b","week1"],"permalink":"/CS 61B/Lecture 02 Defining and Using Classes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-03T14:20:22.407+08:00","updated":"2025-04-19T09:49:54.300+08:00"}
 ---
 
 

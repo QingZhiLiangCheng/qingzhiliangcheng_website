@@ -1,5 +1,5 @@
 ---
-{"week":"第一周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 02 Modern SQL/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-21T13:08:37.398+08:00","updated":"2025-03-30T15:17:02.274+08:00"}
+{"week":"第一周","dg-publish":true,"tags":["week1","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 02 Modern SQL/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-21T13:08:37.398+08:00","updated":"2025-04-19T09:54:25.395+08:00"}
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"permalink":"/CS 61B/Lecture 18 Tree Rotation and Red Black Trees/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T11:07:21.076+08:00","updated":"2025-04-11T11:21:57.770+08:00"}
+{"week":"第七周","dg-publish":true,"tags":["cs61b","week7"],"permalink":"/CS 61B/Lecture 18 Tree Rotation and Red Black Trees/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T11:07:21.076+08:00","updated":"2025-04-19T09:51:50.119+08:00"}
 ---
 
 ### Rotating Trees

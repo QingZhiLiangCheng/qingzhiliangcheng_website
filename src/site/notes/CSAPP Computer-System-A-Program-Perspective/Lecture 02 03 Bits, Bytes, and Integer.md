@@ -1,5 +1,5 @@
 ---
-{"week":"第一周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 02 03 Bits, Bytes, and Integer/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-12-24T20:46:25.253+08:00","updated":"2025-03-30T14:39:45.032+08:00"}
+{"week":"第一周","dg-publish":true,"tags":["week1","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 02 03 Bits, Bytes, and Integer/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-12-24T20:46:25.253+08:00","updated":"2025-04-19T09:52:52.351+08:00"}
 ---
 
 

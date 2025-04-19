@@ -1,5 +1,5 @@
 ---
-{"week":"第十周","dg-publish":true,"tags":[],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 16 Two-Phase Locking/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-11T15:34:42.844+08:00","updated":"2025-04-19T09:35:23.795+08:00"}
+{"week":"第十周","dg-publish":true,"tags":["week10","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 16 Two-Phase Locking/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-11T15:34:42.844+08:00","updated":"2025-04-19T09:55:14.102+08:00"}
 ---
 
 ![[16-twophaselocking.pdf]]

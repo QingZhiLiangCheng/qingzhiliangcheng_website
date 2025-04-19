@@ -1,5 +1,5 @@
 ---
-{"week":"第一周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 01 Course Intro & Relational Model/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T09:31:02.481+08:00","updated":"2025-03-30T15:16:58.050+08:00"}
+{"week":"第一周","dg-publish":true,"tags":["week1","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 01 Course Intro & Relational Model/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T09:31:02.481+08:00","updated":"2025-04-19T09:54:22.199+08:00"}
 ---
 
 

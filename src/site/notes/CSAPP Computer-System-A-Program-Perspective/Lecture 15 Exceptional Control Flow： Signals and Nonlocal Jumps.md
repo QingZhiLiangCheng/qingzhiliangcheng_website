@@ -1,5 +1,5 @@
 ---
-{"week":"第八周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:34:22.538+08:00","updated":"2025-04-06T15:45:34.911+08:00"}
+{"week":"第八周","dg-publish":true,"tags":["week8","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:34:22.538+08:00","updated":"2025-04-19T09:53:30.257+08:00"}
 ---
 
 ![[15-ecf-signals.pdf]]

@@ -1,5 +1,5 @@
 ---
-{"week":"第六周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 11 The Memory Hierarchy/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:56:55.087+08:00","updated":"2025-03-30T14:58:20.578+08:00"}
+{"week":"第六周","dg-publish":true,"tags":["week6","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 11 The Memory Hierarchy/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:56:55.087+08:00","updated":"2025-04-19T09:53:16.921+08:00"}
 ---
 
 

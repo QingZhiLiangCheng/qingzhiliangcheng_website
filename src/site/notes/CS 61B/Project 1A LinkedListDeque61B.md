@@ -1,5 +1,5 @@
 ---
-{"week":"Project","dg-publish":true,"permalink":"/CS 61B/Project 1A LinkedListDeque61B/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-29T13:23:09.852+08:00","updated":"2025-03-30T22:06:58.332+08:00"}
+{"week":"Project","dg-publish":true,"tags":["cs61b","project"],"permalink":"/CS 61B/Project 1A LinkedListDeque61B/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-29T13:23:09.852+08:00","updated":"2025-04-19T09:52:25.425+08:00"}
 ---
 
 **项目文档**[Project 1A: LinkedListDeque61B | CS 61B Spring 2024](https://sp24.datastructur.es/projects/proj1a/#introduction)

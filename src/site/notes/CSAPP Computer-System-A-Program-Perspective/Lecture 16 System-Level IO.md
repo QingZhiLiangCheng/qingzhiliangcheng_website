@@ -1,5 +1,5 @@
 ---
-{"week":"第八周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 16 System-Level IO/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:37:09.412+08:00","updated":"2025-04-08T15:56:10.455+08:00"}
+{"week":"第八周","dg-publish":true,"tags":["week8","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 16 System-Level IO/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:37:09.412+08:00","updated":"2025-04-19T09:53:33.457+08:00"}
 ---
 
 ![[16-io.pdf]]

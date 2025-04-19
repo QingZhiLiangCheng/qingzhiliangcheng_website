@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/LCU principles of computer composition/IO接口/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-17T17:00:59.622+08:00","updated":"2025-03-30T15:06:22.739+08:00"}
+{"dg-publish":true,"tags":["LCU机组"],"permalink":"/LCU principles of computer composition/IO接口/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-17T17:00:59.622+08:00","updated":"2025-04-19T09:59:25.251+08:00"}
 ---
 
 

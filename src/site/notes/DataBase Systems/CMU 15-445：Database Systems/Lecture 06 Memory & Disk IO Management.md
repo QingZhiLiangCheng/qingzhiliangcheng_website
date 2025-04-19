@@ -1,5 +1,5 @@
 ---
-{"week":"第四周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Memory & Disk IO Management/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:44:54.904+08:00","updated":"2025-03-30T15:17:20.734+08:00"}
+{"week":"第四周","dg-publish":true,"tags":["week4","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Memory & Disk IO Management/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:44:54.904+08:00","updated":"2025-04-19T09:54:38.196+08:00"}
 ---
 
 

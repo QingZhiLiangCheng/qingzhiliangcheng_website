@@ -1,9 +1,17 @@
 ---
-{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-04-16T07:48:34.527+08:00"}
+{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-04-18T16:22:37.665+08:00"}
 ---
 
+📅date: 2024.12.24 - ing
+CSAPP 被称为计算机圣经，这本书是由CMU 计算机系主任 Bryant 教授执笔的，我是因为b站up主polebug才接触到这本书，后来发现了Bryant 教授所配套的课 CMU15213 Introduce to Computer Systems fall2015. 相当巧合的是， 15213 正好是 CMU 的邮编（zip code）。 因此，这门课在 CMU 又被亲切地称为『The course that gives CMU its ZIP !』
+CMU15213和CSAPP完全配套 课程内容覆盖了汇编语言、体系结构、操作系统、编译链接、并行、网络等。
+CSAPP完全算得上是必读的三本书之一 但这算是一本指引书 导论的性质 它不是深入理解汇编、深入理解操作系统、深入理解计算机原理，所以它不会在某个知识点给你涉及很深，比如：
+- 虽然讲了虚拟内存，但是并没有说各种页面置换算法，这部分内容得我们去看操作系统相关的书；
+- 虽然说了链接，但是讲的内容比较表面，要想深入这块内容还是得看看《程序员的自我修养》这本书；
 
+但是CSAPP绝对能为我们建立一个全面的计算机系统的体系！！
 
+**笔记**
 [[CSAPP Computer-System-A-Program-Perspective/数组底层\|数组底层]]
 [[CSAPP Computer-System-A-Program-Perspective/之前认为的函数调用原理\|之前认为的函数调用原理]]
 [[CSAPP Computer-System-A-Program-Perspective/函数的调用原理\|函数的调用原理]]

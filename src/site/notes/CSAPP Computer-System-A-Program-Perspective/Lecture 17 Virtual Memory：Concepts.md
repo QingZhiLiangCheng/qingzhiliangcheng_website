@@ -1,5 +1,5 @@
 ---
-{"week":"第九周","dg-publish":true,"tags":[],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-11T15:36:37.962+08:00","updated":"2025-04-16T15:10:59.834+08:00"}
+{"week":"第九周","dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-11T15:36:37.962+08:00","updated":"2025-04-16T15:10:59.834+08:00"}
 ---
 
 ![[17-vm-concepts.pdf]]

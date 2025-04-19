@@ -1,11 +1,15 @@
 ---
-{"data":"2024-09-20","tags":["#folder"],"sticker":"emoji//1f3d7-fe0f","dg-publish":true,"permalink":"/LCU DataStructure/LCU DataStructure/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T17:16:56.309+08:00","updated":"2025-04-01T13:52:38.202+08:00"}
+{"data":"2024-09-20","tags":["folder"],"sticker":"emoji//1f3d7-fe0f","dg-publish":true,"permalink":"/LCU DataStructure/LCU DataStructure/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T17:16:56.309+08:00","updated":"2025-04-18T16:21:58.850+08:00"}
 ---
 
 
-首先需要注意的是，其实<font color="#c0504d">数据结构讲的是一些理论性的东西，并不是软件工程层面的东西</font>。所以课本上的一些东西会和比如Java源码中的数据结构有一定的出入。
-比如说工程上队列实现都是用链式的，但是课本还会讲比如循环队列的原理之类。课本上的循环队列在出队列的时候为了时间复杂度会把front指针往后移动，但如果我直接继承我之前写的线性表的话，出队列的时候就是删除元素，会涉及到数组的整体移动，时间复杂度是O(n)。
-我的笔记会尽量在整理整个课本知识的基础上（为了考试），更好的去用代码实现数据结构（优雅）嘻嘻。
+📅date: 2024.09.20 - 2025.01.06完结✅
+大二上学期 spring2024
+当时才开始学着用obsidian这个笔记 记得很零散 而且水平有限
+只参考一下期末复习的专题就可以
+👉我的笔记：[[LCU DataStructure/LCU DataStructure\|LCU DataStructure]]
+👉数据结构课程设计两次小实验报告, 数据结构大作业, 数据结构期末复习的相关资料都在这个百度网盘链接中:  https://pan.baidu.com/s/1ynhy6GBWodQREPO1Wa0oWg?pwd=qzlc 提取码: qzlc 
+(🤣老实说 我的大作业使用Rust写了一个简单的虚拟货币交易系统 但是最后因为当时水平的原因并没有真正完成)
 
 [[LCU DataStructure/线性表\|线性表]]
 	- [[LCU DataStructure/顺序表\|顺序表]]

@@ -1,5 +1,5 @@
 ---
-{"week":"第七周","dg-publish":true,"tags":["week7","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:59:27.936+08:00","updated":"2025-04-19T09:54:58.491+08:00"}
+{"week":"第七周","dg-publish":true,"tags":["week7","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-09T14:59:27.936+08:00","updated":"2025-04-19T20:50:46.374+08:00"}
 ---
 
 
@@ -11,7 +11,7 @@
 - Modification Queries
 - Expression Evaluation
 
-### Processing Models
+**Processing Models**
 Processing Models(处理模型) 定义了数据库系统如何实现不同查询的执行
 理解processing model的最佳方式 是 从零开始编写数据库引擎的代码
 之前的lecture中我们涉及到 查询语句 后面 的 代数运算符的树状结构，如何编写代码以实现操作符的所有功能？ 需要为每个操作符编写的代码以特定算法的代码 -- 比如哈希连接 排序归并操作等 需要实时组装整个流程

@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-04-18T16:22:37.665+08:00"}
+{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-04-19T22:30:17.272+08:00"}
 ---
 
 📅date: 2024.12.24 - ing
@@ -54,6 +54,7 @@ Book:CSAPP
 [[CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps\|Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps]]
 [[CSAPP Computer-System-A-Program-Perspective/Lecture 16 System-Level IO\|Lecture 16 System-Level IO]]
 [[CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts\|Lecture 17 Virtual Memory：Concepts]]
+[[CSAPP Computer-System-A-Program-Perspective/Lecture 18 Virtual Memory：Systems\|Lecture 18 Virtual Memory：Systems]]
 
 ![[cmu15213 fall2015.components]]
 

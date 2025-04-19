@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-18T16:23:10.758+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-04-19T16:19:50.744+08:00"}
 ---
 
 📅date: 2024.1.20 - ing
@@ -51,6 +51,8 @@ Andy要求不能公开代码 所以Project代码我private了
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 14 Query Planning & Optimization\|Lecture 14 Query Planning & Optimization]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 15 Concurrency Control Theory\|Lecture 15 Concurrency Control Theory]]
 [[DataBase Systems/CMU 15-445：Database Systems/Lecture 16 Two-Phase Locking\|Lecture 16 Two-Phase Locking]]
+[[DataBase Systems/CMU 15-445：Database Systems/Lecture 17 Timestamp Ordering Concurrency Control\|Lecture 17 Timestamp Ordering Concurrency Control]]
+[[DataBase Systems/CMU 15-445：Database Systems/Lecture 18 Multi-Version Concurrency Control\|Lecture 18 Multi-Version Concurrency Control]]
 
 ![[Database System Concepts 7th edition.pdf]]
 

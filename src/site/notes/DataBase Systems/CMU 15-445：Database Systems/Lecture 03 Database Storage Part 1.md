@@ -1,5 +1,5 @@
 ---
-{"week":"第二周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-04-05T21:32:47.348+08:00"}
+{"week":"第二周","dg-publish":true,"tags":["week2","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-04-19T09:54:28.108+08:00"}
 ---
 
 

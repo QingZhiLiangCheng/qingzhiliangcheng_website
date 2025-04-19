@@ -1,5 +1,5 @@
 ---
-{"week":"第四周","dg-publish":true,"permalink":"/CS 61B/Lecture 09 Inheritance II Extends, Casting, Higher Order Functions/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-11T20:13:14.200+08:00","updated":"2025-03-30T15:27:48.894+08:00"}
+{"week":"第四周","dg-publish":true,"tags":["cs61b","week4"],"permalink":"/CS 61B/Lecture 09 Inheritance II Extends, Casting, Higher Order Functions/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-11T20:13:14.200+08:00","updated":"2025-04-19T09:50:59.074+08:00"}
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-{"week":"第二周","dg-publish":true,"permalink":"/CS 61B/Lecture 03 List I：References, Recursion, and Lists/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-04T19:40:48.805+08:00","updated":"2025-03-30T15:27:27.232+08:00"}
+{"week":"第二周","dg-publish":true,"tags":["cs61b","week2"],"permalink":"/CS 61B/Lecture 03 List I：References, Recursion, and Lists/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-04T19:40:48.805+08:00","updated":"2025-04-19T09:50:15.533+08:00"}
 ---
 
 

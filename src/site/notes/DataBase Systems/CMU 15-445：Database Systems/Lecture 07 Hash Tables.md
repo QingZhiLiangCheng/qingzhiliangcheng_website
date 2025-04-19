@@ -1,5 +1,5 @@
 ---
-{"week":"第四周","dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 07 Hash Tables/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:46:21.972+08:00","updated":"2025-03-30T15:17:29.034+08:00"}
+{"week":"第四周","dg-publish":true,"tags":["week4","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 07 Hash Tables/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:46:21.972+08:00","updated":"2025-04-19T09:54:45.843+08:00"}
 ---
 
 

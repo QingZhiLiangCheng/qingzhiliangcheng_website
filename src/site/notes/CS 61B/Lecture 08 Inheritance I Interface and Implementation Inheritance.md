@@ -1,5 +1,5 @@
 ---
-{"week":"第三周","dg-publish":true,"permalink":"/CS 61B/Lecture 08 Inheritance I Interface and Implementation Inheritance/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-10T15:11:53.568+08:00","updated":"2025-03-30T15:27:47.265+08:00"}
+{"week":"第三周","dg-publish":true,"tags":["cs61b","week3"],"permalink":"/CS 61B/Lecture 08 Inheritance I Interface and Implementation Inheritance/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-10T15:11:53.568+08:00","updated":"2025-04-19T09:50:42.424+08:00"}
 ---
 
 

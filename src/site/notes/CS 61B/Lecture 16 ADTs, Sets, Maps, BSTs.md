@@ -1,5 +1,5 @@
 ---
-{"week":"第六周","dg-publish":true,"permalink":"/CS 61B/Lecture 16 ADTs, Sets, Maps, BSTs/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:37:55.411+08:00","updated":"2025-03-30T15:27:58.945+08:00"}
+{"week":"第六周","dg-publish":true,"tags":["cs61b","week6"],"permalink":"/CS 61B/Lecture 16 ADTs, Sets, Maps, BSTs/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-28T09:37:55.411+08:00","updated":"2025-04-19T09:51:35.147+08:00"}
 ---
 
 ### Abstract Data Types

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/high-language/CPP/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:20:01.294+08:00","updated":"2025-04-20T11:27:01.603+08:00"}
+{"dg-publish":true,"permalink":"/high-language/CPP/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:20:01.294+08:00","updated":"2025-04-20T11:27:01.603+08:00"}
 ---
 
 

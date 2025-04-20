@@ -1,5 +1,5 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-20T11:08:33.725+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-04-20T14:46:14.098+08:00"}
 ---
 
 ### LCU Database System Lab
@@ -26,4 +26,9 @@ LCU的数据库课的lab使用的是SQL Server数据库
 
 
 ### LCU Database System Course
-
+课本pdf: https://pan.baidu.com/s/1pzAJqBN0LuXk838H7WnD5Q?pwd=QZLC 
+我参考了这个[【专栏必读】（考研复试）数据库系统概论第五版（王珊）专栏学习笔记目录导航及课后习题答案详解_数据库系统概论第五版课后答案pdf-CSDN博客](https://blog.csdn.net/qq_39183034/article/details/122771126)
+但是我还整理了一些题目 除此之外 因为我学过CMU15445 所以加了一些自己的理解 删了一些很了解的
+期中复习: 期中题型里面有选择、编写SQL语句，还有关系代数的内容
+[[DataBase Systems/LCU Database System/数据库系统概念 & 关系数据库系统概念\|数据库系统概念 & 关系数据库系统概念]]
+[[DataBase Systems/LCU Database System/SQL 语句\|SQL 语句]]

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/lab2 SQL数据操作及查询/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-14T14:07:04.241+08:00","updated":"2025-04-19T10:00:21.889+08:00"}
+{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/lab2 SQL数据操作及查询/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-14T14:07:04.241+08:00","updated":"2025-04-21T15:28:12.570+08:00"}
 ---
 
 连接数据库见前面几篇笔记
@@ -217,4 +217,74 @@ Soluton:
 记得ctrl s 保存
 然后执行删除操作
 
+### Task4: 级联 更新
+> 要求:
+> 更新student表中201215122学生的新学号为201215128，体会执行更新操作时检查参照完整性规则的效果.将参照完整性中的更新规则改为“级联”，重新更新该学生信息。
+
+<font color="#ff0000">表里面没有201215122的学生 这里我们仍然选择20180004的学生 改为20189999</font>
+#### Approach 1: SQL
+```SQL
+UPDATE student2023406313
+SET Sno = '20189999'
+WHERE Sno = '20180004';
+```
+![Pasted image 20250421142136.png|600](/img/user/accessory/Pasted%20image%2020250421142136.png)
+
+```SQL
+ALTER TABLE sc2023406313
+DROP CONSTRAINT FK_sc_student2023406313;
+
+-- 重新添加外键约束，并设置 ON UPDATE CASCADE
+ALTER TABLE sc2023406313
+ADD CONSTRAINT FK_sc_student2023406313
+FOREIGN KEY (Sno) REFERENCES student2023406313(Sno)
+ON UPDATE CASCADE;
+```
+![Pasted image 20250421142434.png|500](/img/user/accessory/Pasted%20image%2020250421142434.png)
+
+![Pasted image 20250421142524.png|300](/img/user/accessory/Pasted%20image%2020250421142524.png)
+除Student之外 SC也会更新
+![Pasted image 20250421143707.png|300](/img/user/accessory/Pasted%20image%2020250421143707.png)
+
+#### Approach 2: SSMS
+同Task3
+
+### Task 5:  设计更新操作
+> 要求: 
+> 设计一组更新操作, 它需要另外一个表中的数据作为更新条件(如将选修了“信息系统”课程的成绩均提高15% )。
+
+在我的表中叫信息系统概论
+![Pasted image 20250421144501.png|300](/img/user/accessory/Pasted%20image%2020250421144501.png)
+但是巧合的是 没有选修81004的hhh
+![Pasted image 20250421144643.png|300](/img/user/accessory/Pasted%20image%2020250421144643.png)
+所以我这里选择了81001 和 81002(因为我想看15%会不会超过)
+先查询选修了程序设计基础与C语言同学的成绩
+```sql
+SELECT sc.Sno, sc.Cno, course.Cname, sc.Grade
+FROM sc2023406313 as sc
+JOIN course2023406313 as course ON sc.Cno = course.Cno
+WHERE course.Cname = '程序设计基础与C语言';
+```
+![Pasted image 20250421145039.png|300](/img/user/accessory/Pasted%20image%2020250421145039.png)
+然后给每个同学成绩提高15% -- 这里可以使用子查询的方式 也可以采用join
+我这里用的join
+```sql
+UPDATE sc
+SET Grade = Grade * 1.15
+From sc2023406313 as sc
+JOIN course2023406313 as course ON sc.Cno = course.Cno
+WHERE course.Cname = '程序设计基础与C语言'
+```
+![Pasted image 20250421145322.png|500](/img/user/accessory/Pasted%20image%2020250421145322.png)
+不过我比较好奇抄了100怎么办 所以我特地改了约束 并给81002的课程提高15%
+![Pasted image 20250421145640.png|400](/img/user/accessory/Pasted%20image%2020250421145640.png)
+会报冲突 怎么办？
+![Pasted image 20250421150229.png|500](/img/user/accessory/Pasted%20image%2020250421150229.png)
+
+### Task 6: 设计删除操作
+> 要求:
+> 设计一个删除操作，它需要另外一个表中的数据作为删除条件(如将“刘晨”的选课记录删除 )。
+
+![Pasted image 20250421152712.png|500](/img/user/accessory/Pasted%20image%2020250421152712.png)
+### Task 7: 完成课本习题
 

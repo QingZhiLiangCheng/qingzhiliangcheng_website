@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-22T20:38:12.831+08:00"}
+{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T07:54:42.918+08:00"}
 ---
 
 ### SQL语句
@@ -65,7 +65,26 @@ DROP TABLE <表明> [RESTRICT|CASCADE]；
 索引虽然能加快查询速度，但也有缺点
 - 需要占用一定的存储空间
 - 会提高查询速度但是会降低更新速度
-
+**建立索引**
 ![Pasted image 20250422203804.png|400](/img/user/accessory/Pasted%20image%2020250422203804.png)
+<表名>：要建立索引的基本表的名字
+索引可以建立在该表的一列或多列上，各列之间使用逗号分隔
+每个<列名>后面还可以用<次序>指定索引值的排列次序，可选ASC-升序（默认）或DESC-降序
+UNIQUE：表明此索引的每一个索引值只对应唯一的数据记录
+CLUSTER：表示需要建立聚簇索引
+**修改索引**
+![Pasted image 20250423074552.png|500](/img/user/accessory/Pasted%20image%2020250423074552.png)
+**删除索引**
+![Pasted image 20250423074605.png|300](/img/user/accessory/Pasted%20image%2020250423074605.png)
 
+### 数据查询
+#### Select 语句
+![Pasted image 20250423074940.png|500](/img/user/accessory/Pasted%20image%2020250423074940.png)
 
+- 单表查询
+	- 选择表中的若干列
+		- 查询指定列: `SELECT Sname,Sage from Student;`
+		- 查询全部列: * 作为通配符表示全部 `SELECT * from Student;`
+		- 查询经过计算的值 SELECT子句的`<目标列表达式>`不仅可以是属性列，还可以是表达式，具体有
+			- 算数表达式: `SELECT Sname,2022-Sage from Student;`
+			- 

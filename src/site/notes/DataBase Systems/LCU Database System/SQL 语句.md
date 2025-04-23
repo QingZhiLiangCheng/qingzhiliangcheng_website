@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T15:37:11.031+08:00"}
+{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T21:03:39.555+08:00"}
 ---
 
 ### Demo Overview
@@ -41,7 +41,7 @@ INSERT INTO Course (Cno, Cname, Ccredit, Cpmno) VALUES
 ('81001', '程序设计基础与C语言', 4, NULL),
 ('81002', '数据结构', 4, '81001'),
 ('81003', '数据库系统概论', 4, '81002'),
-('81004', '信息检索概论', 4, '81003'),
+('81004', '信息系统概论', 4, '81003'),
 ('81005', '操作系统', 4, '81001'),
 ('81006', 'Python语言', 3, '81002'),
 ('81007', '离散数学', 4, NULL),
@@ -240,7 +240,17 @@ CLUSTER：表示需要建立聚簇索引
 		- 并 UNION
 		- 交 INTERSECT
 		- 差EXCEPT
-
+- INSERT
+	- 插入元组 ![Pasted image 20250423204249.png|500](/img/user/accessory/Pasted%20image%2020250423204249.png) `INSERT INTO student VALUES('201215126','张成民','男',18,'CS');` `INSERT INTO student(Sno,Sname,Ssex,Sdept,Sage) VALUES('201215128','陈冬','男','IS',18);` ...
+	- 插入子查询结果![Pasted image 20250423204507.png](/img/user/accessory/Pasted%20image%2020250423204507.png)
+- UPDATE![Pasted image 20250423204517.png](/img/user/accessory/Pasted%20image%2020250423204517.png)
+	- 修改一个元组的值 `UPDATE student set Sage=22 WHERE Sno='201215121';`
+	- 修改多个元组的值 `UPDATE student set Sage=Sage+1;`
+	- 带子查询的修改语句 `UPDATE sc SET Grade=0 WHERE Sno IN ( SELECT Sno FROM student WHERE Sdept='CS' );`
+- DELETE![Pasted image 20250423204628.png|600](/img/user/accessory/Pasted%20image%2020250423204628.png)
+	- 删除一个元组的值 `DELETE FROM student WHERE Sno='201215128'；`
+	- 删除多个元组的值 `DELETE FROM SC；`
+	- 带子查询的删除语句 `DELETE FROM sc WHERE Sno IN (SELECT Sno FROM student WHERE Sdept='CS');`
 
 ### 课本
 ![Pasted image 20250423145025.png|400](/img/user/accessory/Pasted%20image%2020250423145025.png)
@@ -266,15 +276,34 @@ CLUSTER：表示需要建立聚簇索引
 20. 查所有有成绩的学生的学号和选修的课程号
 21. 查询主修计算机科学与技术专业，在2000年(包括2000年)以后出生的学生的学号、姓名和性别。
 22. 查询选修了81003号课程的学生的学号及其成绩，查询结果按分数的降序排列
-23. 查询全体学生选修课程情况，查询结果先按照课程号升序排列，同一课程中按成绩降序排列。
+23. <font color="#f79646">查询全体学生选修课程情况，查询结果先按照课程号升序排列，同一课程中按成绩降序排列。</font>
 24. 查询学生总人数
 25. 查询选修了课程的学生人数
-26. 计算修选81001号课程的学生最高分数
-27. 查询学号为20180003的学生选修课程的总学分数
-28. 求各个课程号及选修该课程的人数
-29. 查询平均成绩大于或等于90分的学生学号和平均成绩
-30. 查询选修数据库系统概论课程且成绩排名在前10名的学生的学号。
-31. 查询平均成绩排名在第3~7名的学生的学号和平均成绩。
+26.  计算修选81001号课程的学生平均分数
+27. 计算修选81001号课程的学生最高分数
+28. 查询学号为20180003的学生选修课程的总学分数
+29. 求各个课程号及选修该课程的人数
+30. 查询平均成绩大于或等于90分的学生学号和平均成绩
+31. <font color="#f79646">查询选修数据库系统概论课程且成绩排名在前10名的学生的学号</font>。
+32. <font color="#f79646">查询平均成绩排名在第3~7名的学生的学号和平均成绩。</font>
+33. 查询每个学生的学号、姓名、性别、出生日期、主修专业及该学生选修课程的课程号与成绩。
+34. 查询选修81002号课程且成绩在90分以上的所有学生的学号和姓名。
+35. <font color="#4bacc6">查询每一门课的间接先修课(即先修课的先修课)</font>
+36. 查询与“刘晨”在同一个主修专业的学生学号、姓名和主修专业。
+37. 查询选修了课程名为“信息系统概论”的学生的学号和姓名。
+38. 找出每个学生超过他自己选修课程平均成绩的课程号。
+39. 查询非计算机科学与技术专业中比计算机科学与技术专业任意一个年龄小(出生日期晚)的学生的姓名、出生日期和主修专业。
+40. 查询非计算机科学与技术专业中比计算机科学与技术专业所有学生年龄都小(出生日期晚)的学生的姓名及出生日期。
+41. 查询所有选修了81001号课程的学生姓名。
+42. 查询没有选修81001号课程的学生姓名
+43. <font color="#f79646">查询选修了全部课程的学生姓名</font>
+44. <font color="#f79646">查询至少选修了学生20180002选修的全部课程的学生的学号</font>
+45. 查询计算机科学与技术专业的学生及年龄不大于19岁(包括等于19岁)的学生。
+46. 查询2020年第2学期选修了课程81001或81002的学生
+47. 查询计算机科学与技术专业的学生与年龄不大于19岁的学生的交集。
+48. 查询既选修了课程81001又选修了课程81002的学生。就是查询选修课程81001的学生集合与选修课程81002的学生集合的交集。
+49. 查询计算机科学与技术专业的学生与年龄不大于19岁的学生的差集。
+50. ...
 
 ```sql
 1. SELECT sno,sname FROM student;
@@ -298,4 +327,175 @@ CLUSTER：表示需要建立聚簇索引
 19. select cno,sno from sc where Grade IS NULL;
 20. select cno,sno from sc where Grade IS NOT  NULL;
 21. select sno,sname,sex from Student where Smajor='计算机科学与技术' and Birthdate>'2000-01-01';
+22. SELECT sno,Grade from sc where cno = '81003' order by grade DESC
+23. SELECT * from sc order by cno ASC, Grade DESC // 不能用and
+24. SELECT Count(*) from Student;
+25. SELECT Count(DISTINCT sno) from sc;
+26. SELECT Average(grade) from sc where cno = '81001';
+27. SELECT MAX(Grade) from sc where cno = '81001'; 
+28. SELECT SUM(grade) from sc where sno = '20180003'
+29. SELECT cno,COUNT(*) from sc group by cno;
+30. SELECT sno,AVG(grade) from sc group by sno having AVG(grade)>=90
+31. SELECT sno,grade from sc,Course where Cname='数据库系统概论' order by grade limit 10;
+32. SELECT sno,avg(grade) from sc group by sno order by avg(grade) limit 5 offset 2
+33. SELECT s.*,sc.cno,sc.grade from Student as s left join SC on s.sno=sc.sno;
+34. select s.sno,Sname from sc left join  student as s on s.sno = sc.sno where cno='81002' and Grade>=90;
+35. SELECT a.cno,a.Cpmno,b.cno,b.Cpmno from course as a left join course as b on a.Cpmno = b.cno where b.Cpmno is not NULL;
+36. select * from student where Smajor = (select Smajor from student where sname= '刘晨') and sname <> '刘晨'
+37. select sno,sname from student where sno in (select sno from sc where cno in (select cno from course where cname='信息系统概论'))
+38. select * from sc inner join (select sno,avg(grade) as grade from sc group by sno) as a on sc.sno = a.sno and sc.grade > a.grade ;
+39. SELECT sname,Birthdate,Smajor from Student where Birthdate>any(SELECT Birthdate from student where Smajor='计算机科学与技术') and Smajor<>'计算机科学与技术'
+40. SELECT sname,Birthdate,Smajor from Student where Birthdate>ALL(SELECT Birthdate from student where Smajor='计算机科学与技术') and Smajor<>'计算机科学与技术'
+41. select sname from student where sno in (select sno from sc where cno='81001')
+42. select sname from student where sno not in (select sno from sc where cno='81001')
+43. SELECT S.Sname FROM Student S JOIN SC ON S.Sno = SC.Sno GROUP BY S.Sname, S.Sno HAVING COUNT(DISTINCT SC.Cno) = (SELECT COUNT(*) FROM Course);
+44. ...
 ```
+
+### 试题
+#### 17年期中考试题
+> [!abstract]
+> 7.SQL语言具有数据操作功能，SQL语言的一次查询的结果是一个
+> A.数据项
+> B.记录
+> C.元组
+> D.关系
+> 
+> 8.有学生关系：学生(学号,姓名,年龄)，对学生关系的查询语句如下：
+>   SELECT学号
+>   FROM学生
+>   WHERE年龄>20 AND 姓名LIKE ‘%伟’；
+> 如果要提高该语句的查询效率，应该建索引的属性是（  ）
+> A.学号
+> B.姓名
+> C.年龄
+> D.(学号，姓名)
+> 
+> 10.在某个数据库中建立了表person(no,name,sex,birthday)，no为表的主码,表中已有的记录如下所示：
+> No   Name  Sex   Birthday
+> 1    张丽丽  女   1967/05/07
+> 4    李方    女   1970/04/14
+> 6    王安    男    1982/10/27
+> 以下四个语句中能够正确执行的插入操作是
+> A.INSERT INTO person VALUES(6,’王中’,’男’,’1964/03/08’)
+> B.INSERT INTO person(name,sex) VALUES(‘王中’,’男’)
+> C.INSERT INTO person VALUES(2,’男’,’王中’,’1964/03/08’)
+> D.INSERT INTO person(no,sex) VALUES(2,’男’)
+> 
+> 12.修改数据的关键词应使用的语句是
+> A.INSERT
+> B.SELECT
+> C.DELETE
+> D.UPDATE
+> 
+> 15.在SQL中，与“NOT IN”等价的操作符是
+> A.<>ALL
+> B.<>SOME
+> C.=SOME
+> D.=ALL
+> 
+> 17.在SQL中，下列涉及空值的操作，不正确的是
+> A.AGE IS NULL
+> B.AGE IS NOT NULL
+> C.AGE = NULL
+> D.NOT (AGE IS NULL)
+> 
+> 19.关系代数中的Π（投影）运算符对应SELECT语句中的以下哪个子句?
+> A.SELECT
+> B.FROM
+> C.WHEHE
+> D.GROUP BY
+> 
+> 设有一个仓库管理系统的关系模型如下：
+> 仓库（仓库号，城市，面积）；
+> 职工（职工号，姓名，工资，仓库号），外码：仓库号；
+> 供应商（供应商号，供应商名，地址）；
+> 订购单（订单号，职工号，供应商号，订购日期），外码：职工号，供应商号。
+> 用SQL语言实现下列3-12题的操作要求。
+> 
+> <font color="#f79646">3.把对职工表的查询和对工资的修改权限授权给用户zhang</font>
+> <font color="#f79646">4.只收回用户zhang对职工表中工资的修改权限。</font>
+> 5.检索在广州的所有供应商信息。
+> 6.求所有工资不多于1210元的职工所管理仓库的平均面积。
+> 7.查询自2019年7月1日以来的所有订单号、职工号、供应商号，并按职工号降序排列。
+> 8.检索今年10月1日至12月31日期间，没有订购天津供应商商品的订单号。
+> 10.插入一个新的仓库元组（WH3，上海，280）
+> 11.删除仓库号为“WH2”的仓库信息
+> 12.给低于所有职工平均工资的职工提高5%的工资
+
+
+~~C~~ <font color="#f79646">D</font> C D D A C A 
+```sql
+3. grant select, updata(工资) on table 职工 to zhang
+4. revoke updata(工资) on table 职工 from zhang
+5. SELECT * from 供应商 where 地址 = '广州'
+6. SELECT AVG(面积) from 仓库 where 仓库号 in (select DISTINCT 仓库号 from 职工 where 工资<1210)
+7. SELECT 订单号,职工号, 供应商号 from 订购单 where 订购日期 > '2019-07-01' order by 职工号 DESC;
+8. SELECT 订单号 from 订购单 where 供应商号<>(SELECT 供应商号 from 供应商 where 供应商名='天津') and 订购日期 between '2025-10-01' and '2025-12-31';
+9. 重了
+10. INSERT INTO 仓库 VALUES (WH3,'上海',280);
+11. DELETE FROM 仓库 where 仓库号 = 'WH2';
+12. UPDATE 职工 set 工资 = 工资 * 1.05;
+```
+
+#### 11—12学年第2学期期末考试 A卷
+> [!todo]
+> 7．在SELECT语句中，与关系代数中运算符σ对应的是（  ）子句。
+> A．SELECT   B．FROM   C．WHERE   D．GROUP BY
+> ![Pasted image 20250423200132.png](/img/user/accessory/Pasted%20image%2020250423200132.png)
+> 用SQL语言完成下面操作：
+> 3．<font color="#f79646">查询所有课程都及格的学生信息。</font>
+> 4．统计每一门课程的最高分、最低分和平均分。
+> 5．查询选修了高等数学课程的学生的个人信息。
+> 6．向数据库中添加一个学生信息。
+> 
+> |        |          |        |        |        |
+> | ------ | -------- | ------ | ------ | ------ |
+> | **学号** | **姓  名** | **年龄** | **性别** | **籍贯** |
+> | 98606  | 郭大力      | 20     | 男      | 湖南     |
+> 
+> 7．<font color="#f79646">在SC表的sno上创建一个外键。</font>
+> 8．<font color="#c0504d">查询所有学生中平均成绩最高的那个学生的学号</font>
+
+C
+```SQL
+3. SELECT * from student where sno in (select sno from sc group by sno having MIN(grade)>=60)；
+4. SELECT cno,MIN(grade),MAX(grade),AVG(grade) from sc group by cno;
+5. SELECT * from student where sno in (select sno from sc where cno=(select cno from course where cname = '高等数学'));
+6. INSERT INTO student VALUES('98606','郭大力',20,'男','湖南')
+7. ALTER TABLE sc ADD CONSTRAINT fk sno foreign key(sno) references student(sno);
+8. SELECT sno from sc group by sno order by AVG(grade) DESC LIMIT 1
+```
+可能出现同分的情况 所以不建议用LIMIT
+```sql
+select sno from sc group by sno
+having avg(grade) >= all(select avg(grade) from sc group by SNO);
+```
+
+#### 11—12学年第2学期期末考试 B卷
+> [!success]
+> 13．SQL语言中，修改表结构的语句是
+> A．CREATE     B．SELECT     C．UPDATE    D．ALTER
+> 已知SPJ数据库中4张表的关系模式如下：
+> S(sno，sname，scity )            --供应商表：供应商编号，名称，所在地
+> P( pno，pname，color，weight )       --零件表：零件编号，名称，颜色，重量
+> J( jno，jname，jcity )                --工程表：工程编号，工程名称，所在地
+> SPJ( sno，pno，jno，qty)        --供应关系表：供应商号，零件号，工程号，供应量
+> 3．查询S3供应商供应的零件号码pno和零件名称pname。
+> 4．把S1供应商所在地由“天津”改为“上海”。
+> 5．<font color="#c0504d">授予用户U1查询、修改S表的权限，并允许该用户再转授权限给其他用户。</font>
+> 6．创建视图preder描述重量大于12的零件的零件号pno和零件名称pname。
+> 7．在SPJ表中，把 sno设置为外键。
+> 8．查询出来使用了“上海”产的零件的工程号jno和工程名称jname。
+
+
+D
+```SQL
+3. SELECT p.pno,p.pname from p,spj where p.pno = spj.pno and sjp.sno ='S3';
+4. UPDATE S set city = '上海' where city = '天津'
+5. grant select, update on s to u1 with grant option
+6. create view preder as select pno , pname from p where weight>12
+7. ALTER TABLE SPJ ADD CONSISTRAINT fk foreign key (sno) reference S(sno)
+8. SELECT j.jno,j.jname from j,s,spj where j.jno=spj.jno and s.sno=spj.sno and  s.city='上海'; //好多好多答案
+```
+

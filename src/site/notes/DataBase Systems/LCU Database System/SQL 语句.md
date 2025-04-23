@@ -1,7 +1,78 @@
 ---
-{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T08:22:03.493+08:00"}
+{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T15:37:11.031+08:00"}
 ---
 
+### Demo Overview
+一个可以执行的SQL语句的网址(但需要科学上网) 可以去体会一下这些语句
+网址：https://onecompiler.com/ 可以选择一个你喜欢的任意的数据库, PostgreSQL, MySQL, SQLServer, SQLite ... 都可以
+可以顺着课本的例子顺序敲一下
+如果只想练query语句 直接在前面加上这些建表语句就可以
+```SQL
+-- 创建Student表
+CREATE TABLE Student (
+    Sno VARCHAR(10) PRIMARY KEY,
+    Sname VARCHAR(50),
+    Sex CHAR(2),
+    Birthdate DATE,
+    Smajor VARCHAR(50)
+);
+
+-- 插入Student数据
+INSERT INTO Student (Sno, Sname, Sex, Birthdate, Smajor) VALUES
+('20180001', '李勇', '男', '2000-03-08', '信息安全'),
+('20180002', '刘晨', '女', '1999-09-01', '计算机科学与技术'),
+('20180003', '王敏', '女', '2001-08-01', '计算机科学与技术'),
+('20180004', '张立', '男', '2001-01-08', '计算机科学与技术'),
+('20180005', '陈新奇', '男', '2001-11-01', '信息管理与信息系统'),
+('20180006', '赵明', '男', '2000-06-12', '数据科学与大数据技术'),
+('20180007', '王佳佳', '女', '2001-12-07', '数据科学与大数据技术');
+
+-- 创建Course表
+CREATE TABLE Course (
+    Cno VARCHAR(10) PRIMARY KEY,
+    Cname VARCHAR(50),
+    Ccredit INT,
+    Cpmno VARCHAR(10),
+    FOREIGN KEY (Cpmno) REFERENCES Course(Cno)
+);
+
+-- 插入Course数据
+INSERT INTO Course (Cno, Cname, Ccredit, Cpmno) VALUES
+('81001', '程序设计基础与C语言', 4, NULL),
+('81002', '数据结构', 4, '81001'),
+('81003', '数据库系统概论', 4, '81002'),
+('81004', '信息检索概论', 4, '81003'),
+('81005', '操作系统', 4, '81001'),
+('81006', 'Python语言', 3, '81002'),
+('81007', '离散数学', 4, NULL),
+('81008', '大数据技术概论', 4, '81003');
+
+-- 创建SC表
+CREATE TABLE SC (
+    Sno VARCHAR(10),
+    Cno VARCHAR(10),
+    Grade INT,
+    Semester INT,
+    Teachingclass VARCHAR(10),
+    PRIMARY KEY (Sno, Cno),
+    FOREIGN KEY (Sno) REFERENCES Student(Sno),
+    FOREIGN KEY (Cno) REFERENCES Course(Cno)
+);
+
+-- 插入SC数据
+INSERT INTO SC (Sno, Cno, Grade, Semester, Teachingclass) VALUES
+('20180001', '81001', 85, 20192, '81001-01'),
+('20180001', '81002', 96, 20201, '81002-01'),
+('20180001', '81003', 87, 20202, '81003-01'),
+('20180002', '81001', 80, 20192, '81001-02'),
+('20180002', '81002', 98, 20201, '81002-01'),
+('20180002', '81003', 71, 20202, '81003-02'),
+('20180003', '81001', 81, 20192, '81001-01'),
+('20180003', '81002', 76, 20201, '81002-02'),
+('20180004', '81001', 56, 20192, '81001-02'),
+('20180004', '81002', 97, 20201, '81002-02'),
+('20180005', '81003', 68, 20202, '81003-01');
+```
 ### SQL语句
 要注意
 - 目前，没有任何一个数据库系统能够支持SQL标准的所有概念和特性
@@ -40,6 +111,29 @@ DROP SCHEMA <模式名><CASCADE|RESTRICT>
 
 - 建表的同时通常还可以定义与该表有关的完整性约束条件
 - 如果完整性约束条件涉及该表的多个属性列，则必须定义在表级上，否则既可以在列级上也可以在表级上
+```SQL
+CREATE TABLE Student(
+  Sno char(8) primary key not null,
+  Sname char(6) not null,
+  Ssex char(2) not null
+);
+
+SELECT * FROM student;
+```
+
+```sql
+CREATE TABLE SC (
+    Sno VARCHAR(10),
+    Cno VARCHAR(10),
+    Grade INT,
+    Semester INT,
+    Teachingclass VARCHAR(10),
+    PRIMARY KEY (Sno, Cno), //注意这里！！！！！
+    FOREIGN KEY (Sno) REFERENCES Student(Sno),
+    FOREIGN KEY (Cno) REFERENCES Course(Cno)
+);
+```
+
 
 **修改表**
 ![Pasted image 20250422200642.png|500](/img/user/accessory/Pasted%20image%2020250422200642.png)
@@ -51,7 +145,7 @@ DROP SCHEMA <模式名><CASCADE|RESTRICT>
 
 **删除表**
 ```SQL
-DROP TABLE <表明> [RESTRICT|CASCADE]；
+DROP TABLE <表名> [RESTRICT|CASCADE]；
 ```
 - **选择`RESTRICT`**：欲删除的基本表不能被其他表的约束所引用（比如CHECK、FOREIGN KEY等）、不能有视图、不能有触发器（trigger），不能有存储过程或函数等
 - **选择`CASCADE`**：没有限制条件，所有相关依赖对象连同基本表一起删除
@@ -126,6 +220,82 @@ CLUSTER：表示需要建立聚簇索引
 		- `SELECT Student.Sno,Sname FROM student,sc WHERE student.Sno=sc.Sno AND //连接条件 Cno='2' AND Grade > 80; //其他限定条件`
 	- 自身连接: 比如查先修课
 		- `SELECT ONE.Cno,TWO.Cpno FROM Course ONE,Course TWO WHERE ONE.Cpno=TWO.Cno;`
-	- JOIN
-		- INNER JOIN: 关键字在表中存在至少一个匹配时返回行 ![Pasted image 20250423082009.png|300](/img/user/accessory/Pasted%20image%2020250423082009.png) `SELECT Sno,sc.Cno,Grade,course.Cno,Cname,Cpno,Ccredit FROM sc INNER JOIN course ON(sc.Cno=course.Cno);` ![Pasted image 20250423082156.png|500](/img/user/accessory/Pasted%20image%2020250423082156.png)
-		- 
+	- JOIN ![Pasted image 20250423082738.png](/img/user/accessory/Pasted%20image%2020250423082738.png)
+		- INNER JOIN: 关键字在表中存在至少一个匹配时返回行  `SELECT Sno,sc.Cno,Grade,course.Cno,Cname,Cpno,Ccredit FROM sc INNER JOIN course ON(sc.Cno=course.Cno);` 
+		- LEFT JOIN: 以左表为标准，若右表中无匹配，则填NULL  `SELECT Sno,sc.Cno,Grade,course.Cno,Cname,Cpno,Ccredit FROM sc LEFT JOIN course ON(sc.Cno=course.Cno);` 
+		- RIGHT JOIN: 以右表为标准，若左表中无匹配，则填NULL `SELECT Sno,sc.Cno,Grade,course.Cno,Cname,Cpno,Ccredit FROM sc RIGHT JOIN course ON(sc.Cno=course.Cno);`
+		- FULL JOIN: 结合了LEFT JOIN和RIGHT JOIN `SELECT Sno,sc.Cno,Grade,course.Cno,Cname,Cpno,Ccredit FROM sc FULL JOIN course ON(sc.Cno=course.Cno);`
+	- 嵌套查询
+		-  子查询的SELECT语句不能使用`ORDER BY`子句
+		- 嵌套查询往往可以转换为对应的连接运算
+		- 带有in的子查询 `SELECT student.Sno,Sname,Sdept FROM student WHERE Sdept IN (SELECT Sdept FROM student WHERE Sname='刘晨');`
+		- 带有比较运算符的子查询 `SELECT Sno,Sname,Sdept FROM student WHERE Sdept = (SELECT Sdept FROM student WHERE Sname='刘晨');`
+		- 两个概念: 不相关子查询 vs. 相关子查询
+			- 不相关子查询：子查询的查询条件不依赖于父查询
+			- 相关子查询：子查询的查询条件依赖于父查询
+		- 带有ANY 或  ALL的子查询 ![Pasted image 20250423142403.png|400](/img/user/accessory/Pasted%20image%2020250423142403.png) ![Pasted image 20250423142431.png](/img/user/accessory/Pasted%20image%2020250423142431.png) 
+		- 带有EXISTS查询的子查询: 存在量词
+			- 需要注意的是，一些带有EXISTS和NOT EXISTS谓词的子查询不能被其他形式的子查询等价替换；但是所有带IN谓词，比较运算符，ANY和ALL谓词的子查询都可以用带EXISTS谓词的子查询替换
+	- 集合查询
+		- 并 UNION
+		- 交 INTERSECT
+		- 差EXCEPT
+
+
+### 课本
+![Pasted image 20250423145025.png|400](/img/user/accessory/Pasted%20image%2020250423145025.png)
+1. 查询全体学生的学号和姓名
+2. 查询全体学生的姓名 学号 主修专业
+3. 查询全体学生的详细记录
+4. 查询全体学生的姓名及其年龄
+5. 查询全体学生的姓名 出生日期 和 主修专业
+6. 查询选修了课程的学生学号
+7. 查询主修计算机科学与技术专业全体学生的姓名
+8. 查询2000年及2000年后出生的所有学生的姓名及其性别
+9. 查询考试成绩不及格的学生的学号
+10. <font color="#f79646">查询年龄在20-23岁范围内的学生的姓名 出生日期和 主修专业</font>
+11. 查询年龄不在20-23岁范围内的学生的姓名 出生日期和 主修专业
+12. <font color="#f79646">查询计算机科学技术与技术专业和信息安全专业的学生的姓名及其性别</font>
+13. 查询非计算机科学技术与技术专业和信息安全专业的学生的姓名及其性别
+14. 查询学号为20180003的学生的详细情况
+15. 查询所有姓刘的学生的姓名 学号和性别
+16. 查询2018级学生的学号和姓名
+17. 查询课程号为81开头，最后一位是6的课程名称和课程号
+18. 查询所有不姓刘的同学的姓名、学号和性别
+19. 某些学生选修课程后没有参加考试，所以有选课记录但没有考试成绩。查询缺少成绩的学生的学号和相应的课程号。
+20. 查所有有成绩的学生的学号和选修的课程号
+21. 查询主修计算机科学与技术专业，在2000年(包括2000年)以后出生的学生的学号、姓名和性别。
+22. 查询选修了81003号课程的学生的学号及其成绩，查询结果按分数的降序排列
+23. 查询全体学生选修课程情况，查询结果先按照课程号升序排列，同一课程中按成绩降序排列。
+24. 查询学生总人数
+25. 查询选修了课程的学生人数
+26. 计算修选81001号课程的学生最高分数
+27. 查询学号为20180003的学生选修课程的总学分数
+28. 求各个课程号及选修该课程的人数
+29. 查询平均成绩大于或等于90分的学生学号和平均成绩
+30. 查询选修数据库系统概论课程且成绩排名在前10名的学生的学号。
+31. 查询平均成绩排名在第3~7名的学生的学号和平均成绩。
+
+```sql
+1. SELECT sno,sname FROM student;
+2. SELECT sno as "学号",sname as "姓名", Smajor as "主修专业" FROM student;
+3. SELECT * FROM Student;
+4. 11
+5. select Sname, Birthdate, Smajor from Student;
+6. SELECT DISTINCT sno from sc;
+7. SELECT sname from Student where Smajor = '计算机科学与技术'
+8. SELECT sname, sex from Student where Birthdate>='2000-01-01';
+9. SELECT DISTINCT sno from sc where Grade<60;
+10. SELECT Sname, Birthdate, Smajor FROM Student WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, Birthdate)) BETWEEN 20 AND 23;
+11. SELECT Sname, Birthdate, Smajor FROM Student WHERE EXTRACT(YEAR FROM AGE(CURRENT_DATE, Birthdate)) NOT BETWEEN 20 AND 23;
+12. SELECT sname, sex from Student where Smajor in ('计算机科学与技术', '信息安全')
+13. SELECT sname, sex from Student where Smajor not in ('计算机科学与技术', '信息安全')
+14. SELECT * from Student where sno like '20180003'
+15. select Sname,Sno,sex from Student where sname like '刘%';
+16. select sno, sname from student where sno like '2018____'
+17. select cname, cno from Course where cno like '81__6'
+18. select Sname,Sno,sex from Student where sname not like '刘%';
+19. select cno,sno from sc where Grade IS NULL;
+20. select cno,sno from sc where Grade IS NOT  NULL;
+21. select sno,sname,sex from Student where Smajor='计算机科学与技术' and Birthdate>'2000-01-01';
+```

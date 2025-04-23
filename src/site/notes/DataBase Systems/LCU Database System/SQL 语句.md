@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T21:03:39.555+08:00"}
+{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T21:11:53.607+08:00"}
 ---
 
 ### Demo Overview
@@ -172,7 +172,6 @@ CLUSTER：表示需要建立聚簇索引
 ![Pasted image 20250423074605.png|300](/img/user/accessory/Pasted%20image%2020250423074605.png)
 
 ### 数据查询
-#### Select 语句
 ![Pasted image 20250423074940.png|500](/img/user/accessory/Pasted%20image%2020250423074940.png)
 
 - 单表查询

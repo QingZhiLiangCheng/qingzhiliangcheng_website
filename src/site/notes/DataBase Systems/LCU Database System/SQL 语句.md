@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-23T21:11:53.607+08:00"}
+{"dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/SQL 语句/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:36:28.694+08:00","updated":"2025-04-24T09:56:00.043+08:00"}
 ---
 
 ### Demo Overview
@@ -250,6 +250,23 @@ CLUSTER：表示需要建立聚簇索引
 	- 删除一个元组的值 `DELETE FROM student WHERE Sno='201215128'；`
 	- 删除多个元组的值 `DELETE FROM SC；`
 	- 带子查询的删除语句 `DELETE FROM sc WHERE Sno IN (SELECT Sno FROM student WHERE Sdept='CS');`
+
+### 视图
+视图：视图是一个虚表，其本质就是一条`SELECT`语句，而查询结果被赋予了一个名字，也即视图名字。或者说视图本身不包含任何数据，它只包含映射到基表的一个查询语句，当基表数据发生变化时，视图数据也随之变化。其目的就是在于方便，简化数据操作
+所以我们直接 `select * from view` hhh
+建立视图
+![Pasted image 20250424095220.png|500](/img/user/accessory/Pasted%20image%2020250424095220.png)
+- 子查询可以是任意的`SELECT`语句（是可以含有`ORDER BY`子句和`DISTINCT`短语取决于具体系统）
+- 组成视图的属性列名要么全部省略要么全部指定，不能有第三种情况
+- 如果省略视图列名，则其列名默认由 `SELECT`子句目标列诸字段组成
+
+删除视图
+![Pasted image 20250424095517.png](/img/user/accessory/Pasted%20image%2020250424095517.png)
+要注意基本表删除之后，由该基本表导出的所有视图均无法使用，但是视图的定义没有从字典中清除
+
+更新视图
+视图是虚表，所以对视图的更新最终会转化为对基本表的更新。为了防止用户通过视图对数据进行更新时，有意或无意地对不属于视图范围内的基本表数据进行操作，可以在定义视图时加上`WITH CHECK OPTION`子句。这样在更新时，如果不满足条件，DBMS会拒绝操作
+
 
 ### 课本
 ![Pasted image 20250423145025.png|400](/img/user/accessory/Pasted%20image%2020250423145025.png)

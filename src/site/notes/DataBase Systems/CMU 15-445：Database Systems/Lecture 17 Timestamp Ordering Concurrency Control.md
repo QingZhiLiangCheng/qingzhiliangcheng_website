@@ -1,5 +1,5 @@
 ---
-{"tags":["cmu15445","week11"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 17 Timestamp Ordering Concurrency Control/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-19T16:13:11.416+08:00","updated":"2025-04-22T17:00:09.955+08:00"}
+{"tags":["cmu15445","week11"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 17 Timestamp Ordering Concurrency Control/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-19T16:13:11.416+08:00","updated":"2025-04-24T14:31:39.265+08:00"}
 ---
 
 ![[17-timestampordering.pdf]]
@@ -20,3 +20,19 @@
 ![Pasted image 20250422165737.png|500](/img/user/accessory/Pasted%20image%2020250422165737.png)`SELECT * FROM <table> WHERE <qualification> FOR UPDATE;`。这条语句不仅执行查询，还会对匹配的元组（行）设置排他锁。这意味着其他事务在当前事务完成或释放锁之前不能修改这些行。
 同时给了相容性矩阵
 
+### Overview
+锁的开销会很大 需要获取很多锁 要获取层级锁 有没有别的方法？ this lecture talking about a timestamp ordering(时间戳排序) --无需使用锁机制 -- 属于一种乐观的策略
+尽管Timestamp ordering这种方法没有人使用 但是它引入了我们构建乐观并发控制与MVCC(多版本并发控制)基础的概念
+Timestamp Ordering的核心思想就是利用时间戳来决定事物的可串行化执行顺序 为每个 transaction 分配一个 timestamp，如果 $TS(T_i)<TS(T_j)$，则DBMS需要确保执行计划等价于一个顺序为 $T_i,T_j$的序列
+所以时间戳应该是一个单调增加 值唯一的数  so where do these timestamps come from? what do they look like? 
+- System/Wall Clock.  但往往分布式系统的不同机器的时钟不一样
+- Logical Counter. 可能出现两个人同时尝试读取该数值并递增的操作 -- 好在硬件存在原子性指令  可能会溢出；在分布式系统中也难以维持一致性
+- Hybrid.
+今天暂时忽略如何实现的 假设我们能得到正确的Timestamp
+
+**today's agenda**
+- Basic Timestamp Ordering (T/O) Protocol
+- Optimistic Counrrency Control
+- Isolation Levels
+
+### Basic T/O

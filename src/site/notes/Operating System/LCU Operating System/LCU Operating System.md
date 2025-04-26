@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-04-20T11:10:19.428+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-04-26T09:24:21.847+08:00"}
 ---
 
 ### LCU Operating System Lab
@@ -12,4 +12,6 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 **实验笔记**
 [[Operating System/LCU Operating System/Lab1 单处理器系统进程调度\|Lab1 单处理器系统进程调度]]
 
+**代码仓库**
+https://github.com/QingZhiLiangCheng/LCU-OS-Lab.git
 ### LCU Operating System Course

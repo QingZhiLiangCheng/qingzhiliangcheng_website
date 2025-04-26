@@ -1,5 +1,5 @@
 ---
-{"week":"第四周","dg-publish":true,"tags":["week4","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Memory & Disk IO Management/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:44:54.904+08:00","updated":"2025-04-25T19:09:58.522+08:00"}
+{"week":"第四周","dg-publish":true,"tags":["week4","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 06 Memory & Disk IO Management/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-06T17:44:54.904+08:00","updated":"2025-04-25T20:22:52.043+08:00"}
 ---
 
 
@@ -193,10 +193,12 @@ SELECT AVG(val) From A LIMIT 100
 reason 
 - 我们必须承担缓冲池的维护成本
 - 如果进行顺序扫描  刚刚读取的数据 可能实际上并没有用
-与其让不同的工作人员同时顺序扫描 -- 脏页-- 给每个工作人员分配一小块内存 然后将读取的任何页面放入该工作人员的内存中   只读
+
+与其让不同的worker同时顺序扫描 -- 脏页-- 给每个worker分配一小块内存 然后将读取的任何页面放入该工作人员的内存中   只读
 Oracle, PostgreSQL, SQL Server, Informix都支持  在Informix中叫  Light Scans 轻量扫描
 - advantage: 不会污染页表
 - disadvantage: 如果两个人要相继访问相同的页面 共享能力会丧失 失去重复利用的可能性
+
 so 权衡
 
 ### Replacement Policies 
@@ -285,6 +287,7 @@ Localization 本地化策略
 优先级提示
 - **页面上下文的理解**：DBMS能够识别并理解在查询执行过程中每个页面的角色和重要性。例如，某些页面可能因为频繁被访问或对事务完成至关重要而被认为更加重要。
 - **提供优先级提示**：基于上述理解，DBMS可以为缓冲池提供指示，指出哪些页面应当被视为高优先级，意味着它们应该较少被驱逐出缓冲池；反之，低优先级的页面则可以在需要空间时优先考虑移除
+
 这种机制使得缓冲池管理不再仅仅是基于简单的LRU（最近最少使用）等算法，而是可以根据实际查询需求动态调整页面的优先级。
 example
 如果有一个多页的索引   并且收到的查询总是会插入新纪录 这些记录仅增加索引所基于的值的大小  那么我知道 我始终命中树的右侧

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/Lab1 单处理器系统进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-19T10:00:59.533+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/Lab1 单处理器系统进程调度/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:39:06.370+08:00","updated":"2025-04-26T15:37:26.672+08:00"}
 ---
 
 Lab1主要模拟单处理器的进程调度
@@ -220,4 +220,108 @@ void sort() {
 **运行结果**
 ![Pasted image 20250412204704.png](/img/user/accessory/Pasted%20image%2020250412204704.png)
 ### 思考题
-还没写
+#### Question 1
+要求: 若实验内容中，在修改优先数时增加下列原则：进程等待的时间超过某一时限时增加其优先数，参考上述例程，写出程序。
+我觉得最简单的做法就是给pcb加一个`wait_time_`域来记录等待时长并与一个常量`TIME_LIMIT`比较 实时更新优先数即可
+```c
+struct pcb {
+    char name[10];  
+    char state;  
+    int super;  
+    int wait_time_;
+    int ntime;  
+    int rtime;  
+    struct pcb* link;  
+}*ready=NULL,*p
+```
+
+什么时候更新`wait_time_`?
+根据代码不难发现 在main函数中 `p->link = NULL;` 的时候 将要上CPU的进程拿出进程队列 在`Running函数`最后执行了`Sort函数` 将p进程放回了进程队列 -> 所以应该在 `p->link = NULL;`之后 `Sort函数` 之前 更新`wait_time_`
+具体操作
+```cpp
+void UpdateWaitTime() {  
+    PCB *pr = ready;  
+    while (pr != nullptr) {  
+        if (++pr->wait_time_ > TIME_LIMIT) {  
+            pr->super++;  
+            pr->wait_time_ = 0;  
+        }  
+        pr = pr->link;  
+    }  
+}
+```
+**Question: super++之后要不要重置等待时间？**  不知道哈哈哈
+#### Question 2
+要求: 若采用基于时间片轮转的调度算法模拟进程调度，试设计算法与程序。
+**时间片轮转(RR)调度算法**
+时间片轮转(RR)调度算法: 用于分时系统中的进程调度。每次调度时，总是选择就绪队列的队首进程，让其在CPU上运行一个系统预先设置好的时间片。一个时间片内没有完成运行的进程，返回到绪队列末尾重新排队，等待下一次调度。
+给每个进程固定的执行时间，根据进程到达的先后顺序让进程在单位时间片内执行，执行完成后便调度下一个进程执行，时间片轮转调度不考虑进程等待时间和执行时间，属于抢占式调度。优点是兼顾长短作业；缺点是平均等待时间较长，上下文切换较费时。适用于分时系统。
+**程序设计**
+我使用的是C++ 遵询的是Google C++规范 文档: [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+```cpp
+class PCB {  
+public:  
+    int pid_;  
+    int arrival_time_;  
+    int run_time_;  
+    int used_cpu_time_{0};  
+    int status_{0}; // 0-waiting, 1-running, 2-completed  
+  
+    PCB(int pid, int arrival_time, int run_time) : pid_(pid), arrival_time_(arrival_time), run_time_(run_time) {}  
+};
+```
+
+```cpp
+class RR {  
+public:  
+    RR(int rr) : rr_(rr) {};
+private:  
+    std::list<PCB *> pcbs_;  
+    std::deque<PCB *> pcb_deque_; // 进程队列  
+    int current_time_{0};  
+    int rr_;  //时间片
+};
+```
+
+核心代码
+```cpp
+void RunScheduler() {  
+    pcbs_.sort([](const PCB *a, const PCB *b) {  
+        return a->arrival_time_ < b->arrival_time_;  
+    });  
+    pcb_deque_.push_back(pcbs_.front());  
+    current_time_ = pcbs_.front()->arrival_time_;  
+    pcbs_.pop_front();  
+    while (!pcbs_.empty() || !pcb_deque_.empty()) {  
+        PCB *current_pcb = pcb_deque_.front();  
+        pcb_deque_.pop_front();  
+        current_pcb->used_cpu_time_ += std::min(rr_, current_pcb->run_time_ -  
+                                                     current_pcb->used_cpu_time_);  
+        current_time_ += std::min(rr_, current_pcb->run_time_ -  
+                                       current_pcb->used_cpu_time_);  
+  
+        while (!pcbs_.empty() && pcbs_.front()->arrival_time_ <= current_time_) {  
+            pcb_deque_.push_back(pcbs_.front());  
+            pcbs_.pop_front();  
+        }  
+  
+  
+        Display(current_pcb);  
+  
+  
+        if(current_pcb->used_cpu_time_ < current_pcb->run_time_) {  
+            pcb_deque_.push_back(current_pcb);  
+        }  
+    }  
+}
+```
+
+需要注意的几个点
+- 要给pcbs排序 -- 因为不一定输入的就一定按照到达的时间排好了
+- `used_cpu_time_` 取的是 时间片和 剩余时间的最小值
+- 要注意我实现的这个是先到达的process先放入了队列 然后才是下CPU的process
+- 我没去该status hhh  因为我发现好像不需要
+- 我默认是假设A的arrive_time为0 run_time为1 我默认current_time的时候 A还在CPU上 下一刻（多一点点）接着就下来了
+
+运行结果
+![Pasted image 20250426152750.png](/img/user/accessory/Pasted%20image%2020250426152750.png)

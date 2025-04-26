@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f973","tags":["folder"],"dg-publish":true,"dg-pinned":true,"permalink":"/CS 61B/CS 61B/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-02T21:48:21.662+08:00","updated":"2025-04-18T16:23:33.358+08:00"}
+{"sticker":"emoji//1f973","tags":["folder"],"dg-publish":true,"dg-pinned":true,"permalink":"/CS 61B/CS 61B/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-02T21:48:21.662+08:00","updated":"2025-04-26T09:23:40.284+08:00"}
 ---
 
 📅date: 2025.03.02 - ing
@@ -12,9 +12,9 @@ CS61B，主要内容为Java和数据结构。其中，前4周的时间都在谈J
 👉课程视频: 从网站跳转
 👉课程笔记: 从网站跳转
 👉我的笔记: [[CS 61B/CS 61B\|CS 61B]]
-👉CS61B 课程学习 代码仓库: https://codehub.devcloud.cn-north-4.huaweicloud.com/51257dbf8a21492f89da2942785a5ec8/CS61B.git
-👉CS61B lab 代码仓库: https://codehub.devcloud.cn-north-4.huaweicloud.com/51257dbf8a21492f89da2942785a5ec8/CS61B-lab.git
-👉CS61B Project 代码仓库: https://codehub.devcloud.cn-north-4.huaweicloud.com/51257dbf8a21492f89da2942785a5ec8/CS61BProject.git
+👉CS61B 课程学习 代码仓库: https://github.com/QingZhiLiangCheng/CS61B.git
+👉CS61B lab 代码仓库: https://github.com/QingZhiLiangCheng/CS61B-lab.git
+👉CS61B Project 代码仓库:https://github.com/QingZhiLiangCheng/CS61BProject.git
 
 **笔记**
 

@@ -1,5 +1,5 @@
 ---
-{"tags":["cmu15445","week11"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 17 Timestamp Ordering Concurrency Control/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-19T16:13:11.416+08:00","updated":"2025-04-24T14:31:39.265+08:00"}
+{"tags":["cmu15445","week11"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 17 Timestamp Ordering Concurrency Control/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-19T16:13:11.416+08:00","updated":"2025-04-25T20:39:19.781+08:00"}
 ---
 
 ![[17-timestampordering.pdf]]
@@ -36,3 +36,50 @@ Timestamp Ordering的核心思想就是利用时间戳来决定事物的可串�
 - Isolation Levels
 
 ### Basic T/O
+Basic T/O 事务不需要加锁
+每个对象都会记录两个时间戳
+- `W_TS(X)`：最后一次写 X 发生的时间戳
+- `R_TS(X)`：最后一次读 X 发生的时间戳
+
+所以这里的过程是 我试图对某个对象进行读写操作 会查看时间戳并思考 但这个操作的时间戳优先于我 那就要撤销我的操作
+
+**Basic T/O Reads**
+当事务$T_i$需要对对象X进行读操作时，需要检查 $TS(T_i)<W-TS(X)$
+$TS(T_i)$ 是事务 $T_i$ 的时间戳: 每个事务在启动时都会被分配一个唯一的时间戳，表示该事务开始的时间点
+$W-TS(X)$ 是对象X的写时间戳 这里不是减法啊 其实是一个小短横 - 其实用$W\_TS(X)$ 或许更好理解我觉得 -- 其实就是最近一次对象X成功执行写操作的事务的时间戳 换句话说 就是最后一次修改X的事务的时间
+所以如果X的写时间戳大于事务$T_i$的时间戳 -- 那么说明发生了某些未来的变化 我本不应该看到这个未来的值 我不能读取来自未来的事物
+如果X的写时间戳小于事务$T_i$的时间戳 -- 那就 read it --但是要让全世界都知道我read了X -- 做法就是更新X的时间戳为事务$T_i$的时间戳
+事实上这是讨论的RW异常
+**Basic T/O Writes**
+我们需要检查试图写入的对象的读取或写入时间戳是否在未来 即 R-TS(X) or W-TS(x)
+WW 异常 和 WR异常
+So if $TS(T_i)<R-TS(X) or TS(T_i)<W-TS(X)$ -> Abort
+Else -> Allow write and update W-TS(X)
+
+**BASIS T/O Example 1**
+![Pasted image 20250425194534.png|500](/img/user/accessory/Pasted%20image%2020250425194534.png)
+
+![Pasted image 20250425194546.png|500](/img/user/accessory/Pasted%20image%2020250425194546.png)
+
+![Pasted image 20250425194604.png|500](/img/user/accessory/Pasted%20image%2020250425194604.png)
+
+![Pasted image 20250425194628.png|500](/img/user/accessory/Pasted%20image%2020250425194628.png)
+
+![Pasted image 20250425194720.png|500](/img/user/accessory/Pasted%20image%2020250425194720.png)
+
+![Pasted image 20250425194734.png|500](/img/user/accessory/Pasted%20image%2020250425194734.png)
+
+![Pasted image 20250425194746.png|500](/img/user/accessory/Pasted%20image%2020250425194746.png)
+
+![Pasted image 20250425194813.png|500](/img/user/accessory/Pasted%20image%2020250425194813.png)
+
+**Basic T/O Example 2**
+![Pasted image 20250425194850.png|500](/img/user/accessory/Pasted%20image%2020250425194850.png)
+
+**Thomas write rule(TWR)**
+这算是一种优化 核心在于 在上面的例子中 可以认为T1和T2是紧紧相连甚至是同时运行的 Basic T/O要求T1回滚 但这是不必要的 因为T2已经写过了A 那么T1想写的数据将永远不会被读到
+所以当 $TS(T_i)>TS(T_2)$ 时候 没有必要回滚 忽略就可以
+![Pasted image 20250425203639.png|500](/img/user/accessory/Pasted%20image%2020250425203639.png)
+TWR 优化了 Basic T/O 的写检查，使得一些本不必中止的事务顺利进行，提高了事务并发程度
+
+**T/O Summary**

@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-28T21:55:34.118+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-28T22:15:43.343+08:00"}
 ---
 
 
@@ -68,7 +68,7 @@ make
 
 ### Task 2: SimpleList
 您将在`src/simple_list.h`中实现一个简单的不能再简单的链表，链表是一种常见的线性数据结构，由一系列节点组成，每个节点包含两部分，数据域和指针域
-您需要实现一个`SimpleList`类,并包含两个成员变量:整形类型的`data_` 和`SimpleList* next_` 设置成共有的
+您需要实现一个`SimpleList`类,并包含两个成员变量:整形类型的`data_` 和`SimpleList* next_` 设置成public的
 现在事实上您可以在`src/min.cpp`中通过下面的语句构建一个简单的链表
 ```cpp
 SimpleList* simple_list=new SimpleList;  
@@ -79,13 +79,18 @@ std::cout<<simple_list->next_->data_<<std::endl;
 ```
 可以在网站[Python Tutor code visualizer: Visualize code in Python, JavaScript, C, C++, and Java](https://pythontutor.com/visualize.html#mode=edit)查看过程可视化 但是要记得把`simple_list.h`的代码也复制进去
 ![Pasted image 20250428140608.png|500](/img/user/accessory/Pasted%20image%2020250428140608.png)
-需要您实现构造函数`SimpleList(int data, SimpleList* next)`以实现反向构造链表
+需要您实现完成以下任务
+- 无参构造函数
+ - 有参构造 传入data next默认为nullptr  
+- 有参构造 依次传入data和next  
+- 试一下这两个写成一个有参构造函数？
+
 运行测试
 您需要先前往`test/simple_list_test`中将ifdef和endif标签去掉
-您可以使用测试框架测试 我们将GTest用于单元测试用例 您可以从命令行单独编译和运行每一个测试
+您可以使用测试框架测试 我们将GTest用于单元测试用例 您可以从命令行单独编译和运行每一个测试(如果您是Ubantu的话)
 ```bash
 cd build
 make simple_test -j$(nproc)
 ./test simple_list_test
 ```
-在CLion中配置运行调试配置处 配置 `simple_list_test` 也可以
+在CLion中配置运行调试配置处 配置 `simple_list_test` 点击运行也可以

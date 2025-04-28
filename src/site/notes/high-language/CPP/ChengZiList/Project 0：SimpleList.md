@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-28T20:21:11.021+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-28T21:55:34.118+08:00"}
 ---
 
 
@@ -22,7 +22,12 @@ git push git@github.com:student/ChengZiList-yourname.git main
 现在可以删除情栀凉橙的仓库的克隆
 ```shell
 cd ..
+
+# if you are linux or macOS
 rm -rf ChengZiList-QingZhiLiangCheng
+
+# if you are windows
+rmdir /s /q ChengZiList-QingZhiLiangCheng
 ```
 将您自己的仓库克隆到您的计算机
 ```shell
@@ -30,11 +35,19 @@ rm -rf ChengZiList-QingZhiLiangCheng
 git clone https://github.com/student/ChengZiList-yourname.git
 
 # If you pull / push over SSH
-$ git clone git@github.com:student/ChengZiList-yourname.git
+git clone git@github.com:student/ChengZiList-yourname.git
 ```
 将情栀凉橙的存储库添加为第二个远程仓库。这允许您从情栀凉橙的存储库中检索更改
 ```shell
 git remote add QingZhiLiangCheng https://github.com/QingZhiLiangCheng/ChengZiList.git
+```
+验证
+```bash
+$ git remote -v
+QingZhiLiangCheng https://github.com/QingZhiLiangCheng/ChengZiList.git (fetch)
+QingZhiLiangCheng https://github.com/QingZhiLiangCheng/ChengZiList.git (push)
+origin  https://github.com/Wuruiyii/ChengZiList-Wuruiyii.git (fetch)
+origin  https://github.com/Wuruiyii/ChengZiList-Wuruiyii.git (push)
 ```
 现在，您可以根据需要从情栀凉橙的存储库中提取更改
 ```bash

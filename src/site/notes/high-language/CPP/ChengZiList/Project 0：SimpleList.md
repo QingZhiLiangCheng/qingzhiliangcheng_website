@@ -1,9 +1,10 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-29T09:19:26.590+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-29T10:57:09.632+08:00"}
 ---
 
 
-### Task1: 克隆仓库
+### Task1: 克隆仓库 并 运行
+**克隆仓库**
 转到此处[New repository](https://github.com/new)在您的账户下创建新的存储库。选择一个名称（例如`ChengZiList-yourname）
 在您的电脑上克隆情栀凉橙的ChengZiList仓库
 ```bash
@@ -65,7 +66,16 @@ cmake ..
 make
 ```
 
-
+**运行example_test测试**
+如果您用的是Ubuntu(建议) 在shell中运行
+```shell
+cd build
+make example_test -j$(nproc)
+./test/example_test
+```
+您也可以在CLion中运行调试配置处 选择或配置`example_test` 然后运行；或者前往`/test/example_test` 点击左侧的运行按钮运行单个测试
+不管哪种方式 测试通过证明环境没有问题
+那就可以正式开始啦！
 ### Task 2: SimpleList
 您将在`src/simple_list.h`中实现一个简单的不能再简单的链表，链表是一种常见的线性数据结构，由一系列节点组成，每个节点包含两部分，数据域和指针域
 您需要实现一个`SimpleList`类,并包含两个成员变量:整形类型的`data_` 和`SimpleList* next_` 设置成public的
@@ -85,12 +95,13 @@ std::cout<<simple_list->next_->data_<<std::endl;
 - 有参构造 依次传入data和next  
 - 试一下这两个写成一个有参构造函数？
 
-运行测试
+**运行测试**
 您需要先前往`test/simple_list_test`中将ifdef和endif标签去掉
 您可以使用测试框架测试 我们将GTest用于单元测试用例 您可以从命令行单独编译和运行每一个测试(如果您是Ubantu的话)
 ```bash
 cd build
-make simple_test -j$(nproc)
-./test simple_list_test
+make simple_test -j
+./test/simple_list_test
 ```
 在CLion中配置运行调试配置处 配置 `simple_list_test` 点击运行也可以
+运行通过即意味着Project 0通过啦 🥰  可以开始正式的Project 1的学习了！！

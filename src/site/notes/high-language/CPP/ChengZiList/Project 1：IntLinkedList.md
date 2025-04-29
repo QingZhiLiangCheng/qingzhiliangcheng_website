@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 1：IntLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-29T16:02:27.866+08:00","updated":"2025-04-29T17:41:02.868+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 1：IntLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-29T16:02:27.866+08:00","updated":"2025-04-29T21:36:15.343+08:00"}
 ---
 
 ### Overview
@@ -59,7 +59,7 @@ git pull QingZhiLiangCheng main
 
 ### Improvent 2: Public vs. Private
 但是上面的IntLinkedList仍然存在问题 因为我们可以绕过这个中间人(IntLinkedList) 直接访问里面的naked data structure 甚至可以操控data和next域 比如`int_linked_list.first_.next_.data_=10;`
-我们可以使用private关键字声明来达到这个效果
+我们可以使用private关键字声明来达到想要的效果
 
 > [!todo] Task 2
 > 将first_成员变量声明为private，那么这个成员变量只能在IntLinkedList类的成员函数中被访问和修改
@@ -74,9 +74,9 @@ git pull QingZhiLiangCheng main
 > 3. 实现Size函数 (如果有能力可以试一下迭代和递归两种方法)
 
 ### Improvement 4: Cashing
-在Improvement 3中实现的Size和AddLast的确定非常明显
+在Improvement 3中实现的Size和AddLast的缺点非常明显
 如果迭代的话需要O(n)的复杂度 如果递归的话 开销可能会更大(可以去理解一下递归的原理)
-为此，我们只需在 `SLList` 类中添加一个 `size_` 变量来跟踪当前链表的长度，从而得到如下代码。这种将重要数据保存起来以加快后续访问速度的做法，有时被称为 缓存（caching）
+为此，我们只需在 `SLList` 类中添加一个 `size_` 变量来跟踪当前链表的长度，这种将重要数据保存起来以加快后续访问速度的做法，有时被称为 缓存（caching）
 这是计算机中一个典型的哲学思想: 权衡取舍. 说白了 就是拿着空间换效率
 这里多说几句 现在计算机发展的水平来说 更缺乏的时间 因为我们的内存和硬盘还是蛮够用的 原来在打孔纸带的时候算力是一种服务(因为需要排队用机房的机子) 而现在算力又成了一种服务 hhh这是听南京大学NJU jyy老师说的
 
@@ -86,7 +86,7 @@ git pull QingZhiLiangCheng main
 
 其实也可以加一个tail_ 来记录尾节点 但是其实会引发一个问题（其实我觉得并不是特别要紧）这个问题将在[[high-language/CPP/ChengZiList/Project 2：LinkedList\|Project 2：LinkedList]]中提到
 
-### Improvement 5: sentinel head node
+### Improvement 5: Sentinel Head Node
 截止到现在 我猜你已经实现了类似下面的代码
 ``` cpp
 IntLinkedList():size_(0),first_(nullptr) {};
@@ -127,7 +127,7 @@ void AddLast(int x){
 
 ### 测试并提交自己git仓库
 **运行测试**
-你需要先前往`test/simple_list_test`中将ifdef和endif标签去掉
+你需要先前往`test/int_linked_list_test`中将ifdef和endif标签去掉
 你可以使用测试框架测试 我们将GTest用于单元测试用例 你可以从命令行单独编译和运行每一个测试(如果您是Ubantu的话)
 ```bash
 cd build

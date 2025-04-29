@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-29T10:57:09.632+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 0：SimpleList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:54:28.282+08:00","updated":"2025-04-29T10:59:48.104+08:00"}
 ---
 
 
@@ -105,3 +105,6 @@ make simple_test -j
 ```
 在CLion中配置运行调试配置处 配置 `simple_list_test` 点击运行也可以
 运行通过即意味着Project 0通过啦 🥰  可以开始正式的Project 1的学习了！！
+
+**提交您的代码**
+您可以将自己的代码提交到自己的git仓库 不要提交到我的git仓库啊

@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 1：IntLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-29T16:02:27.866+08:00","updated":"2025-04-29T21:54:48.887+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 1：IntLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-29T16:02:27.866+08:00","updated":"2025-04-29T22:00:17.769+08:00"}
 ---
 
 ### Overview
@@ -138,6 +138,3 @@ make int_linked_list_test -j
 运行通过即意味着Project 1通过啦 🥰
 **提交您的代码**
 您可以将自己的代码提交到自己的git仓库 不要提交到我的git仓库啊
-```shell
-git push origin main
-```

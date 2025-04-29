@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 1：IntLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-29T16:02:27.866+08:00","updated":"2025-04-29T22:00:17.769+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/Project 1：IntLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-29T16:02:27.866+08:00","updated":"2025-04-29T22:20:06.626+08:00"}
 ---
 
 ### Overview
@@ -29,10 +29,14 @@ simple_list = new SimpleList(2,simple_list);
 ```
 
 一定要确保你在写代码之前将项目更新到最新状态
+在确保了你push过代码后 然后
 ```bash
 git pull QingZhiLiangCheng main
 ```
+然后可能要接受一些更改 比如把你曾经写过的代码和我新增的代码都接受到新文件中
+最后一定要在提交到你自己的git仓库 才算合并完成
 
+我可能会改过文件 你可能需要删掉CLion中的`cmake-build-debug`文件 点构建然后选择重新加载Cmake目录
 ### Improvement 1: Rebranding and Bureaucracy
 不难发现，事实上一个简单的链表是由一个个节点所组成的, 一个好的思想是封装的时候我们要细化到最小的结构和模块，这是一种工程化的思想，所以这里你需要实现`IntNode`类并用`IntNode`类构成`IntList`类，并体会这种思想的好处。
 

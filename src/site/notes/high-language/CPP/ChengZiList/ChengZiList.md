@@ -1,5 +1,5 @@
 ---
-{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/ChengZiList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:07:13.868+08:00","updated":"2025-04-28T13:24:35.572+08:00"}
+{"tags":["project","ChengZiList"],"dg-publish":true,"permalink":"/high-language/CPP/ChengZiList/ChengZiList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-28T12:07:13.868+08:00","updated":"2025-04-29T17:37:14.130+08:00"}
 ---
 
 
@@ -13,4 +13,6 @@ ChengZiList的灵感来源于我之前看的两个课程: CS61B 和 CMU15445。C
 项目文档: [ChengZiList](https://qingzhiliangcheng.cn/high-language/cpp/chengzilist/chengzilist/)
 项目地址: https://github.com/QingZhiLiangCheng/ChengZiList.git
 [[high-language/CPP/ChengZiList/Project 0：SimpleList\|Project 0：SimpleList]]
+[[high-language/CPP/ChengZiList/Project 1：IntLinkedList\|Project 1：IntLinkedList]]
+[[high-language/CPP/ChengZiList/Project 2：LinkedList\|Project 2：LinkedList]]
 

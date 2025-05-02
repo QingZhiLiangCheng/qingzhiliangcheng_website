@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/high-language/CPP/CPP/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:20:01.294+08:00","updated":"2025-04-28T12:35:05.785+08:00"}
+{"dg-publish":true,"permalink":"/high-language/CPP/CPP/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-20T11:20:01.294+08:00","updated":"2025-05-01T14:25:44.887+08:00"}
 ---
 
 
@@ -10,6 +10,9 @@
 我的大作业是用Vue和Cpp写了一个酒店管理系统
 👉前端Vue代码仓库: https://github.com/QingZhiLiangCheng/hotel_management_system_vue.git
 👉后端cpp代码仓库: https://github.com/QingZhiLiangCheng/hotel_management_system_background.git
+
+一些不懂的 逐渐补充的知识
+[[high-language/CPP/右值引用 移动语义\|右值引用 移动语义]]
 
 **ChengZiList**
 📅Date: 2025.04.28 -- ing

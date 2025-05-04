@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["project","cmu15445","bustub"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 1 Buffer Pool/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-21T22:07:27.013+08:00","updated":"2025-05-02T14:58:31.084+08:00"}
+{"dg-publish":true,"tags":["project","cmu15445","bustub"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 1 Buffer Pool/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-21T22:07:27.013+08:00","updated":"2025-05-02T15:10:26.178+08:00"}
 ---
 
 > [!info]
@@ -849,4 +849,4 @@ auto BufferPoolManager::FlushPage(page_id_t page_id) -> bool {
 ```
 
 
-
+![Pasted image 20250502151018.png|400](/img/user/accessory/Pasted%20image%2020250502151018.png)

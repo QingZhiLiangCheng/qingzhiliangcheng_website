@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f973","tags":["folder"],"dg-publish":true,"dg-pinned":true,"permalink":"/CS 61B/CS 61B/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-02T21:48:21.662+08:00","updated":"2025-04-26T09:23:40.284+08:00"}
+{"sticker":"emoji//1f973","tags":["folder"],"dg-publish":true,"dg-pinned":true,"permalink":"/CS 61B/CS 61B/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-02T21:48:21.662+08:00","updated":"2025-05-10T17:19:42.041+08:00"}
 ---
 
 📅date: 2025.03.02 - ing
@@ -38,5 +38,8 @@ Lecture 13 是个问答
 [[CS 61B/Lecture 17 B-Trees(2-3, 2-3-4 Trees)\|Lecture 17 B-Trees(2-3, 2-3-4 Trees)]]
 [[CS 61B/Lecture 18 Tree Rotation and Red Black Trees\|Lecture 18 Tree Rotation and Red Black Trees]]
 [[CS 61B/Project 1A LinkedListDeque61B\|Project 1A LinkedListDeque61B]]
+
+Project
+[[CS 61B/gitlet\|gitlet]]
 
 ![[cs61B spring2024.components]]

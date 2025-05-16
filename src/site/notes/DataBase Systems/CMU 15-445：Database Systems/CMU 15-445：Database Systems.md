@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-05-01T20:46:07.330+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-05-15T20:28:07.084+08:00"}
 ---
 
 📅date: 2024.1.20 - ing
@@ -56,6 +56,7 @@ Andy要求不能公开代码 所以Project代码我private了
 - [[DataBase Systems/CMU 15-445：Database Systems/环境配置 下载代码  提交项目 代码规范\|环境配置 下载代码  提交项目 代码规范]]
 - [[DataBase Systems/CMU 15-445：Database Systems/Project 1 Buffer Pool\|Project 1 Buffer Pool]]
 - [[DataBase Systems/CMU 15-445：Database Systems/Project 2 Hash Index (fall2023)\|Project 2 Hash Index (fall2023)]]
+- [[DataBase Systems/CMU 15-445：Database Systems/Project 3 Query Execution\|Project 3 Query Execution]]
 
 ![[Database System Concepts 7th edition.pdf]]
 

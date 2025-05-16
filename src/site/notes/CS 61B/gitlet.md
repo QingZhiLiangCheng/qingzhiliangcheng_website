@@ -1,5 +1,5 @@
 ---
-{"tags":["cs61b","project","gitlet"],"dg-publish":true,"permalink":"/CS 61B/gitlet/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-05-10T17:18:19.142+08:00","updated":"2025-05-10T17:56:20.103+08:00"}
+{"tags":["cs61b","project","gitlet"],"dg-publish":true,"permalink":"/CS 61B/gitlet/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-05-10T17:18:19.142+08:00","updated":"2025-05-12T19:49:40.343+08:00"}
 ---
 
 **author**: QingZhiLiangCheng, ChengShi
@@ -14,7 +14,7 @@ Gitlet是一个版本管理系统，仿照主流系统Git的功能并实现了�
 ### Features
 - **提交机制**：保存文件目录的快照，以后可以恢复。
 - **分支管理**：在单独的分支中维护提交序列。
-- **签出系统**：将单个文件或整个分支恢复到特定提交时的状态。
+- **版本切换**：将单个文件或整个分支恢复到特定提交时的状态。
 - **合并功能**：合并来自不同分支的更改。
 - **日志历史**：查看提交历史。
 - **数据持久性**：利用 Java 序列化来持久保存数据，模拟存储库的平面目录结构。
@@ -25,16 +25,16 @@ Gitlet是一个版本管理系统，仿照主流系统Git的功能并实现了�
 我是在Ubantu Linux环境下执行的命令
 ```bash
 #cd 根目录 gitlet
-mkdir classes
-javac -d classes gitlet/*.java
+mkdir gitlet-test
+javac -d gitlet-test gitlet/*.java
 ```
 
 ```bash
-cd classes
+cd gitlet-test
 ls
 ```
 
-![Pasted image 20250510172511.png|500](/img/user/accessory/Pasted%20image%2020250510172511.png)
+![gitlet_ls.png|500](/img/user/accessory/gitlet_ls.png)
 
 为了开始使用Gitlet，需要先通过命令初始化一个新的Gitlet仓库.
 ```bash

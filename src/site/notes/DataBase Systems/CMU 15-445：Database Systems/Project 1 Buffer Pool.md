@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["project","cmu15445","bustub"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 1 Buffer Pool/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-21T22:07:27.013+08:00","updated":"2025-05-02T15:10:26.178+08:00"}
+{"dg-publish":true,"tags":["project","cmu15445","bustub"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 1 Buffer Pool/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-21T22:07:27.013+08:00","updated":"2025-05-23T18:40:07.702+08:00"}
 ---
 
 > [!info]
@@ -14,7 +14,7 @@ Project1是实现的整个BufferPool的机制 其实写到最后才会突然顿�
 最后 你会发现 整个BufferPool的思路是这样的:
 BufferPool是在内存中malloc出来的一块空间 以Page为度量 分成了一个一个frame 同时 在内存中维护了一个page table(类似于OS中的page table) 类似于一个hash table记录着page所在的frame槽位(即page_id, frame_id对)
 ![project 1 overview 1 1.png|550](/img/user/accessory/project%201%20overview%201%201.png)
-这里的思想是 如果有query想需要一个page的数据 需要查看Page Table来确定这个page是否已经在内存中 如果在 就直接获取到这个page的位置 为这个page的线worker(threader)数加1 
+这里的思想是 如果有query想需要一个page的数据 需要查看Page Table来确定这个page是否已经在内存中 如果在 就直接获取到这个page的位置 为这个page的worker(threader)数加1 
 如果不在 就需要将这个page从disk从提取出来放入空闲frame中 然后将Page Table中记录连接
 ![project 1 overview 2.png|550](/img/user/accessory/project%201%20overview%202.png)
 ![project 1 overview 3.png|550](/img/user/accessory/project%201%20overview%203.png)

@@ -1,5 +1,5 @@
 ---
-{"tags":["bustub","project","cmu15445"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 3 Query Execution/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-05-15T20:21:35.866+08:00","updated":"2025-05-16T11:49:05.648+08:00"}
+{"tags":["bustub","project","cmu15445"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 3 Query Execution/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-05-15T20:21:35.866+08:00","updated":"2025-05-16T15:55:20.812+08:00"}
 ---
 
 ### Overview
@@ -80,5 +80,17 @@ table page是实际上存储table数据的结构 每一个tuple都由RID唯一�
 在Catlog中 ，可以获取到一个表对应的所有IndexInfo，IndexInfo中包含着索引的信息，包括name, key schema, index oid, index, key size...  其中比较重要的是key schema是构建索引的列的结构， `index_` 是个智能指针，指向的是真正的索引Index类对象
 **Index**
 Index类实际上就是一个抽象类，提供了三个虚函数，在bustub中，我们的索引有两种，一种是hash index，一种是b+tree index。所以Index实际上有两个子类，一个是ExtendibleHashIndex, 一个是 BPlusTreeIndex. 在fall2023的课程中，我们用的是ExtendibleHashIndex，用的是我们Project2实现的可扩展哈希
+**Executor**
+executor 本身并不保存查询计划的信息，应该通过 executor 的成员 plan 来得知该如何进行本次计算，例如 SeqScanExecutor 需要向 SeqScanPlanNode 询问自己该扫描哪张表。
+当执行器需要从表中获取数据时，如果查询计划中包含索引扫描操作，执行器会通过索引来快速定位数据。
+- 执行器根据查询计划确定需要使用的索引。获取索引的元数据，包括索引键的模式和表列的映射关系。
+- 根据查询条件和索引的元数据，构建索引键。这通常涉及到从查询条件中提取列值，并根据索引键的模式进行转换。
+- 调用索引的 `ScanKey` 方法，传入构建好的索引键和一个结果 RID 向量
+- 索引会根据键值查找对应的记录，并将找到的 RID 存储在结果向量中
+- 使用结果向量中的 RID，从缓冲池中查找对应的页。如果页不在缓冲池中，则从磁盘加载到缓冲池。
+- 从页中读取数据并创建 `Tuple` 对象
+
+### Task 1 - Executors
+**SeqScan**
 
 

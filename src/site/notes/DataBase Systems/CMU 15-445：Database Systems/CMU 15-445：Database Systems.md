@@ -1,8 +1,8 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-05-15T20:28:07.084+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-06-05T12:07:19.147+08:00"}
 ---
 
-📅date: 2024.1.20 - ing
+📅date: 2025.1.20 - ing
 🥰CMU15445是我目前看过的最喜欢的课程
 Andy老师说：the most important thing you get to understand is I really only care about two things in my entire life. The first one is my wife and my biological daughter and the second one databases.
 这门课的全套课程开源，而且实验对外校同学完全开放。

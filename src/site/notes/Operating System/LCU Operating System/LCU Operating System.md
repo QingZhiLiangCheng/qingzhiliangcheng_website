@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-06T17:38:12.319+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-17T14:43:04.369+08:00"}
 ---
 
 ### LCU Operating System Lab
@@ -14,5 +14,10 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 ### LCU Operating System Course
 期末复习
 [[Operating System/LCU Operating System/调度算法整理\|调度算法整理]]
+[[Operating System/LCU Operating System/连续分配存储管理方式\|连续分配存储管理方式]]
+[[Operating System/LCU Operating System/银行家算法\|银行家算法]]
+
 [[Operating System/LCU Operating System/专题一：作业调度与进程调度结合大题\|专题一：作业调度与进程调度结合大题]]
 [[Operating System/LCU Operating System/专题二：调度与存储管理结合大题\|专题二：调度与存储管理结合大题]]
+[[Operating System/LCU Operating System/专题三：银行家算法避免死锁大题\|专题三：银行家算法避免死锁大题]]
+

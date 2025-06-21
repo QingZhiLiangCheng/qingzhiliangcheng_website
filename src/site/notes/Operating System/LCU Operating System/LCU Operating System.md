@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-17T14:43:04.369+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-18T21:37:20.472+08:00"}
 ---
 
 ### LCU Operating System Lab
@@ -17,7 +17,18 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 [[Operating System/LCU Operating System/连续分配存储管理方式\|连续分配存储管理方式]]
 [[Operating System/LCU Operating System/银行家算法\|银行家算法]]
 
-[[Operating System/LCU Operating System/专题一：作业调度与进程调度结合大题\|专题一：作业调度与进程调度结合大题]]
-[[Operating System/LCU Operating System/专题二：调度与存储管理结合大题\|专题二：调度与存储管理结合大题]]
-[[Operating System/LCU Operating System/专题三：银行家算法避免死锁大题\|专题三：银行家算法避免死锁大题]]
+- 调度问题
+	- [[Operating System/LCU Operating System/专题一：作业调度与进程调度结合大题\|专题一：作业调度与进程调度结合大题]]
+	- [[Operating System/LCU Operating System/专题二：调度与连续存储管理结合大题\|专题二：调度与连续存储管理结合大题]]
+- 死锁
+	- [[Operating System/LCU Operating System/专题四：银行家算法避免死锁大题\|专题四：银行家算法避免死锁大题]]
+- 存储器与虚拟存储器
+	- [[Operating System/LCU Operating System/专题三：动态分区分配\|专题三：动态分区分配]]
+	- [[Operating System/LCU Operating System/专题五：逻辑地址与物理地址的转换\|专题五：逻辑地址与物理地址的转换]]
+	- [[Operating System/LCU Operating System/专题六：页面置换算法大题\|专题六：页面置换算法大题]]
+	- [[Operating System/LCU Operating System/专题七：分页存储与置换算法结合\|专题七：分页存储与置换算法结合]]
+- 磁盘调度
+	- [[Operating System/LCU Operating System/专题八：磁盘调度算法大题\|专题八：磁盘调度算法大题]]
+- 进程同步
+	- 
 

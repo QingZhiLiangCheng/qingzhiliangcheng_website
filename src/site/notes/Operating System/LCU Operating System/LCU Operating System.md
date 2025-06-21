@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-18T21:37:20.472+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-21T09:45:39.421+08:00"}
 ---
 
 ### LCU Operating System Lab
@@ -30,5 +30,5 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 - 磁盘调度
 	- [[Operating System/LCU Operating System/专题八：磁盘调度算法大题\|专题八：磁盘调度算法大题]]
 - 进程同步
-	- 
+	- [[Operating System/LCU Operating System/专题九：PV操作\|专题九：PV操作]]
 

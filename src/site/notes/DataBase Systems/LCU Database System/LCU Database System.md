@@ -1,5 +1,5 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-06-21T15:11:15.994+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-06-21T21:20:27.818+08:00"}
 ---
 
 资料连接：
@@ -45,16 +45,17 @@ LCU的数据库课的lab使用的是SQL Server数据库
 - [[DataBase Systems/LCU Database System/第七章 数据库设计\|第七章 数据库设计]]里面有一些小知识点很重要，尤其是数字字典 ；除此之外 E-R图与关系模式Triple Star!!! ⭐⭐⭐ 会考一道大题
 - [[DataBase Systems/LCU Database System/第八章 数据库编程\|第八章 数据库编程]] 交互方式，主变量等一些小问题很重要；除此之外存储模式Triple Star!!! ⭐⭐⭐ 会考一道大题
 - 第九章 关系数据库存储管理: 这一部分内容其实就是内核的部分内容了，涉及到索引等内容，我在CMU15445基本都了解过 看一遍书几本就可以了 这一部分好像不考
-- 第十章 关系查询处理和查询优化：这也是我在CMU15445学过的内容，弄清楚一些小知识点就可以，只考小题
-- 第十一章 数据库恢复技术，设计到事务ACID(CMU15445学过)，故障的种类，登记日志文件等知识点，不会考深了
-- 第十二章 并发控制，并发的问题(CMU15445学过 R-W, W-R, W-W?), 锁(CMU15445学过)，小题，不会考深了
+- [[DataBase Systems/LCU Database System/第十章 关系查询处理和查询优化\|第十章 关系查询处理和查询优化]]：这也是我在CMU15445学过的内容，弄清楚一些小知识点就可以，只考小题
+- [[DataBase Systems/LCU Database System/第十一章 数据库恢复技术\|第十一章 数据库恢复技术]]，设计到事务ACID(CMU15445学过)，故障的种类，登记日志文件等知识点， 事务可能考一个大题 Triple Star!!! ⭐⭐⭐ 
+- [[DataBase Systems/LCU Database System/第十二章 并发控制\|第十二章 并发控制]]，并发的问题(CMU15445学过 R-W, W-R, W-W?), 锁(CMU15445学过)，小题，不会考深了
 
 **大题专题** Triple Star!!! ⭐⭐⭐
-- 专题一：关系代数与SQL语句
-- 专题二：E-R图与关系模型
-- 专题三：关系模式规范化
-- 专题四：触发器
-- 专题五：存储过程
+- [[DataBase Systems/LCU Database System/专题一：关系代数与SQL语句\|专题一：关系代数与SQL语句]]
+- [[DataBase Systems/LCU Database System/专题二：E-R图与关系模型\|专题二：E-R图与关系模型]]
+- [[DataBase Systems/LCU Database System/专题三：关系模式规范化\|专题三：关系模式规范化]]
+- [[DataBase Systems/LCU Database System/专题四：触发器\|专题四：触发器]]
+- [[DataBase Systems/LCU Database System/专题五：事务大题\|专题五：事务大题]]
+- 专题六：存储过程
 
 
 

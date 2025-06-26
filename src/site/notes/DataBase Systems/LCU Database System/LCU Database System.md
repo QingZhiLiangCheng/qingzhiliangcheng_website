@@ -1,5 +1,5 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-06-21T21:20:27.818+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-06-26T20:13:59.206+08:00"}
 ---
 
 资料连接：
@@ -55,8 +55,8 @@ LCU的数据库课的lab使用的是SQL Server数据库
 - [[DataBase Systems/LCU Database System/专题三：关系模式规范化\|专题三：关系模式规范化]]
 - [[DataBase Systems/LCU Database System/专题四：触发器\|专题四：触发器]]
 - [[DataBase Systems/LCU Database System/专题五：事务大题\|专题五：事务大题]]
-- 专题六：存储过程
-
+- [[DataBase Systems/专题六：存储过程\|专题六：存储过程]]
+- [[DataBase Systems/LCU Database System/考前速背耶耶\|考前速背耶耶]]
 
 
 

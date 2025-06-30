@@ -55,7 +55,7 @@ LCU的数据库课的lab使用的是SQL Server数据库
 - [[DataBase Systems/LCU Database System/专题三：关系模式规范化\|专题三：关系模式规范化]]
 - [[DataBase Systems/LCU Database System/专题四：触发器\|专题四：触发器]]
 - [[DataBase Systems/LCU Database System/专题五：事务大题\|专题五：事务大题]]
-- [[DataBase Systems/专题六：存储过程\|专题六：存储过程]]
+- [[DataBase Systems/LCU Database System/专题六：存储过程\|专题六：存储过程]]
 - [[DataBase Systems/LCU Database System/考前速背耶耶\|考前速背耶耶]]
 
 

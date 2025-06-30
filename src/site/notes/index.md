@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":false,"tags":[],"permalink":"/index/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-06-30T21:55:03.855+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":false,"tags":[],"permalink":"/index/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-06-30T22:07:57.203+08:00"}
 ---
 
 
@@ -124,4 +124,4 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 👉我的笔记[[Operating System/LCU Operating System/LCU Operating System\|LCU Operating System]]
 
 [[math/MIT 18.01 Single Variable Calculus/MIT 18.01 Single Variable Calculus\|MIT 18.01 Single Variable Calculus]]
-[[DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database System\|CMU 15-721 Advanced Database System]]
+[[DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems\|CMU 15-721 Advanced Database Systems]]

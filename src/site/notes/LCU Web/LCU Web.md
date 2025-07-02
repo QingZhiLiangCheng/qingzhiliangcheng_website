@@ -1,7 +1,9 @@
 ---
-{"tags":["folder"],"dg-publish":true,"permalink":"/LCU Web/LCU Web/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-07T19:14:16.422+08:00","updated":"2025-06-08T16:15:56.349+08:00"}
+{"tags":["folder","LCU-Web"],"dg-publish":true,"permalink":"/LCU Web/LCU Web/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-07T19:14:16.422+08:00","updated":"2025-07-02T22:21:29.547+08:00"}
 ---
 
+2025spring
+软工的期中考试是100个选择题，期末考试是给个图片然后用三件套给复现出来，除此之外还有大作业……
 机房里面只有VS code.
 盒子模型
 列表
@@ -57,4 +59,4 @@ demo
 - 指向动画
 - 图片在上面 字在下面 用的br标签换行
 
-### Demo 4: 
+哈哈哈哈哈其实没复习完就考试了

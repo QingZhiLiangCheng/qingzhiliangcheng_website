@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-1： Lakehouse： A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics(M.Armbrust, et al., CIDR 2021)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-28T16:34:33.903+08:00","updated":"2025-07-02T20:21:41.420+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-1： Lakehouse： A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics(M.Armbrust, et al., CIDR 2021)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-28T16:34:33.903+08:00","updated":"2025-07-03T20:34:43.828+08:00"}
 ---
 
 ![[armbrust-cidr21.pdf]]
@@ -334,3 +334,7 @@ Delta Lake会利用Metadata layer来确定那些文件分区需要读取，能�
 除了前面提到的现有 API 和效率优化问题之外，我们还可以探索截然不同的数据访问接口设计方式，用于支持机器学习。例如，最近的研究提出了“因式分解机器学习（factorized ML）”框架，将机器学习逻辑直接嵌入到 SQL 的 join 操作中，并探索将传统 SQL 查询优化技术应用于 SQL 实现的 ML 算法。
 我们仍然需要一套标准接口，以便数据科学家能够充分利用 Lakehouse（或数据仓库）中的强大数据管理能力。在 Databricks，我们将 Delta Lake 与 ML 实验追踪平台 MLflow 集成，使数据科学家可以轻松地记录实验所使用的表版本，并在之后复现该数据版本。
 此外，业界正在兴起一种新的抽象层——特征仓库（Feature Store），用于存储和更新机器学习应用中使用的特征，这类系统如果基于 Lakehouse 的标准数据库功能（如事务和版本控制）将会受益匪浅。
+
+
+
+JSON

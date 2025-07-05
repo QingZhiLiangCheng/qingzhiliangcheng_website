@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-30T20:29:38.980+08:00","updated":"2025-06-30T21:16:40.163+08:00"}
+{"tags":["CMU15721","folder"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-30T20:29:38.980+08:00","updated":"2025-07-04T18:31:44.849+08:00"}
 ---
 
 
@@ -7,4 +7,5 @@
 - Lecture 01: Modern Analytical Database Systems
 	- [[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-1： Lakehouse： A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics(M.Armbrust, et al., CIDR 2021)\|Lecture 01 paper-1： Lakehouse： A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics(M.Armbrust, et al., CIDR 2021)]]
 	- [[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 lecture：Modern Analytical Database Systems\|Lecture 01 lecture：Modern Analytical Database Systems]]
+	- [[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-2：The Composable Data Management System Manifesto(P.Pedreira, et al., VLDB 2023)\|Lecture 01 paper-2：The Composable Data Management System Manifesto(P.Pedreira, et al., VLDB 2023)]]
 - Lecture 02: Data Formats & Encoding I

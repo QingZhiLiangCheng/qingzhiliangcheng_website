@@ -1,10 +1,14 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/LCU DataStructure/My DataStructure/SingleLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T17:57:41.461+08:00","updated":"2025-07-08T00:01:09.788+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/LCU DataStructure/My DataStructure/SingleLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T17:57:41.461+08:00","updated":"2025-07-08T00:19:05.561+08:00"}
 ---
 
 链表
 什么是链表？
 从虚拟内存 64位 48位(int a =10 验证, 分析内存视图) 各个分区 介绍到 数组扩容  到 链表
+![Pasted image 20241004135222.png|500](/img/user/accessory/Pasted%20image%2020241004135222.png)
+大多数Intel兼容机采用小端法的形式，大多数IBM和Oracle采取的是大端法的形式
+Android（from Google）和IOS（from Apple）都是小端法
+
 链表有data域和next域  
 地址在C++中的体现: 指针 
 写好class SimpleIntList的代码 先不用在外面建类 记得先设置成public

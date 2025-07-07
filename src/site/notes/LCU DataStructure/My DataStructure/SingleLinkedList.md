@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/LCU DataStructure/My DataStructure/SingleLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T17:57:41.461+08:00","updated":"2025-07-07T23:10:36.510+08:00"}
+{"dg-publish":true,"tags":[],"permalink":"/LCU DataStructure/My DataStructure/SingleLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T17:57:41.461+08:00","updated":"2025-07-08T00:01:09.788+08:00"}
 ---
 
 链表
@@ -32,7 +32,7 @@ int main() {
 
 借此讲一下函数的调度机制 最好的例子是值传递
 从可视化和汇编的角度讲一下
-%rdi, %rsi, %rdx
+%rdi, %rsi, %rdx  %rsp 栈顶指针   另一个是%rbp基指针  %rip放的是下一条指令的地址
 
 加构造函数
 ```cpp

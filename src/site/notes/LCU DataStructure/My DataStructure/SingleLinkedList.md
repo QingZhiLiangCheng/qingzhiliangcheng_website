@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/LCU DataStructure/My DataStructure/SingleLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T17:57:41.461+08:00","updated":"2025-07-08T00:19:05.561+08:00"}
+{"dg-publish":true,"permalink":"/LCU DataStructure/My DataStructure/SingleLinkedList/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T17:57:41.461+08:00","updated":"2025-07-08T00:19:05.561+08:00"}
 ---
 
 链表

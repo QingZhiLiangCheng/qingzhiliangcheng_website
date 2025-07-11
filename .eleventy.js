@@ -98,10 +98,11 @@ module.exports = function (eleventyConfig) {
     dynamicPartials: true,
   });
   let markdownLib = markdownIt({
-    breaks: true,
+    breaks: false,//true改为false了
     html: true,
     linkify: true,
   })
+      .use(lineToParagraphPlugin)
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
     })
@@ -573,3 +574,31 @@ module.exports = function (eleventyConfig) {
     passthroughFileCopy: true,
   };
 };
+
+function lineToParagraphPlugin(md) {
+  md.core.ruler.after("block", "line_to_paragraph", (state) => {
+    const tokens = state.tokens;
+    const newTokens = [];
+
+    tokens.forEach((token) => {
+      // 只处理包含换行的 inline token
+      if (token.type === "inline" && token.content.includes("\n")) {
+        const lines = token.content.split(/\n+/).filter(Boolean);
+        lines.forEach((line) => {
+          const open = new state.Token("paragraph_open", "p", 1);
+          const inline = new state.Token("inline", "", 0);
+          const close = new state.Token("paragraph_close", "p", -1);
+
+          inline.content = line.trim();
+          inline.children = [];
+
+          newTokens.push(open, inline, close);
+        });
+      } else {
+        newTokens.push(token);
+      }
+    });
+
+    state.tokens = newTokens;
+  });
+}

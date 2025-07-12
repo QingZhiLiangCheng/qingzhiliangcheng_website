@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-2：The Composable Data Management System Manifesto(P.Pedreira, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-04T18:29:16.749+08:00","updated":"2025-07-12T11:52:04.530+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-2：The Composable Data Management System Manifesto(P.Pedreira, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-04T18:29:16.749+08:00","updated":"2025-07-12T12:18:25.853+08:00"}
 ---
 
 

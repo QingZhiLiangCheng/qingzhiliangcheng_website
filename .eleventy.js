@@ -103,6 +103,7 @@ module.exports = function (eleventyConfig) {
     linkify: true,
   })
       .use(lineToParagraphPlugin)
+      .use(embedPdfPlugin) //新增PDF解析代码
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
     })
@@ -601,4 +602,28 @@ function lineToParagraphPlugin(md) {
 
     state.tokens = newTokens;
   });
+}
+
+function embedPdfPlugin(md) {
+  const PDF_REGEX = /!\[\[(.+\.pdf)\]\]/i;
+
+  function pdfEmbedReplace(state) {
+    for (let blkIdx = 0; blkIdx < state.tokens.length; blkIdx++) {
+      const token = state.tokens[blkIdx];
+      if (token.type !== "inline" || !token.content) continue;
+
+      const match = token.content.match(PDF_REGEX);
+      if (match) {
+        const pdfPath = match[1];
+
+        const embedToken = new state.Token('html_inline', '', 0);
+        embedToken.content = `<embed src="src/site/pdf/${pdfPath}" type="application/pdf" width="100%" height="600px" />`;
+
+        // 替换 token
+        state.tokens.splice(blkIdx, 1, embedToken);
+      }
+    }
+  }
+
+  md.core.ruler.after("inline", "pdf_embed", pdfEmbedReplace);
 }

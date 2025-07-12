@@ -621,7 +621,7 @@ function embedPdfPlugin(md) {
         const pdfPath = match[1];
 
         const embedToken = new state.Token('html_inline', '', 0);
-        embedToken.content = `<embed src="https://gitee.com/qingzhi-cool-orange/website-pdfs/blob/master/${pdfPath}" type="application/pdf" width="100%" height="600px" />`;
+        embedToken.content = `<embed src="https://gitee.com/qingzhi-cool-orange/website-pdfs/raw/master/${pdfPath}" type="application/pdf" width="100%" height="600px" />`;
 
         // 替换 token
         state.tokens.splice(blkIdx, 1, embedToken);

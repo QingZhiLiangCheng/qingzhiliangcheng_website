@@ -524,6 +524,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy("src/site/img");
+  eleventyConfig.addPassthroughCopy("src/site/pdf");//Done(QingZhiLiangCheng): url访问pdf
   eleventyConfig.addPassthroughCopy("src/site/scripts");
   eleventyConfig.addPassthroughCopy("src/site/styles/_theme.*.css");
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "dist" });
@@ -604,6 +605,9 @@ function lineToParagraphPlugin(md) {
   });
 }
 
+/**
+ * Done(QingZhiLingCheng): 增加PDF渲染代码
+ */
 function embedPdfPlugin(md) {
   const PDF_REGEX = /!\[\[(.+\.pdf)\]\]/i;
 
@@ -617,7 +621,7 @@ function embedPdfPlugin(md) {
         const pdfPath = match[1];
 
         const embedToken = new state.Token('html_inline', '', 0);
-        embedToken.content = `<embed src="src/site/pdf/${pdfPath}" type="application/pdf" width="100%" height="600px" />`;
+        embedToken.content = `<embed src="/pdf/${pdfPath}" type="application/pdf" width="100%" height="600px" />`;
 
         // 替换 token
         state.tokens.splice(blkIdx, 1, embedToken);

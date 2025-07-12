@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>😢 PDF或网页 不存在</title>
+  <title>{{ title or "😢 PDF或网页 不存在" }}</title>
   <style>
     body {
       background-color: #f9f9f9;
@@ -50,11 +50,11 @@
   </style>
 </head>
 <body>
-  <h1>😢 PDF 不存在</h1>
-  <p>你请求的文件未找到，可能已经被删除或路径错误。</p>
+  <h1>😢 {{ heading or "PDF 不存在" }}</h1>
+  <p>{{ message or "你请求的文件未找到，可能已经被删除或路径错误。" }}</p>
 
   <div class="pdf-container">
-    <embed src="" type="application/pdf" />
+    <embed src="{{ pdf_url or '' }}" type="application/pdf" />
   </div>
 
   <footer>返回主页或联系情栀凉橙以获取帮助</footer>

@@ -1,28 +1,62 @@
-
 <!DOCTYPE html>
-<html lang="{{ meta.mainLanguage }}">
-    <head>
-        <title>Nothing here</title>
-        <link href="/styles/digital-garden-base.css" rel="stylesheet">
-        {%-if meta.themeStyle%}
-            <link href="/styles/obsidian-base.css" rel="stylesheet">
-    	    <link href="{{meta.themeStyle}}" rel="stylesheet">
-        {% else %}
-            <link href="/styles/style.css" rel="stylesheet">
-        {%endif%}
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title or "😢 PDF或网页 不存在" }}</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      color: #444;
+      font-family: "Segoe UI", "PingFang SC", "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
 
-        <link href="/styles/custom-style.css" rel="stylesheet">
+    h1 {
+      font-size: 2rem;
+      color: #cc0000;
+      margin-bottom: 0.5em;
+    }
 
-    </head>
-    <body class="theme-{{meta.baseTheme}} markdown-preview-view">
-        <div class="content centered">
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2em;
+    }
 
-            {%-if not meta.themeStyle%}
-                <div class="font-bg"> &#x1F60E; </div>
-            {%endif%}
-            <h1>There is nothing here</h1>
-            <p>If you got here from a link, this note is probably not made public</p>
-            <a href="/">Go back home</a>
-        </div>
-    </body>
+    .pdf-container {
+      width: 80%;
+      max-width: 800px;
+      height: 500px;
+      border: 2px dashed #ccc;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .pdf-container embed {
+      width: 100%;
+      height: 100%;
+    }
+
+    footer {
+      margin-top: 2em;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>😢 {{ heading or "PDF 或 页面 不存在" }}</h1>
+  <p>{{ message or "你请求的文件未找到，可能已经被删除或路径错误。" }}</p>
+
+  <div class="pdf-container">
+    <embed src="{{ pdf_url or '' }}" type="application/pdf" />
+  </div>
+
+  <footer>返回主页或联系情栀凉橙以获取帮助</footer>
+</body>
 </html>

@@ -619,11 +619,65 @@ function embedPdfPlugin(md) {
       const match = token.content.match(PDF_REGEX);
       if (match) {
         const pdfPath = match[1];
+        const containerId = `pdf-container-${blkIdx}`;
+        const pdfUrl = `/pdf/${pdfPath}`;
 
-        const embedToken = new state.Token('html_inline', '', 0);
-        embedToken.content = `<embed src="/pdf/${pdfPath}" type="application/pdf" width="100%" height="600px" />`;
+        const embedToken = new state.Token("html_inline", "", 0);
 
-        // 替换 token
+        embedToken.content = `
+<div class="pdf-container" id="${containerId}">
+  <div style="font-size: 1rem; color: #666;">📄 正在加载 PDF...</div>
+</div>
+<script>
+  (function() {
+    const container = document.getElementById("${containerId}");
+    const url = "${pdfUrl}";
+
+    fetch(url, { method: "HEAD" })
+      .then(res => {
+        if (res.ok) {
+          container.innerHTML = '<embed src="' + url + '" type="application/pdf" width="100%" height="600px" />';
+        } else {
+          container.innerHTML = \`
+            <div style="
+              background-color: #f9f9f9;
+              border: 2px dashed #ccc;
+              padding: 2em;
+              text-align: center;
+              font-family: 'Segoe UI', 'PingFang SC', 'Helvetica Neue', sans-serif;
+              color: #444;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+              max-width: 800px;
+              margin: 1em auto;
+            ">
+              <h2 style="color: #cc0000; margin-bottom: 0.5em;">😢 PDF 不存在</h2>
+              <p style="font-size: 1.1rem;">你请求的文件未找到，可能已经被删除或路径错误。</p>
+              <footer style="margin-top: 1.5em; font-size: 0.9rem; color: #999;">返回主页或联系 情栀凉橙 以获取帮助</footer>
+            </div>
+          \`;
+        }
+      })
+      .catch(() => {
+        container.innerHTML = \`
+          <div style="
+            background-color: #fdf0f0;
+            border: 2px dashed #e0b4b4;
+            padding: 2em;
+            text-align: center;
+            color: #a33;
+            max-width: 800px;
+            margin: 1em auto;
+            font-family: 'Segoe UI', 'PingFang SC', 'Helvetica Neue', sans-serif;
+          ">
+            <h2 style="margin-bottom: 0.5em;">⚠️ PDF 加载失败</h2>
+            <p style="font-size: 1.1rem;">可能是网络问题或服务器出错，请稍后再试。</p>
+          </div>
+        \`;
+      });
+  })();
+</script>
+`;
+
         state.tokens.splice(blkIdx, 1, embedToken);
       }
     }

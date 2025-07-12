@@ -525,6 +525,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("src/site/img");
   eleventyConfig.addPassthroughCopy("src/site/pdf");//Done(QingZhiLiangCheng): url访问pdf
+  eleventyConfig.addPassthroughCopy("src/site/fonts");//Done(QingZhiLiangCheng): 加入字体文件
   eleventyConfig.addPassthroughCopy("src/site/scripts");
   eleventyConfig.addPassthroughCopy("src/site/styles/_theme.*.css");
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "dist" });

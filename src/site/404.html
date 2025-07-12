@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>😢 PDF或网页 不存在</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      color: #444;
+      font-family: "Segoe UI", "PingFang SC", "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #cc0000;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2em;
+    }
+
+    .pdf-container {
+      width: 80%;
+      max-width: 800px;
+      height: 500px;
+      border: 2px dashed #ccc;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .pdf-container embed {
+      width: 100%;
+      height: 100%;
+    }
+
+    footer {
+      margin-top: 2em;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>😢 PDF 不存在</h1>
+  <p>你请求的文件未找到，可能已经被删除或路径错误。</p>
+
+  <div class="pdf-container">
+    <embed src="" type="application/pdf" />
+  </div>
+
+  <footer>返回主页或联系情栀凉橙以获取帮助</footer>
+</body>
+</html>

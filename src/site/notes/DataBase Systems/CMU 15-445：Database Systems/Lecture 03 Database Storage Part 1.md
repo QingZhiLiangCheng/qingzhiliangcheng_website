@@ -1,5 +1,5 @@
 ---
-{"week":"第二周","dg-publish":true,"tags":["week2","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-04-19T09:54:28.108+08:00"}
+{"week":"第二周","dg-publish":true,"tags":["week2","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 03 Database Storage Part 1/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-22T09:02:22.430+08:00","updated":"2025-07-12T13:50:57.160+08:00"}
 ---
 
 
@@ -16,8 +16,6 @@
 
 我的视频:[cmu15445 lecture 03 Database Storage Part1_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1gxZRYoEiR/?spm_id_from=333.1391.0.0&vd_source=3256c9484ee0afb7fb8a95fc60db92c6) 
 <iframe width ="100%" height = "400" src="https://player.bilibili.com/player.html?isOutside=true&aid=114277302142472&bvid=BV1gxZRYoEiR&cid=29219817065&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"></iframe>
-
-![[CMU15445 lecture03.pdf]]
 
 ### Overview
 ![Pasted image 20250122091100.png](/img/user/accessory/Pasted%20image%2020250122091100.png)

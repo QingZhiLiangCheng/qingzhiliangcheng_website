@@ -1,5 +1,5 @@
 ---
-{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":false,"permalink":"/index/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-07-07T23:11:01.450+08:00"}
+{"sticker":"emoji//1f3e0","dg-publish":true,"dg-home":false,"tags":[],"permalink":"/index/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-03-30T14:49:23.695+08:00","updated":"2025-07-12T12:01:36.199+08:00"}
 ---
 
 
@@ -130,3 +130,5 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 [[libiry/passages/notes\|notes]]
 
 [[LCU DataStructure/My DataStructure/SingleLinkedList\|SingleLinkedList]]
+
+![background.png|0](/img/user/accessory/background.png)

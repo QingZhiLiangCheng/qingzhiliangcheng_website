@@ -1,5 +1,5 @@
 ---
-{"tags":["notes"],"dg-publish":true,"permalink":"/libiry/passages/2025年暑假的ideas/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-05T16:12:16.432+08:00","updated":"2025-07-06T10:53:20.776+08:00"}
+{"tags":["notes"],"dg-publish":true,"permalink":"/libiry/passages/2025年暑假的ideas/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-05T16:12:16.432+08:00","updated":"2025-07-13T22:51:07.329+08:00"}
 ---
 
 
@@ -58,3 +58,6 @@ CMU15-445中一直提到了 CMU的高级数据库课程 CMU15-721: Advanced Data
 - Stanford CS144: Computer Network --  这是网上疯传的都说好的一个课，但比较不幸的是这门课的GitHub Repository和网站会随着每一年的进度被清空换成新的, 网上传的最多的视频是16年的…… 这个课的project是手撕tcp协议，我不大想造轮子了下学期……
 ### 2025年暑假 Further
 先解决完CMU15-445和CMU15-213的Lecture.
+开始着手学习CMU15721
+微积分
+

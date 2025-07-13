@@ -1,5 +1,5 @@
 ---
-{"tags":["cmu15445"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 19 Database Logging/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T16:31:29.312+08:00","updated":"2025-07-12T14:04:13.018+08:00"}
+{"tags":["cmu15445"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 19 Database Logging/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-07T16:31:29.312+08:00","updated":"2025-07-14T07:13:32.914+08:00"}
 ---
 
 ![[19-logging.pdf]]
@@ -189,6 +189,23 @@ PostgreSQL 就使用一种近似 append-only MVCC 的方式。它每次修改不
 现在Physical Logging面临的挑战是, 假设我正在操作一个页面，而这个页面采用的是slotted page structure, 记录可以在带有slotted id的页结构中移动，同时保持slot id不变(这个在Lecture 3中我记的是), 在页面中可能会发生压缩,可能offset就不准了，这就引出了我们要用Physiological Logging
 **Physiological Logging**
 日志中仍然定位到某个物理页（page id）,但在页内部使用 slot id 来定位 tuple，而不是字节 offset
+Physical-to-a-page, logical-within-a-page
 
 **Logical Logging**
 另一种极端是Logical Logging, 记录的事务执行的语义操作，而不是哪些哪些字节发生了变化
+
+### Log-Structured Systems
+log-structured DBMSs只是与heap file organization一种不同的组织方式，在前面的Lecture中我们见过，对于log-structured filesystems 大多数都有类似于内存表的东西叫MemTable，保持在内存中，记录变化，并最终会达到日志结构化文件的下层。但在这一段时间，实际数据还是会停留在内存，然后才会被写入。
+如果发生崩溃，我们实际上使用恢复和日志机制来保护内存表，并能够恢复它 跟之前并没有两样
+不过Log-Structured系统中没有dirty pages，所以不涉及
+
+### Checkpoints
+WAL会不断变大
+当数据库崩溃的时候，需要重新建WAL中的日志执行一遍，如果WAL很长，则意味着恢复过程十分耗时
+有一种机制叫Checkout，清理掉老的WAL日志，这时候崩溃时不需要从头开始重放WAL, 只需要从上一个checkpoint开始
+接下来我们将讨论进行Checkpoint的不同方法，但主要观点是，我们将创建一个新的日志记录，成为检查点记录，我们会常见一个开始检查点和一个结束检查点记录，为了使得检查点方法更加简单优化，我们研究了一系列算法。
+从非常高层次来看，简单的Checkpoint是暂停所有正在运行的查询和事务，将WAL的日志写入磁盘，然后将所有修改过的page刷新到磁盘，然后写入检查点，但是可能缓冲池很大，并且大部分页面是脏页，那么这个检查点本身还是会耗费很长时间，因此，后面我们会探讨如何进行改进(下一个lecture?)
+![Pasted image 20250714070816.png|500](/img/user/accessory/Pasted%20image%2020250714070816.png)
+存在一个问题是：我应该多频繁的进行检查点操作？
+我们希望该操作尽可能小，但是仍需要执行一定的工作，而且不能在短时间内频繁暂停事务
+大多数数据库系统提供了参数，自行可以设置 这是需要一个权衡的点

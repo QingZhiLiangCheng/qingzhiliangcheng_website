@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-07-14T06:38:14.472+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-07-16T16:13:24.329+08:00"}
 ---
 
 📅date: 2025.1.20 - ing
@@ -53,6 +53,7 @@ Andy要求不能公开代码 所以Project代码我private了
 - [[DataBase Systems/CMU 15-445：Database Systems/Lecture 18 Multi-Version Concurrency Control\|Lecture 18 Multi-Version Concurrency Control]]
 - [[DataBase Systems/CMU 15-445：Database Systems/Lecture 19 Database Logging\|Lecture 19 Database Logging]]
 - [[DataBase Systems/CMU 15-445：Database Systems/Lecture 20 Database Recovery\|Lecture 20 Database Recovery]]
+- [[DataBase Systems/CMU 15-445：Database Systems/Lecture 21 Intro to Distributed Databases\|Lecture 21 Intro to Distributed Databases]]
 
 **Project**
 - [[DataBase Systems/CMU 15-445：Database Systems/环境配置 下载代码  提交项目 代码规范\|环境配置 下载代码  提交项目 代码规范]]

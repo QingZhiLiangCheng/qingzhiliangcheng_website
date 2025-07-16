@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721","folder"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-30T20:29:38.980+08:00","updated":"2025-07-12T11:55:42.181+08:00"}
+{"tags":["CMU15721","folder"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-30T20:29:38.980+08:00","updated":"2025-07-15T20:04:20.517+08:00"}
 ---
 
 
@@ -10,3 +10,4 @@
 	- [[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-2：The Composable Data Management System Manifesto(P.Pedreira, et al., VLDB 2023)\|Lecture 01 paper-2：The Composable Data Management System Manifesto(P.Pedreira, et al., VLDB 2023)]]
 - Lecture 02: Data Formats & Encoding I
 	- [[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)\|Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)]]
+	- 

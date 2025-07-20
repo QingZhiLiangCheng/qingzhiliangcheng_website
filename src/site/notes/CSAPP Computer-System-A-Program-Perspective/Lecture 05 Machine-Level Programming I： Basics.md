@@ -1,5 +1,5 @@
 ---
-{"week":"第三周","dg-publish":true,"tags":["week3","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 05 Machine-Level Programming I： Basics/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-21T10:29:24.619+08:00","updated":"2025-04-19T09:53:01.035+08:00"}
+{"week":"第三周","dg-publish":true,"tags":["week3","csapp"],"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 05 Machine-Level Programming I： Basics/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-21T10:29:24.619+08:00","updated":"2025-07-20T20:50:44.740+08:00"}
 ---
 
 
@@ -87,7 +87,7 @@ gcc -Og -S sum.c
 汇编级编程的一个特点   每条指令能做的事情都非常有限  --  基本上一条只能做一件事情
 ![Pasted image 20250221141547.png|500](/img/user/accessory/Pasted%20image%2020250221141547.png)
 
-其实 就像[[Operating System/NJU OS Operating System Design and Implementation/应用视角的操作系统\|应用视角的操作系统]]说的一样  C语言算是高级语言中的汇编语言  因为我们可以将for循环之类的东西 写成一条只干一件事儿的那种simple C的形式
+其实 就像[[Operating System/NJU OS Operating System Design and Implementation/应用视角的操作系统2024\|应用视角的操作系统2024]]说的一样  C语言算是高级语言中的汇编语言  因为我们可以将for循环之类的东西 写成一条只干一件事儿的那种simple C的形式
 
 **Object Code**
 ![Pasted image 20250221142118.png|500](/img/user/accessory/Pasted%20image%2020250221142118.png)

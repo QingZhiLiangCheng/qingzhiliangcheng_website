@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":[],"permalink":"/libiry/passages/notes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-05T16:27:49.079+08:00","updated":"2025-07-19T18:43:28.204+08:00"}
+{"dg-publish":true,"permalink":"/libiry/passages/notes/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-05T16:27:49.079+08:00","updated":"2025-07-19T18:43:28.204+08:00"}
 ---
 
 

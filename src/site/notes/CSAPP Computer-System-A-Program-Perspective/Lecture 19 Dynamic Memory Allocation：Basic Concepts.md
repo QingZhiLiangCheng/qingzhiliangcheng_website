@@ -1,5 +1,5 @@
 ---
-{"tags":["csapp"],"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-20T18:32:46.730+08:00","updated":"2025-07-20T20:16:31.089+08:00"}
+{"tags":["csapp"],"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-20T18:32:46.730+08:00","updated":"2025-07-21T15:56:05.984+08:00"}
 ---
 
 
@@ -58,6 +58,7 @@ malloc example, 注意我们经常使用sizeof来获取大小，malloc返回的�
 
 How do we know how much memory to free given just a pointer?
 一种方法是，在每个块的开头使用一个字大小的区域来记录大小，不过注意啊这个块的开头，是指的payload前，换句话说就是我所占用的块前面有一个header，用来存，metadata，metadata其中包括block size, 后面才是payload，然后可能还会有对齐多分配的一些碎片
+注意另一个点 malloc返回的是payload的起始位置
 ![Pasted image 20250720200653.png|500](/img/user/accessory/Pasted%20image%2020250720200653.png)
 
 How do we keep track of the free blocks?
@@ -68,5 +69,42 @@ Methods 2: Explicit List among Free Blocks using Pointers(显式空闲链表) --
 Methods 3: Segregated Free List(分离空闲链表) -- 把空闲块按大小分类，没类用一个链表，每次分配时区对应的大小或者大小区域的链表中去找 -- 怎么把握粒度？
 Methods 4: Blocks Sorted by Size -- 通过数据结构比如红黑树等，对free block进行排序
 其实，看到这里我突然想起来操作系统中的动态分配，各种算法，首次适应算法，临近适应算法等等，甚至有的有个表来存每一个block的大小等等 其实当时我学LCU操作系统的课的时候，没和heap和malloc联系起来，也没考虑到前面有metadata也算内部碎片的一部分(其实后面考试是速成的，没认真看书，但我不知道书上有没有)，另外CSAPP算是导论性质的，这一部分就是操作系统的范畴，如果要细究的话，还是得去看操作系统的书
+（eee 看完之后过来补得一句话，后面讲了首次适配这些算法了哈哈哈哈哈）
 
 ### Implicit Free Lists
+这里只讨论了Methods1的实现方法
+按照上面图的方法，在一个block中，我们要存取这个块的大小以及状态，而如果在元数据中用一个字来存储size，一个字来存储status，这需要两个字，是非常浪费的
+为什么是两个字？
+假设我们的size是`size_t`类型，allocated是bool类型，`size_t`占8个字节，bool占一个字节，但因为自动对齐，bool会自动插入7个字节的padding 然后后面才是我们的有效载荷。
+
+一个好的方法是利用size末尾后面的0来存储status: 因为系统要求对8或者16字节对齐，所以size的二进制写出来最后三位或者最后四位一定是0，所以我们可以利用这几个0来存储状态
+![Pasted image 20250721144601.png|500](/img/user/accessory/Pasted%20image%2020250721144601.png)
+
+Detailed Implicit Free List Example: 我们假设word是4字节，8字节对齐
+![Pasted image 20250721144918.png|500](/img/user/accessory/Pasted%20image%2020250721144918.png)
+这里的设计是 所有块的有效负载都是从8字节边界开始的(为啥？ 因为有效负载才是真实的数据，进CPU的时候最好对齐进去，这样取得次数少)，所以需要再堆的开头设置一个unsed的字，然后达到了用8字节的最后一个或者说下一个8字节的前面这个块用来当header的效果，那么最后其实也是多着一个，有点像EOF，可以看做终止，但也有简化合并的效果
+
+**Finding a Free Block的过程**
+Methods 1: First Fit(首次适应)
+![Pasted image 20250721152458.png|500](/img/user/accessory/Pasted%20image%2020250721152458.png)
+绝了这个位运算，所谓首次适应算法就是每次都从头开始，不过这里的这个start其实不是unused，是第一个header的那个位置. 
+`*p & 1` 是拿最后一位，这里其实是看是否被占用；而下面的`*p & -2`是拿出了最后一位的其他位，其实CSAPP之前讲过，&一般用于掩码运算，所谓掩码就是利用 &运算 的特性 1关注这一位，0不关注这一位，而这里的1和-2其实都是有符号数，这里其实CSAPP也讲过，1就是0...01，而-1是1...11,那么-2就是1...10
+Methods 2: Next Fit(临近适应算法): 核心思想就是顺着往下找，从最后一次在的位置继续往后扫描，事实上研究表面这会造成更多碎片
+Methods 3: Best Fit(最佳适配算法): 找最接近的，这就需要排序了
+
+**Allocating in Free Block**
+![Pasted image 20250721153625.png|500](/img/user/accessory/Pasted%20image%2020250721153625.png)
+这段代码的核心在于newsize的操作 进行了取偶，以及`newsize|1`这是把最低位设为1表示这个已经被分配
+
+**Freeding a Block**
+![Pasted image 20250721154246.png|500](/img/user/accessory/Pasted%20image%2020250721154246.png)
+但这其实只是和后边合并了 和前面合并呢？ 需要从前遍历了
+这就需要一个像双向链表一样的结构了
+![Pasted image 20250721154552.png|500](/img/user/accessory/Pasted%20image%2020250721154552.png)
+这样其实一共有四种情况：不需要合并，只需要和后面合并，只需要和前面合并，前后都需要合并
+![Pasted image 20250721154850.png|500](/img/user/accessory/Pasted%20image%2020250721154850.png)
+
+当然这造成了内部碎片，有没有什么方法不需要边界标志？
+所以其实可以用字节对齐中的碎片
+allocated不需要知道大小 free的需要知道大小
+

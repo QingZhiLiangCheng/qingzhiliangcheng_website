@@ -1,12 +1,15 @@
 ---
-{"tags":["folder","NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/NJU OS Operating System Design and Implementation/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-08T15:22:57.470+08:00","updated":"2025-07-21T16:06:52.042+08:00"}
+{"tags":["folder","NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/NJU OS Operating System Design and Implementation/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-08T15:22:57.470+08:00","updated":"2025-07-21T22:36:30.586+08:00"}
 ---
 
-2025spring
-[[Operating System/NJU OS Operating System Design and Implementation/下载小彩蛋代码\|下载小彩蛋代码]]
+我看的是2022spring的课程
+📅date: 20250722 - ing
 
-Lecture
-- [[Operating System/NJU OS Operating System Design and Implementation/Lecture 01 绪论 AI时代的操作系统课\|Lecture 01 绪论 AI时代的操作系统课]]
+
+**Lecture**
+- [[Operating System/NJU OS Operating System Design and Implementation/Lecture 02 操作系统上的程序\|Lecture 02 操作系统上的程序]]
+
+**Operating Systems: Three Easy Pieces**
 
 
 

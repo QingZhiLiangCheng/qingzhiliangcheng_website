@@ -1,5 +1,5 @@
 ---
-{"tags":[],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/tmux/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-22T15:52:25.219+08:00","updated":"2025-07-22T16:19:59.382+08:00"}
+{"tags":null,"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/tmux/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-22T15:52:25.219+08:00","updated":"2025-07-22T16:19:59.382+08:00"}
 ---
 
 tmux是一个终端复用工具，可以实现在一个终端窗口中进行分屏操作

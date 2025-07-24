@@ -64,9 +64,9 @@ How Do Problems Get Solved by Electorons?
 这是大约21年他们的学习芯片
 ![Pasted image 20250721194325.png|400](/img/user/accessory/Pasted%20image%2020250721194325.png)
 他们构建了用于特定功能的高性能的chip，并且构建了system来支持这种性能……
-![Pasted image 20250722200714.png|500](/img/user/Pasted%20image%2020250722200714.png)
+![Pasted image 20250722200714.png|500](/img/user/accessory/Pasted%20image%2020250722200714.png)
 这是一款英伟达的GPU, 他们在为动态编程添加专用指令，GPU算是一个比较专用的系统，是为图形设计的，而事实上GPU可以做其他事情，比如并行计算， 而现在为了动态变成添加了专用指令……
-![Pasted image 20250722201120.png|500](/img/user/Pasted%20image%2020250722201120.png)
+![Pasted image 20250722201120.png|500](/img/user/accessory/Pasted%20image%2020250722201120.png)
 这实际上是一个芯片，这里的想法是为什么不把大量的计算包括内存放到同一个芯片上呢
 事实上这些例子是想说 通用性和专用性之间存在了紧张的取舍关系，他们都在寻求在特定的工作负载上的高效率，而且他们采用的是上面介绍的扩展的架构视角
 
@@ -79,20 +79,20 @@ How Do Problems Get Solved by Electorons?
 事实上在我们讨论的层次结构的底层，就有很多地方值得创新…… 但这些微电子学和物理学的内容，我们不考虑
 
 可持续性的问题，事实上计算机是用来解决问题的，但是也带来了一部分麻烦
-![Pasted image 20250722203906.png|400](/img/user/Pasted%20image%2020250722203906.png)
+![Pasted image 20250722203906.png|400](/img/user/accessory/Pasted%20image%2020250722203906.png)
 研究结果还表明，访问主存的能耗远高于进行复杂计算的能耗
-![Pasted image 20250722203926.png|400](/img/user/Pasted%20image%2020250722203926.png)
+![Pasted image 20250722203926.png|400](/img/user/accessory/Pasted%20image%2020250722203926.png)
 所以人们在研究最小化数据移动的模型
 比如选择将计算和存储结合在同一个芯片上
-![Pasted image 20250722204149.png|400](/img/user/Pasted%20image%2020250722204149.png)
-![Pasted image 20250722204204.png|400](/img/user/Pasted%20image%2020250722204204.png)
+![Pasted image 20250722204149.png|400](/img/user/accessory/Pasted%20image%2020250722204149.png)
+![Pasted image 20250722204204.png|400](/img/user/accessory/Pasted%20image%2020250722204204.png)
 非易失性的内存
-![Pasted image 20250722204601.png|400](/img/user/Pasted%20image%2020250722204601.png)
+![Pasted image 20250722204601.png|400](/img/user/accessory/Pasted%20image%2020250722204601.png)
 
 
 加速器 片上系统
-![Pasted image 20250722205035.png|400](/img/user/Pasted%20image%2020250722205035.png)
-![Pasted image 20250722205044.png|400](/img/user/Pasted%20image%2020250722205044.png)
+![Pasted image 20250722205035.png|400](/img/user/accessory/Pasted%20image%2020250722205035.png)
+![Pasted image 20250722205044.png|400](/img/user/accessory/Pasted%20image%2020250722205044.png)
 
 
 ……

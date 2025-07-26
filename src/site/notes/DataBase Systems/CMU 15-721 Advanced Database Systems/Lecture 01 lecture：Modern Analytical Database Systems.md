@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 lecture：Modern Analytical Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-28T16:34:33.903+08:00","updated":"2025-07-03T18:33:54.742+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 lecture：Modern Analytical Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-28T16:34:33.903+08:00","updated":"2025-07-26T13:01:58.635+08:00"}
 ---
 
 ![[01-modernolap.pdf]]
@@ -105,3 +105,45 @@ OLTP中的数据经过ETL放入Object Store, 这里有一个核心的组件是Ca
 这是可选的，并非所有的OLAP数据系统都这么做, BigQuery是著名的执行此操作的系统
 这些工作节点产生更多的中间结果，然后将这些结果发送到某个最终节点进行最终的合并或聚合，已生成我们发送会用户的最终结果。
 居于这一切之上的，跟踪当前情况的 是 Scheduler
+
+---
+
+在系统架构中，需要考虑的一个因素是: 如何在不同节点的操作符之间传输数据，也就是说，如果查询需要的数据不在本地节点，需要怎么让查询和数据传输到一个节点上的问题，有两种方法
+- Push Query to Data(将查询push到数据所在为止)
+- Pull Data to Query(将数据pull到发起查询的节点)
+
+不过随着系统越来越现代化，这两种方法的界限越来越模糊
+**Approach 1: Push Query to Data**
+推送方法的理念是，查询本身，无论是SQL字符串还是查询计划的中间表示，都将远小于数据本身。那么就将query push到data的地方去，在那里进行处理，将中间结果发送回来。理想情况下，中间结果会比持久数据更小
+再过去磁盘和网络速度及其缓慢时，这种做法是非常合理的。但在这种方法中面临的问题是，可能没有在数据实际存储位置的计算能力，如果我们使用的是S3，api就仅包含获取，放置，和删除操作
+所以这个时候就需要将数据拉取到查询所在的位置
+**Approach 2: Pull Data to Query**
+将数据拉取到查询的节点，处理之后生产中间结果传给下一个阶段。
+但是关键在于，查询相对于所处理数据的大小将远远更小
+
+所以在过去没有共享磁盘模式下，一般都采用的是Approach 1, 在共享磁盘模式下，若忽略对象存储带来的额外特性，将会采取Approach 2.
+但是对象存储可能会有额外特性，比如S3这样的服务中，有一个选择操作符，使得在发起GET请求时，可以发起一个看似SQL查询的指令到S3
+![Pasted image 20250726122830.png|500](/img/user/accessory/Pasted%20image%2020250726122830.png)
+当然并不是说所有的都适合这样谓词下移的操作，假如有一个文件多个查询都要用到而且是不同的选择谓词，这个时候将所有文件拿到然后分别处理 可能成本会更低
+
+#### Shared-Disk
+![Pasted image 20250726123958.png|400](/img/user/accessory/Pasted%20image%2020250726123958.png)
+Shared-Disk相对于Shared-Nothing的好处是，数据是存在最下层的，可能是S3这种对象存储（不需要考虑数据备份等，Amazon都帮助做好了）所以增加或者减少一个节点不需要重新分发数据
+
+#### Object Stores
+- 数据库的持久化数据切分成块 存放到对象存储中
+- PAX 列式布局：提高局部性和压缩效率
+- 每个文件的头部或者尾部包含该文件的元数据，包括列的偏移位置，压缩算法，索引信息，zone maps(每列的最大值最小值等信息)等
+- 通过访问header可以判断是否可以跳过
+- 每个云厂商都有自己的访问接口API: put, get, delete.
+
+下一节课会详解列式存储的东西
+
+![Pasted image 20250726125307.png|500](/img/user/accessory/Pasted%20image%2020250726125307.png)
+这是我们未来要讨论的一个数据库叫Yellowbrick，yellowbrick最初是一个share-nothing的本地数据库系统，他们有自己的定制硬件，对其组装并进行了优化，后来yelllowbrick转换为基于云的数据库系统，但他们发现将系统迁移到公有云上运行时，对象存储的性能低于他们以往在本地版本的设备中的体验，最终他们提供了亚马逊或操作系统提供给他们的功能，进行了定制化处理，例如他们弃用了亚马逊的库，自行编写了库来使用英特尔DBDK来调用S3服务。他进行的是内核旁路操作，将在本学期后面学到，主要是实现了对S3的快速查找，获取内容或所需数据，并且不在内核中进行复制，而是立即将其直接传递到用户空间
+这也说明了有办法提高对象存储的速度
+
+### Last Class
+下节课的论文是Andy老师写的 探讨了Parquet和ORC的内部结构 后面还探讨了一些关于GPU的内容，但是本课程只讨论在CPU上的运行
+另外下节课会介绍一种新变种，新实现的文件格式，据称他们在性能上优于Parquet和ORC.
+

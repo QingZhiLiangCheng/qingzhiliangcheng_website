@@ -104,7 +104,6 @@ module.exports = function (eleventyConfig) {
   })
       .use(lineToParagraphPlugin)
       .use(embedPdfPlugin) //新增PDF解析代码 Done(QingZhiLiangCheng)
-      .use(imagePreviewPlugin)//新增放大图片效果 Done(QingZhiLiangCheng)
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
     })
@@ -447,7 +446,7 @@ module.exports = function (eleventyConfig) {
   }
 
 
-  eleventyConfig.addTransform("picture", function (str) {
+/*  eleventyConfig.addTransform("picture", function (str) {
     if(process.env.USE_FULL_RESOLUTION_IMAGES === "true"){
       return str;
     }
@@ -476,6 +475,85 @@ module.exports = function (eleventyConfig) {
       }
     }
     return str && parsed.innerHTML;
+  });*/
+
+  eleventyConfig.addTransform("picture", function (str) {
+    if (process.env.USE_FULL_RESOLUTION_IMAGES === "true") {
+      return str;
+    }
+
+    const parsed = parse(str);
+
+    // 查找所有匹配的 <img>，这里根据你之前写的选择器
+    for (const imageTag of parsed.querySelectorAll(".cm-s-obsidian img")) {
+      const src = imageTag.getAttribute("src");
+      if (src && src.startsWith("/") && !src.endsWith(".svg")) {
+        try {
+          // 调用你已有的图片变换函数（生成 <picture> 结构）
+          const meta = transformImage(
+              "./src/site" + decodeURI(src),
+              imageTag.classList.value,
+              imageTag.getAttribute("alt"),
+              ["(max-width: 480px)", "(max-width: 1024px)"]
+          );
+
+          if (meta) {
+            fillPictureSourceSets(src, imageTag.classList.value, imageTag.getAttribute("alt"), meta, imageTag.getAttribute("width") || '', imageTag);
+
+            // **包裹点击预览结构**
+
+            // 找到 imageTag 的父节点
+            const parent = imageTag.parentNode;
+
+            // 创建新的 <label class="img-popup">
+            const label = new HTMLElement('label', {}, '', null);
+            label.setAttribute('class', 'img-popup');
+
+            // 创建隐藏的 input[type=checkbox]
+            const checkbox = new HTMLElement('input', { type: 'checkbox', hidden: '' }, '', null);
+            checkbox.setAttribute('name', 'preview-toggle');
+
+            // 把 checkbox 添加到 label
+            label.appendChild(checkbox);
+
+            // 把包含图片的父节点（如 <p> 或 <picture>）整体移动到 label 中
+            // 这里需要你根据实际结构调整，我假设 imageTag 现在在 <picture> 中
+            const pictureNode = imageTag.closest('picture') || imageTag;
+
+            // 先把 pictureNode 从父节点移除
+            if (pictureNode.parentNode) {
+              pictureNode.parentNode.removeChild(pictureNode);
+            }
+
+            // 加入 label
+            label.appendChild(pictureNode);
+
+            // 新建 overlay 遮罩 div
+            const overlay = new HTMLElement('div', { class: 'overlay' }, '', null);
+
+            // 创建大图 <img> 放进 overlay，src 用原始图片地址，alt 同图片 alt
+            const fullImg = new HTMLElement('img', { src, alt: imageTag.getAttribute('alt'), class: 'full-img' }, '', null);
+            overlay.appendChild(fullImg);
+
+            // 加入 overlay 到 label
+            label.appendChild(overlay);
+
+            // 最后，把 label 插入原来图片的父节点位置
+            if (parent) {
+              parent.replaceChild(label, imageTag);
+            } else {
+              // 如果没有父节点（极少见），直接插入到 parsed 根节点
+              parsed.appendChild(label);
+            }
+          }
+        } catch (e) {
+          // 忽略错误，容错处理
+          console.error('图片处理错误:', e);
+        }
+      }
+    }
+
+    return parsed.toString();
   });
 
   eleventyConfig.addTransform("table", function (str) {
@@ -688,26 +766,3 @@ function embedPdfPlugin(md) {
   md.core.ruler.after("inline", "pdf_embed", pdfEmbedReplace);
 }
 
-function imagePreviewPlugin(md) {
-  // 保存默认的 image 渲染规则（如果有）
-  const defaultImageRule = md.renderer.rules.image || function (tokens, idx, options, env, self) {
-    return self.renderToken(tokens, idx, options);
-  };
-
-  // 替换 image 渲染规则
-  md.renderer.rules.image = function (tokens, idx, options, env, self) {
-    const token = tokens[idx];
-    const src = token.attrs[token.attrIndex('src')][1];
-    const alt = token.content;
-
-    return `
-<label class="img-popup">
-  <input type="checkbox" hidden>
-  <img src="${src}" class="preview-img" alt="${alt}">
-  <div class="overlay">
-    <img src="${src}" class="full-img" alt="${alt}">
-  </div>
-</label>
-    `;
-  };
-};

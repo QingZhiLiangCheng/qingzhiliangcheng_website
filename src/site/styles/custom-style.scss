@@ -12,6 +12,45 @@ img {
   height: auto;    /* 高度自动调整以保持比例 */
 }
 
+.img-popup {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.img-popup input {
+  display: none;
+}
+
+.preview-img {
+  max-width: 100%;
+  height: auto;
+  transition: 0.3s;
+  border: 1px solid #ccc;
+}
+
+.img-popup .overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+}
+
+.img-popup .overlay .full-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.img-popup input:checked + .preview-img + .overlay {
+  display: flex;
+}
+
 
 br {
     content: ""; /* 添加伪内容 */

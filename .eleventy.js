@@ -103,7 +103,8 @@ module.exports = function (eleventyConfig) {
     linkify: true,
   })
       .use(lineToParagraphPlugin)
-      .use(embedPdfPlugin) //新增PDF解析代码
+      .use(embedPdfPlugin) //新增PDF解析代码 Done(QingZhiLiangCheng)
+      .use(imagePreviewPlugin)//新增放大图片效果 Done(QingZhiLiangCheng)
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
     })
@@ -686,3 +687,27 @@ function embedPdfPlugin(md) {
 
   md.core.ruler.after("inline", "pdf_embed", pdfEmbedReplace);
 }
+
+function imagePreviewPlugin(md) {
+  // 保存默认的 image 渲染规则（如果有）
+  const defaultImageRule = md.renderer.rules.image || function (tokens, idx, options, env, self) {
+    return self.renderToken(tokens, idx, options);
+  };
+
+  // 替换 image 渲染规则
+  md.renderer.rules.image = function (tokens, idx, options, env, self) {
+    const token = tokens[idx];
+    const src = token.attrs[token.attrIndex('src')][1];
+    const alt = token.content;
+
+    return `
+<label class="img-popup">
+  <input type="checkbox" hidden>
+  <img src="${src}" class="preview-img" alt="${alt}">
+  <div class="overlay">
+    <img src="${src}" class="full-img" alt="${alt}">
+  </div>
+</label>
+    `;
+  };
+};

@@ -1,5 +1,5 @@
 ---
-{"tags":["NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/Lecture 02 操作系统上的程序/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-21T22:34:48.077+08:00","updated":"2025-07-22T18:38:40.091+08:00"}
+{"tags":["NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/Lecture 02 操作系统上的程序/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-21T22:34:48.077+08:00","updated":"2025-07-26T15:42:19.361+08:00"}
 ---
 
 ### Overview
@@ -209,3 +209,105 @@ info registers rsp # 查看某个寄存器
 这个指令是说我把控制权交给操作系统，或者说是内核，然后就从用户态变成了内核态，然后程序就躺平了
 内核就会综合所有的信息，比如说这个程序想打印一些东西，就会帮他打印，或者内核也可以更新一些这个程序的状态等等
 所以 程序 = 计算+syscall
+
+### 构造最小的Hello World
+我们所认为的最小的程序Hello World
+```c
+int main() { 
+	printf("Hello, World\n"); 
+}
+```
+如果用gcc编译，objdump查看反汇编，事实上这个程序一点也不小
+如果我们运行gcc -c只编译不链接 并通过objdump查看的话
+```bash
+gcc -c hello.c
+objdump -d hello.o
+```
+如果用gcc编
+![Pasted image 20250726135622.png|500](/img/user/accessory/Pasted%20image%2020250726135622.png)
+我们都知道对于C语言编译的过程是，预处理，编译，汇编，链接，详见[[CSAPP Computer-System-A-Program-Perspective/A Tour of Computer Systems\|A Tour of Computer Systems]]
+![Pasted image 20250726140105.png|600](/img/user/accessory/Pasted%20image%2020250726140105.png)
+刚刚我们已经生成了.o文件 下一步是链接
+我们可以尝试手动链接
+```bash
+ld hello.o -o hello.out
+```
+仅仅将hello.o 这个目标文件连接成一个hello.out文件
+![Pasted image 20250726140308.png|600](/img/user/accessory/Pasted%20image%2020250726140308.png)
+会warning找不到 `entry symbol _start`,那么一个可行的解决方案是把`int main()`改成`void _start()`
+![Pasted image 20250726140641.png|250](/img/user/accessory/Pasted%20image%2020250726140641.png)
+绕过了warning，但是还是找不到puts
+![Pasted image 20250726140846.png|600](/img/user/accessory/Pasted%20image%2020250726140846.png)
+
+如果把printf去掉，编译和连接就都能成功完成
+![Pasted image 20250726141018.png|250](/img/user/accessory/Pasted%20image%2020250726141018.png)
+
+![Pasted image 20250726141006.png|600](/img/user/accessory/Pasted%20image%2020250726141006.png)
+
+但是运行给了Segmentation fault错误
+![Pasted image 20250726141104.png|600](/img/user/accessory/Pasted%20image%2020250726141104.png)
+如果写个while(1)的话，就可以直接运行了
+但是我们还是聚焦于上面Segmentation fault的函数，我们可以通过一些工具去找到里面的问题，比如说gdb
+![Pasted image 20250726141620.png|500](/img/user/accessory/Pasted%20image%2020250726141620.png)
+然后会发现实在ret的时候出现了问题
+那ret的时候都干了些什么事情？ CSAPP中讲过 见[[CSAPP Computer-System-A-Program-Perspective/Lecture 07 Machine-Level Programming III：Procedures\|Lecture 07 Machine-Level Programming III：Procedures]]
+call的时候干了两件事：第一件事是改变寄存器%rip的值(%rip保存的是PC，就是下一条要执行的指令)，使得能够jump到mult2中；第二件事是把要返回的地址，也就是当前call指令的下一条指令的地址压入栈，对应的%rsp(栈顶指针)要-8(栈是从高地址向低地址增长)
+![Pasted image 20250303202447.png|500](/img/user/accessory/Pasted%20image%2020250303202447.png)
+那么同样的ret干的事儿也就很明确了，就是倒着的步骤，先pop，%rsp+8，然后把那个地址给%rip
+![Pasted image 20250303202708.png|500](/img/user/accessory/Pasted%20image%2020250303202708.png)
+
+所以说这个地方错了，有两种可能，要么是rsp的地址不合法，要么就是要跳转回去的rip的地址不合法
+可以在gdb中通过命令看rsp寄存器中的值
+![Pasted image 20250726143723.png|500](/img/user/accessory/Pasted%20image%2020250726143723.png)
+再看的过程中要注意，第一行和第二行是从c0变成了d0，而地址又是字节编址的，所以说一行其实是16个字节，而一个数就是4个字节，而rsp是64位的寄存器，所以得看两个数，x86计算机又是小端法，那么其实rsp中的值是0x000...1 这些只是都在CSAPP中讲过
+再往下执行会发现他返回的错误的原因是没法访问0x1这个地址
+![Pasted image 20250726144110.png|250](/img/user/accessory/Pasted%20image%2020250726144110.png)
+问题其实出现在初始状态是没法返回的
+那有什么办法能让计算机停下来？ 就需要一个简单的system call
+![Pasted image 20250726144527.png|250](/img/user/accessory/Pasted%20image%2020250726144527.png)
+
+![Pasted image 20250726144916.png|500](/img/user/accessory/Pasted%20image%2020250726144916.png)
+
+所以我们知道了是从`_start`开始的，最后要通过system call返回，那么我们就能构造一个很小的汇编代码
+```c
+#include <sys/syscall.h>
+
+.globl _start
+_start:
+  movq $SYS_write, %rax   // write(
+  movq $1,         %rdi   //   fd=1,
+  movq $st,        %rsi   //   buf=st,
+  movq $(ed - st), %rdx   //   count=ed-st
+  syscall                 // );
+
+  movq $SYS_exit,  %rax   // exit(
+  movq $1,         %rdi   //   status=1
+  syscall                 // );
+
+st:
+  .ascii "\033[01;31mHello, OS World\033[0m\n"
+ed:
+```
+
+![Pasted image 20250726145451.png|600](/img/user/accessory/Pasted%20image%2020250726145451.png)
+可以连接成功并执行
+
+### 如何在程序的两个视角切换？
+我们既然有两种状态机，怎么切换？
+一种是C语言层面的状态机，一种是汇编层面的状态机，这其实两种不同的抽象，C语言层面的状态机是对汇编的抽象，而汇编是对硬件的抽象？
+我们绝大多数时候都在写C代码，会有一个程序帮我们生成汇编层面的东西，这个东西就是编译器 -- 这就明白了什么是编译器
+那什么叫做正确的编译？
+其实编译器有好多优化层级，比如说-Og, -O1... 而且其实我之前看过值传递的那个代码的那个优化，会直接把swap那个函数给删掉，那什么叫做正确的编译？
+在C语言代码有一些是不可优化的代码 比如`volatile int x = 1;` 对于这种不可优化的，在C语言上声明的读就是读，读一万次就是一万次 不可优化；所谓的正确的编译就是在所有在C语言状态机上不可优化的东西都被正确的翻译在了汇编状态机上，其他的，能省的都省了。
+我的理解其实就是 状态能对应起来就行
+额不过CSAPP优化那一节我没听呃呃 
+
+### 操作系统中的一般程序
+和minimal.S没有区别，就是计算和syscall
+在应用眼里 看到的操作系统就是syscall，syscall就是个API
+在操作系统的眼里，程序就是一个一个状态机，而操作系统管理者所有的硬件和软件资源，收录了所有的API之后，操作系统说你行你就行，说你不行你就不行，这是管理多个状态机所必须的，不能打架，谁有权限就给它
+
+trace工具
+执行的第一个都是execve设置初始状态
+
+

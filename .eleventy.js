@@ -476,79 +476,59 @@ module.exports = function (eleventyConfig) {
     }
     return str && parsed.innerHTML;
   });*/
-  const { parse, HTMLElement } = require('node-html-parser');
+
   eleventyConfig.addTransform("picture", function (str) {
     if (process.env.USE_FULL_RESOLUTION_IMAGES === "true") {
       return str;
     }
 
+    const { parse, HTMLElement } = require('node-html-parser');
     const parsed = parse(str);
 
-    // 查找所有匹配的 <img>，这里根据你之前写的选择器
-    for (const imageTag of parsed.querySelectorAll(".cm-s-obsidian img")) {
+    for (const imageTag of parsed.querySelectorAll("img")) {
       const src = imageTag.getAttribute("src");
       if (src && src.startsWith("/") && !src.endsWith(".svg")) {
+        const alt = imageTag.getAttribute("alt") || '';
+        const cls = imageTag.classList.toString();
+        const width = imageTag.getAttribute("width") || '';
+
         try {
-          // 调用你已有的图片变换函数（生成 <picture> 结构）
-          const meta = transformImage(
-              "./src/site" + decodeURI(src),
-              imageTag.classList.value,
-              imageTag.getAttribute("alt"),
-              ["(max-width: 480px)", "(max-width: 1024px)"]
-          );
+          // 创建图片容器
+          const container = new HTMLElement('div', {}, '', null);
+          container.setAttribute('class', 'img-container');
+          container.setAttribute('data-src', src);
+          container.setAttribute('data-alt', alt);
 
-          if (meta) {
-            fillPictureSourceSets(src, imageTag.classList.value, imageTag.getAttribute("alt"), meta, imageTag.getAttribute("width") || '', imageTag);
+          // 添加加载指示器
+          container.innerHTML = `
+          <div class="img-loading">
+            <div class="spinner"></div>
+            <div>加载图片中...</div>
+          </div>
+        `;
 
-            // **包裹点击预览结构**
+          // 替换原始图片
+          imageTag.parentNode.replaceChild(container, imageTag);
 
-            // 找到 imageTag 的父节点
-            const parent = imageTag.parentNode;
+          // 添加预览结构
+          const previewHTML = `
+          <div class="img-preview-wrapper">
+            <div class="img-preview-overlay"></div>
+            <div class="img-preview-content">
+              <button class="img-preview-close">&times;</button>
+              <div class="img-preview-container">
+                <img class="img-preview-main" src="" alt="${alt}"/>
+              </div>
+              <div class="img-preview-title">${alt}</div>
+            </div>
+          </div>
+        `;
 
-            // 创建新的 <label class="img-popup">
-            const label = new HTMLElement('label', {}, '', null);
-            label.setAttribute('class', 'img-popup');
-
-            // 创建隐藏的 input[type=checkbox]
-            const checkbox = new HTMLElement('input', { type: 'checkbox', hidden: '' }, '', null);
-            checkbox.setAttribute('name', 'preview-toggle');
-
-            // 把 checkbox 添加到 label
-            label.appendChild(checkbox);
-
-            // 把包含图片的父节点（如 <p> 或 <picture>）整体移动到 label 中
-            // 这里需要你根据实际结构调整，我假设 imageTag 现在在 <picture> 中
-            const pictureNode = imageTag.closest('picture') || imageTag;
-
-            // 先把 pictureNode 从父节点移除
-            if (pictureNode.parentNode) {
-              pictureNode.parentNode.removeChild(pictureNode);
-            }
-
-            // 加入 label
-            label.appendChild(pictureNode);
-
-            // 新建 overlay 遮罩 div
-            const overlay = new HTMLElement('div', { class: 'overlay' }, '', null);
-
-            // 创建大图 <img> 放进 overlay，src 用原始图片地址，alt 同图片 alt
-            const fullImg = new HTMLElement('img', { src, alt: imageTag.getAttribute('alt'), class: 'full-img' }, '', null);
-            overlay.appendChild(fullImg);
-
-            // 加入 overlay 到 label
-            label.appendChild(overlay);
-
-            // 最后，把 label 插入原来图片的父节点位置
-            if (parent) {
-              parent.replaceChild(label, imageTag);
-            } else {
-              // 如果没有父节点（极少见），直接插入到 parsed 根节点
-              parsed.appendChild(label);
-            }
-          }
+          container.innerHTML += previewHTML;
         } catch (e) {
-          // 忽略错误，容错处理
           console.error('图片处理错误:', e);
+          // 出错时回退到原始图片
+          imageTag.setAttribute('data-error', 'true');
         }
       }
     }

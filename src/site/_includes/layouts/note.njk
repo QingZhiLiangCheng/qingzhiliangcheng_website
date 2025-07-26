@@ -15,7 +15,7 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
   </head>
   <body class="theme-{{meta.baseTheme}} markdown-preview-view markdown-rendered markdown-preview-section {{meta.bodyClasses}}">
     {%include "components/notegrowthhistory.njk"%}
-    
+
     {% if settings.dgShowFileTree !== true %}
       {%include "components/navbar.njk"%}
     {%else%}
@@ -94,3 +94,90 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {%include "components/lucideIcons.njk"%}
   </body>
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 图片点击预览功能
+  document.querySelectorAll('.img-container').forEach(container => {
+    const imgSrc = container.getAttribute('data-src');
+    const imgAlt = container.getAttribute('data-alt');
+
+    // 创建图片元素
+    const img = new Image();
+    img.src = imgSrc;
+    img.alt = imgAlt;
+    img.className = 'img-loaded';
+
+    // 图片加载完成后移除加载状态
+    img.onload = () => {
+      const loading = container.querySelector('.img-loading');
+      if (loading) loading.style.display = 'none';
+      container.appendChild(img);
+
+      // 添加点击事件
+      container.addEventListener('click', function(e) {
+        if (e.target.classList.contains('img-loaded')) {
+          const preview = container.querySelector('.img-preview-wrapper');
+          if (preview) {
+            const previewImg = preview.querySelector('.img-preview-main');
+            if (previewImg) previewImg.src = imgSrc;
+            preview.classList.add('active');
+          }
+        }
+      });
+    };
+
+    // 处理加载错误
+    img.onerror = () => {
+      const loading = container.querySelector('.img-loading');
+      if (loading) {
+        loading.innerHTML = `
+          <div class="img-error">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div>图片加载失败</div>
+          </div>
+        `;
+      }
+    };
+  });
+
+  // 关闭预览
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('img-preview-overlay') ||
+        e.target.classList.contains('img-preview-close')) {
+      document.querySelectorAll('.img-preview-wrapper').forEach(preview => {
+        preview.classList.remove('active');
+      });
+    }
+  });
+
+  // 支持键盘操作
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.img-preview-wrapper').forEach(preview => {
+        preview.classList.remove('active');
+      });
+    }
+  });
+
+  // 图片缩放功能
+  document.addEventListener('wheel', function(e) {
+    const activePreview = document.querySelector('.img-preview-wrapper.active');
+    if (activePreview) {
+      e.preventDefault();
+      const previewImg = activePreview.querySelector('.img-preview-main');
+      if (previewImg) {
+        const currentScale = parseFloat(previewImg.style.transform.replace('scale(', '') || 1);
+        const newScale = e.deltaY > 0 ?
+          Math.max(0.5, currentScale - 0.1) :
+          Math.min(3, currentScale + 0.1);
+        previewImg.style.transform = `scale(${newScale})`;
+      }
+    }
+  }, { passive: false });
+});
+</script>

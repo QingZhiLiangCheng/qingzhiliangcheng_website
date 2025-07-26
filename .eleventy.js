@@ -476,7 +476,7 @@ module.exports = function (eleventyConfig) {
     }
     return str && parsed.innerHTML;
   });*/
-
+  const { parse, HTMLElement } = require('node-html-parser');
   eleventyConfig.addTransform("picture", function (str) {
     if (process.env.USE_FULL_RESOLUTION_IMAGES === "true") {
       return str;

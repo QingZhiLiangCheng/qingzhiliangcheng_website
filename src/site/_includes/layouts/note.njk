@@ -105,10 +105,11 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
               title: false,
               fullscreen: false,
               tooltip: false,
-              movable: false,
-              transition: false,
+              movable: true,
+              zoomable: true,
+              transition: true,
               viewed() {
-                this.viewer.zoomTo(1); // 默认放大倍数
+                this.viewer.zoomTo(1); // 默认放大比例
               }
             });
           }

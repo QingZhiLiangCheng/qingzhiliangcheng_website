@@ -1,10 +1,11 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-07-16T16:13:24.329+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-07-26T13:21:26.102+08:00"}
 ---
 
 📅date: 2025.1.20 - ing
 🥰CMU15445是我目前看过的最喜欢的课程
 Andy老师说：the most important thing you get to understand is I really only care about two things in my entire life. The first one is my wife and my biological daughter and the second one databases.
+值得注意的是，教授的全称叫Andrew Pavlo，这是他在学术和正式出版物中的署名，Andy是Andrew的常见昵称，在教学、演讲、网站、社交媒体等更轻松的场合，他经常用的是 Andy Pavlo.
 这门课的全套课程开源，而且实验对外校同学完全开放。
 课程主题包括：
 1. 数据模型（关系型，文档型，键值型）
@@ -29,7 +30,7 @@ Andy老师说：the most important thing you get to understand is I really only 
 👉配套教材电子书pdf:  https://pan.baidu.com/s/1SyFSNb-iiEXtDQaAcZiByA?pwd=QZLC 
 👉我的笔记:[[DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems\|CMU 15-445：Database Systems]]
 👉我的视频: [cmu15445 lecture 03 Database Storage Part1_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1gxZRYoEiR/?spm_id_from=333.1387.homepage.video_card.click)
-Andy要求不能公开代码 所以Project代码我private了
+
 **笔记**
 - [[DataBase Systems/CMU 15-445：Database Systems/Lecture 01 Course Intro & Relational Model\|Lecture 01 Course Intro & Relational Model]]
 - [[DataBase Systems/CMU 15-445：Database Systems/Lecture 02 Modern SQL\|Lecture 02 Modern SQL]]

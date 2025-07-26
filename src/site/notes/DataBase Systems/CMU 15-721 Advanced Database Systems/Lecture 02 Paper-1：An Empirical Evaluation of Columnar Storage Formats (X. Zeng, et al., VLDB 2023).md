@@ -1,12 +1,12 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-24T17:44:58.077+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-26T13:23:59.253+08:00"}
 ---
 
 
 
 ![[Lecture-02-Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023).pdf]]
 
-这是2023年的一篇论文
+这是2023年的一篇论文，这篇论文是Andy老师写的唉 Andy老师的全称叫Andrew Pavlo，这是他在学术和正式出版物中的署名，Andy是Andrew的常见昵称，在教学、演讲、网站、社交媒体等更轻松的场合，他经常用的是 Andy Pavlo.
 ### Abstract
 这篇论文主要对Rarquet和ORC两个主流开源列式存储格式进行了实验分析
 Rarquet和ORC最初都是为Hadoop设计的，我查了一下Hadoop,是2006年诞生的用于大数据存储和处理的开源框架，主要用于分布式海量数据的存储和并行计算 而论文中提到的这个列存储格式是大约2010年代初为Hadoop生态设计的

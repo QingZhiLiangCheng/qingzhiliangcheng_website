@@ -95,6 +95,51 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
   </body>
 </html>
 
-<script>
+<style>
+  /* 放大预览遮罩层 */
+  .preview-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    z-index: 9999;
+  }
+  .preview-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    border-radius: 8px;
+  }
+</style>
 
+<script>
+  document.querySelectorAll('picture.click-preview').forEach(picture => {
+    picture.style.cursor = 'zoom-in'; // 鼠标样式提示可点击放大
+
+    picture.addEventListener('click', () => {
+      // 找到当前显示的img元素
+      const img = picture.querySelector('img');
+      if (!img) return;
+
+      // 创建遮罩层
+      const overlay = document.createElement('div');
+      overlay.classList.add('preview-overlay');
+
+      // 创建放大图片
+      const previewImg = document.createElement('img');
+      previewImg.src = img.src;
+      previewImg.alt = img.alt || '';
+
+      // 点击遮罩层关闭预览
+      overlay.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+      });
+
+      overlay.appendChild(previewImg);
+      document.body.appendChild(overlay);
+    });
+  });
 </script>

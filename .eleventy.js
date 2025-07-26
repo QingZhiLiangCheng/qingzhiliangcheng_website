@@ -446,7 +446,7 @@ module.exports = function (eleventyConfig) {
   }
 
 
-/*  eleventyConfig.addTransform("picture", function (str) {
+  eleventyConfig.addTransform("picture", function (str) {
     if(process.env.USE_FULL_RESOLUTION_IMAGES === "true"){
       return str;
     }
@@ -475,66 +475,8 @@ module.exports = function (eleventyConfig) {
       }
     }
     return str && parsed.innerHTML;
-  });*/
-
-  eleventyConfig.addTransform("picture", function (str) {
-    if (process.env.USE_FULL_RESOLUTION_IMAGES === "true") {
-      return str;
-    }
-
-    const { parse, HTMLElement } = require('node-html-parser');
-    const parsed = parse(str);
-
-    for (const imageTag of parsed.querySelectorAll("img")) {
-      const src = imageTag.getAttribute("src");
-      if (src && src.startsWith("/") && !src.endsWith(".svg")) {
-        const alt = imageTag.getAttribute("alt") || '';
-        const cls = imageTag.classList.toString();
-        const width = imageTag.getAttribute("width") || '';
-
-        try {
-          // 创建图片容器
-          const container = new HTMLElement('div', {}, '', null);
-          container.setAttribute('class', 'img-container');
-          container.setAttribute('data-src', src);
-          container.setAttribute('data-alt', alt);
-
-          // 添加加载指示器
-          container.innerHTML = `
-          <div class="img-loading">
-            <div class="spinner"></div>
-            <div>加载图片中...</div>
-          </div>
-        `;
-
-          // 替换原始图片
-          imageTag.parentNode.replaceChild(container, imageTag);
-
-          // 添加预览结构
-          const previewHTML = `
-          <div class="img-preview-wrapper">
-            <div class="img-preview-overlay"></div>
-            <div class="img-preview-content">
-              <button class="img-preview-close">&times;</button>
-              <div class="img-preview-container">
-                <img class="img-preview-main" src="" alt="${alt}"/>
-              </div>
-              <div class="img-preview-title">${alt}</div>
-            </div>
-          </div>
-        `;
-
-          container.innerHTML += previewHTML;
-        } catch (e) {
-          console.error('图片处理错误:', e);
-          // 出错时回退到原始图片
-          imageTag.setAttribute('data-error', 'true');
-        }
-      }
-    }
-
-    return parsed.toString();
   });
+
 
   eleventyConfig.addTransform("table", function (str) {
     const parsed = parse(str);

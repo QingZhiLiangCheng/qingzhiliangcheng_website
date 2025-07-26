@@ -137,11 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
       let translateX = 0;
       let translateY = 0;
 
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let dragged = false;
+
       const updateTransform = () => {
         previewImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
       };
 
-      // 滚轮缩放
       overlay.addEventListener('wheel', (e) => {
         e.preventDefault();
         const delta = e.deltaY < 0 ? 0.1 : -0.1;
@@ -149,21 +153,22 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTransform();
       });
 
-      // 拖动逻辑
-      let isDragging = false;
-      let startX, startY;
-
       overlay.addEventListener('mousedown', (e) => {
         isDragging = true;
         startX = e.clientX;
         startY = e.clientY;
+        dragged = false;
         overlay.style.cursor = 'grabbing';
       });
 
       overlay.addEventListener('mousemove', (e) => {
         if (isDragging) {
-          translateX += e.clientX - startX;
-          translateY += e.clientY - startY;
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragged = true;
+
+          translateX += dx;
+          translateY += dy;
           startX = e.clientX;
           startY = e.clientY;
           updateTransform();
@@ -180,9 +185,14 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.cursor = 'grab';
       });
 
-      // 点击空白区域关闭（避免点击图像本体也关闭）
       overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) overlay.remove();
+        if (dragged) {
+          dragged = false; // 清除状态
+          return; // 拖动后的点击，不关闭
+        }
+        if (e.target === overlay) {
+          overlay.remove(); // 仅点击空白区域时关闭
+        }
       });
 
       overlay.appendChild(previewImg);
@@ -192,4 +202,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 

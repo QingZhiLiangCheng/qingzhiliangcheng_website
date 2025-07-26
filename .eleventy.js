@@ -104,6 +104,7 @@ module.exports = function (eleventyConfig) {
   })
       .use(lineToParagraphPlugin)
       .use(embedPdfPlugin) //新增PDF解析代码
+      .use(imgBig)
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
     })
@@ -685,4 +686,34 @@ function embedPdfPlugin(md) {
   }
 
   md.core.ruler.after("inline", "pdf_embed", pdfEmbedReplace);
+}
+
+function imgBig(){
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      // 创建 overlay（只创建一次）
+      if (!document.querySelector("#img-viewer-overlay")) {
+        const overlay = document.createElement("div");
+        overlay.id = "img-viewer-overlay";
+        overlay.innerHTML = '<img src="">';
+        document.body.appendChild(overlay);
+      }
+
+      const overlay = document.querySelector("#img-viewer-overlay");
+      const overlayImg = overlay.querySelector("img");
+
+      overlay.addEventListener("click", () => {
+        overlay.style.display = "none";
+      });
+
+      // 给所有 .content 内的图片添加点击预览功能
+      document.querySelectorAll(".content img").forEach(img => {
+        img.classList.add("zoomable");
+        img.addEventListener("click", () => {
+          overlayImg.src = img.src;
+          overlay.style.display = "flex";
+        });
+      });
+    });
+  }
 }

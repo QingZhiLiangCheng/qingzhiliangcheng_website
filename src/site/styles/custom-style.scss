@@ -12,6 +12,33 @@ img {
   height: auto;    /* 高度自动调整以保持比例 */
 }
 
+#img-viewer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#img-viewer-overlay img {
+  max-height: 90%;
+  max-width: 90%;
+  object-fit: contain;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  border-radius: 8px;
+  cursor: zoom-out;
+  transition: transform 0.2s ease;
+}
+
+img.zoomable {
+  cursor: zoom-in;
+}
+
 br {
     content: ""; /* 添加伪内容 */
     display: block;

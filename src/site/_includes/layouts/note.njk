@@ -96,48 +96,54 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
 </html>
 
 <style>
-  .preview-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: zoom-out;
-    z-index: 9999;
-  }
-  .preview-overlay img {
-    max-width: 90%;
-    max-height: 90%;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    border-radius: 8px;
-  }
+.preview-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.8);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.preview-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
 </style>
 
 <script>
-console.log(1);
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('picture').forEach(picture => {
-    picture.style.cursor = 'zoom-in';
+document.querySelectorAll('picture, img').forEach(el => {
+  el.style.cursor = 'zoom-in';
+  el.addEventListener('click', () => {
+    const src = el.tagName === 'PICTURE' ? el.querySelector('img')?.src : el.src;
+    if (!src || src.startsWith('data:')) return;
 
-    picture.addEventListener('click', () => {
-      const img = picture.querySelector('img');
-      if (!img || !img.src) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'preview-overlay';
+    const previewImg = document.createElement('img');
+    previewImg.src = src;
 
-      const overlay = document.createElement('div');
-      overlay.className = 'preview-overlay';
+    let scale = 1;
 
-      const previewImg = document.createElement('img');
-      previewImg.src = img.src;
-      previewImg.alt = img.alt || '';
-
-      overlay.addEventListener('click', () => {
-        overlay.remove();
-      });
-
-      overlay.appendChild(previewImg);
-      document.body.appendChild(overlay);
+    // 滚轮缩放
+    overlay.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 0.1 : -0.1;
+      scale = Math.min(5, Math.max(0.3, scale + delta));
+      previewImg.style.transform = `scale(${scale})`;
     });
+
+    // 点击关闭
+    overlay.addEventListener('click', () => overlay.remove());
+
+    overlay.appendChild(previewImg);
+    document.body.appendChild(overlay);
   });
 });
 </script>

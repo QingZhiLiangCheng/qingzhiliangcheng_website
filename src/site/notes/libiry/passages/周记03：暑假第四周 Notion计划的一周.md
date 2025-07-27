@@ -1,9 +1,9 @@
 ---
-{"dg-publish":true,"tags":["notes"],"permalink":"/libiry/passages/周记03：暑假第四周 Notion计划的一周/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-26T15:47:52.726+08:00","updated":"2025-07-27T11:43:37.758+08:00"}
+{"dg-publish":true,"tags":["notes"],"permalink":"/libiry/passages/周记03：暑假第四周 Notion计划的一周/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-26T15:47:52.726+08:00","updated":"2025-07-27T11:47:24.020+08:00"}
 ---
 
 > 本文是对20250721 - 0727 的记录与思考
-> 适用Notion todo 一周, 坚持背英语单词的一周👍
+> 试用Notion todo , 坚持背英语单词👍，好玩的观点，发生的一些事情...
 
 
 ### 🗓️本周周历

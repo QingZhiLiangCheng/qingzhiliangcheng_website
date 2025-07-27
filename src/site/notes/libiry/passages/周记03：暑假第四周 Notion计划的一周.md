@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["notes"],"permalink":"/libiry/passages/周记03：暑假第四周 Notion计划的一周/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-26T15:47:52.726+08:00","updated":"2025-07-27T11:47:24.020+08:00"}
+{"dg-publish":true,"tags":["notes"],"permalink":"/libiry/passages/周记03：暑假第四周 Notion计划的一周/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-26T15:47:52.726+08:00","updated":"2025-07-27T11:53:35.058+08:00"}
 ---
 
 > 本文是对20250721 - 0727 的记录与思考
@@ -90,8 +90,9 @@ $$
 #### 皇家流沙包和ta的咖啡
 呃呃这周才发现我超喜欢的up主流沙包竟然是卖咖啡豆的，并且有自己的小店，叫coxxee
 <iframe width ="100%" height = "400" src="https://player.bilibili.com/player.html?isOutside=true&aid=492639568&bvid=BV1mN411W7rt&cid=1311572464&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"></iframe>
+
 等开了学打算买一次尝一下 而且还能备注获得包包的亲笔便签祝福一张hhh
-![e73bd56a93ead70b8801a6e580a7c70.jpg|300](/img/user/accessory/e73bd56a93ead70b8801a6e580a7c70.jpg)
+![1753588374124.jpg|300](/img/user/accessory/1753588374124.jpg)
 
 #### 画图工具
 之前遇到一张图片，还问过好多朋友这张图是不是ipad的画出来的

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["ETH-Zurich-Computer-Architecture"],"permalink":"/Computer Architecture/ETH Zurich 苏黎世联邦理工学院 Digital Design and Computer Architecture/lecture 01 Introduction and Basics/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-21T16:19:02.880+08:00","updated":"2025-07-22T20:54:11.287+08:00"}
+{"dg-publish":true,"tags":["ETH-Zurich-Computer-Architecture"],"permalink":"/Computer Architecture/ETH Zurich 苏黎世联邦理工学院 Digital Design and Computer Architecture/lecture 01 Introduction and Basics/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-21T16:19:02.880+08:00","updated":"2025-07-27T11:25:18.414+08:00"}
 ---
 
 课程pdf: [fetch.php](https://safari.ethz.ch/digitaltechnik/spring2023/lib/exe/fetch.php?media=onur-ddca-2023-lecture1-intro-afterlecture.pdf)
@@ -45,7 +45,7 @@ How does a computer solve problems?
 answer: 指挥电子
 How Do Problems Get Solved by Electorons?
 电子是潜在的解决问题的工具(从物理中能看到这一点)，但我们没法直接与电子沟通，我们面临很多**Problems**在顶层，我们知道**Electrons**是潜在的底层的解决问题的工具。
-我们把Problems转换为Algorithms，然后算法用某种Language，Program变成，并在System Software上运行，然后被编译成较低层次的能够理解的指令，而这个较低层次的东西叫做Micro-Architecture(微架构)，然后micro-architecture将会通过Digital logic(数字逻辑)实现，而digital logic通过构成devices(transistors 晶体管)的器件来实现，晶体管的操作基于electrons的基本原理
+我们把Problems转换为Algorithms，然后算法用某种Language，Program变成，并在System Software上运行，然后被编译成较低层次的结构能够理解的指令，而这个较低层次的东西叫做Micro-Architecture(微架构)，然后micro-architecture将会通过Digital logic(数字逻辑)实现，而digital logic通过构成devices(transistors 晶体管)的器件来实现，晶体管的操作基于electrons的基本原理
 ![Pasted image 20250721190743.png|500](/img/user/accessory/Pasted%20image%2020250721190743.png)
 传统的计算机习题结构都会讨论软件，硬件，接口和微架构，为了适应现在的发展（我自己认为包括有摩尔定律的问题）我们需要讨论的体系结构要广泛很多
 ![Pasted image 20250721191806.png|600](/img/user/accessory/Pasted%20image%2020250721191806.png)

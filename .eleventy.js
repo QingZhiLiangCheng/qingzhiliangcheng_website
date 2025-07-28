@@ -69,14 +69,15 @@ function getAnchorAttributes(filePath, linkTitle) {
       noteIcon = frontMatter.data.noteIcon;
     }
   } catch {
-    /*deadLink = true;*/
+    deadLink = true;
   }
 
   if (deadLink) {
     return {
+      //Done[2025-07-28](QingZhiLiangCheng): 将href 从/404 改为了`${permalink}`
       attributes: {
         "class": "internal-link is-unresolved",
-        "href": "/404",
+        "href": `${permalink}`,
         "target": "",
       },
       innerHTML: title,

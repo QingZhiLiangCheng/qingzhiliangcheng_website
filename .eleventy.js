@@ -49,8 +49,6 @@ function getAnchorAttributes(filePath, linkTitle) {
   //Done[2025-07-28](QingZhiLiangCheng): 去掉slugify() 原来是${slugify(fileName)}
   let permalink = `/notes/${fileName}`;
   let deadLink = false;
-  //Done[2025-07-28](QingZhiLiangCheng): 新增调试isFindFile=0;
-  let isFindFile =0;
   try {
     const startPath = "./src/site/notes/";
     const fullPath = fileName.endsWith(".md")

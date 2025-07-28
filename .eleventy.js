@@ -73,16 +73,10 @@ function getAnchorAttributes(filePath, linkTitle) {
   }
 
   if (deadLink) {
-    const startPath = "./src/site/notes/";
-    const fullPath = fileName.endsWith(".md")
-        ? `${startPath}${fileName}`
-        : `${startPath}${fileName}.md`;
-    const file = fs.readFileSync(fullPath, "utf8");
     return {
-      //Done[2025-07-28](QingZhiLiangCheng): 将href 从/404 改为了`${permalink}...`
       attributes: {
         "class": "internal-link is-unresolved",
-        "href": `${permalink}/${fullPath}/${file}`,
+        "href": `${permalink}`,
         "target": "",
       },
       innerHTML: title,

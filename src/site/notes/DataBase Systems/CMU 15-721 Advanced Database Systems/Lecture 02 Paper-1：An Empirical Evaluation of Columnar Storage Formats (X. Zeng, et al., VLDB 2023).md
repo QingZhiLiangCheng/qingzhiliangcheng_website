@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-28T16:55:49.717+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-28T17:06:52.406+08:00"}
 ---
 
 
@@ -99,12 +99,12 @@ Arrow是一种列式的内存格式，他的主要思想是在内存中进行列
 Parquet和ORC的示意图
 ![Pasted image 20250728134652.png](/img/user/accessory/Pasted%20image%2020250728134652.png)
 
-### 3.1 Format Layout
-首先，Parquet和ORC都使用的PAX(Partition Attributes Across)格式, 这是一种混合存储格式，结合了行存储和列存储的优点，其实这在CMU15445的基础课程中学过[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression\|Lecture 05 Storage Models & Compression]]#storege models 中，当时学的时候是介绍到了行存储(N-array Storage Model(NSM), row storage), 纯列存储(Decomposition Storage Model(DSM), column storage), 以及Hybrid Storage Model: Partition Attributes Across(PAX)，而且当时Andy老实说过说现在所说的列存储都是指的第三种PAX，而且还举到了Parquet和ORC的例子，只不过当时我不知道这是啥
+#### Format Layout
+首先，Parquet和ORC都使用的PAX(Partition Attributes Across)格式, 这是一种混合存储格式，结合了行存储和列存储的优点，其实这在CMU15445的基础课程中学过[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression#storage models\|Lecture 05 Storage Models & Compression#storage models]]，当时学的时候是介绍到了行存储(N-array Storage Model(NSM), row storage), 纯列存储(Decomposition Storage Model(DSM), column storage), 以及Hybrid Storage Model: Partition Attributes Across(PAX)，而且当时Andy老实说过说现在所说的列存储都是指的第三种PAX，而且还举到了Parquet和ORC的例子，只不过当时我不知道这是啥
 总之，这里的核心思想是行存储和列存储的一种结合，表首先被划分为多个行组(row group), 每组包含多各行，然后在row group内部按列划分，形成了列块(column chunk).
 这样的结构的优点在于不会向行存储那样引入额外的无用数据，因为有meta-data会标记每个列数据的偏移量，也不会像纯列存储那样数据不相邻。
 而且PAX格式很适合vectorized query processing(向量化查询处理)，所谓的vectorized query processing, 其实就是数据在语法树中的传输是成批成批流动的，这种方式在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1\|Lecture 12 Query Execution Part 1]]中提到过，当时提到了Iterator Model, Materialization Models以及Vectorization Model. Iteractor Model的核心思想是一行一行的流，Materialization Models的思想是一整个表扔进去，而Vectorization Model是行组行组的那样
-对于Parquet和ORC来说，都会对每个块先做lightweight encoding(轻量级编码), 在使用general-purpose block compression algorithms(通用块压缩算法)进行处理. 对于Encoding的处理，其实在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression\|Lecture 05 Storage Models & Compression]]#column-level 中提到过一些方法，比如run-length encoding, bit-packing encoding, bitmap encoding, delta encoding, incremental encoding, dictionary encoding... 论文中前面是一直在提dictionary encoding. 在做完encoding之后，会进行compression, 以减少磁盘使用
+对于Parquet和ORC来说，都会对每个块先做lightweight encoding(轻量级编码), 在使用general-purpose block compression algorithms(通用块压缩算法)进行处理. 对于Encoding的处理，其实在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression#column-level\|Lecture 05 Storage Models & Compression#column-level]]中提到过一些方法，比如run-length encoding, bit-packing encoding, bitmap encoding, delta encoding, incremental encoding, dictionary encoding... 论文中前面是一直在提dictionary encoding. 在做完encoding之后，会进行compression, 以减少磁盘使用
 Parquet和ORC的文件入口都是footer，这里说的是整个文件好多个Row Group外的footer, footer中会存很多meta-data(元数据)，包括表模式(table schema)(其实这个我们在CMU15445的Project中体会过), tuple count, row group meta-data, 每个column chunk的偏移量，以及zone maps for each column chunk等等，能看到图中Parquet和ORC的结构是不太一样的。
 按图上的说法，对于Parquet是所有的Row Group外有一个footer，footer里面存了整个文件的metadata(比如table schema，row group的offset)同时在这里面还存了每个Row Group的metadata，然后每个Row Group中存放这每个column chunk的metadata，比如说offset, zone maps等等，这里的核心关键在于它是存在一起了
 ![Pasted image 20250728152257.png|500](/img/user/accessory/Pasted%20image%2020250728152257.png)

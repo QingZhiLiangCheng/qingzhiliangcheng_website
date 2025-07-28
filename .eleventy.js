@@ -43,6 +43,14 @@ function getAnchorAttributes(filePath, linkTitle) {
     headerLinkPath = `#${headerToId(header)}`;
   }
 
+  //Done[2025-07-28](QingZhiLiangCheng)新增处理 分割完了又出现了呃呃
+  fileName = fileName.replaceAll("&amp;", "&");
+
+  if(fileName.includes("Storage Models")){
+    console.log(fileName);
+
+  }
+
   let noteIcon = process.env.NOTE_ICON_DEFAULT;
   const title = linkTitle ? linkTitle : fileName;
   //Done[2025-07-28](QingZhiLiangCheng): 将filePath改为了fileName
@@ -54,6 +62,9 @@ function getAnchorAttributes(filePath, linkTitle) {
     const fullPath = fileName.endsWith(".md")
       ? `${startPath}${fileName}`
       : `${startPath}${fileName}.md`;
+    if(fullPath.includes("Storage Models")) {
+      console.log("尝试读取路径：", fullPath);
+    }
     const file = fs.readFileSync(fullPath, "utf8");
     const frontMatter = matter(file);
     if (frontMatter.data.permalink) {
@@ -69,6 +80,7 @@ function getAnchorAttributes(filePath, linkTitle) {
       noteIcon = frontMatter.data.noteIcon;
     }
   } catch {
+
     deadLink = true;
   }
 
@@ -76,7 +88,7 @@ function getAnchorAttributes(filePath, linkTitle) {
     return {
       attributes: {
         "class": "internal-link is-unresolved",
-        "href": `${permalink}`,
+        "href": "/404",
         "target": "",
       },
       innerHTML: title,

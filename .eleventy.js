@@ -46,7 +46,8 @@ function getAnchorAttributes(filePath, linkTitle) {
   let noteIcon = process.env.NOTE_ICON_DEFAULT;
   const title = linkTitle ? linkTitle : fileName;
   //Done[2025-07-28](QingZhiLiangCheng): 将filePath改为了fileName
-  let permalink = `/notes/${slugify(fileName)}`;
+  //Done[2025-07-28](QingZhiLiangCheng): 去掉slugify() 原来是${slugify(fileName)}
+  let permalink = `/notes/${fileName}`;
   let deadLink = false;
   try {
     const startPath = "./src/site/notes/";

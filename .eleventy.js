@@ -67,18 +67,8 @@ function getAnchorAttributes(filePath, linkTitle) {
     if (frontMatter.data.noteIcon) {
       noteIcon = frontMatter.data.noteIcon;
     }
-  } catch(e) {
-    //Done[2025-07-28](QingZhiLiangCheng): 增加url调试信息
-    console.error("fileName",fileName)
-    console.error("permalink",permalink)
-    console.error("filePath",filePath)
-    const startPath = "./src/site/notes/";
-    const fullPath = fileName.endsWith(".md")
-        ? `${startPath}${fileName}`
-        : `${startPath}${fileName}.md`;
-    console.error("Failed to resolve link:", fullPath);
-    console.error(e);
-    deadLink = true;
+  } catch {
+    /*deadLink = true;*/
   }
 
   if (deadLink) {

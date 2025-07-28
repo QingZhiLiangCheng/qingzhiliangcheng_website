@@ -49,6 +49,8 @@ function getAnchorAttributes(filePath, linkTitle) {
   //Done[2025-07-28](QingZhiLiangCheng): 去掉slugify() 原来是${slugify(fileName)}
   let permalink = `/notes/${fileName}`;
   let deadLink = false;
+  //Done[2025-07-28](QingZhiLiangCheng): 新增调试isFindFile=0;
+  let isFindFile =0;
   try {
     const startPath = "./src/site/notes/";
     const fullPath = fileName.endsWith(".md")
@@ -73,11 +75,16 @@ function getAnchorAttributes(filePath, linkTitle) {
   }
 
   if (deadLink) {
+    const startPath = "./src/site/notes/";
+    const fullPath = fileName.endsWith(".md")
+        ? `${startPath}${fileName}`
+        : `${startPath}${fileName}.md`;
+    const file = fs.readFileSync(fullPath, "utf8");
     return {
-      //Done[2025-07-28](QingZhiLiangCheng): 将href 从/404 改为了`${permalink}`
+      //Done[2025-07-28](QingZhiLiangCheng): 将href 从/404 改为了`${permalink}...`
       attributes: {
         "class": "internal-link is-unresolved",
-        "href": `${permalink}`,
+        "href": `${permalink}/${fullPath}/${file}`,
         "target": "",
       },
       innerHTML: title,

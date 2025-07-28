@@ -1,5 +1,5 @@
 ---
-{"week":"第三周","dg-publish":true,"tags":["week3","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-03T13:51:23.823+08:00","updated":"2025-04-19T09:54:33.065+08:00"}
+{"week":"第三周","dg-publish":true,"tags":["week3","cmu15445"],"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-03T13:51:23.823+08:00","updated":"2025-07-28T15:55:59.546+08:00"}
 ---
 
 
@@ -181,7 +181,7 @@ MySQL是怎么实现的？  MySQL InnoDB
 字典压缩式大多数系统的选择
 在字典压缩后  还可以对字典本身或者已编码的字典值 应用其他压缩方案  从而得到更深层次的压缩效果
 
-#### **run-length Encoding**
+#### run-length Encoding
 如果有相同的数值 不必为每个元组重复存储 而是存储一个压缩摘要  指出特定偏移量处  该值出现的次数
 将单个列中相同的值压缩为三元组
 - 属性值
@@ -193,7 +193,7 @@ MySQL是怎么实现的？  MySQL InnoDB
 智能排序  会变得更好
 ![Pasted image 20250206151734.png|500](/img/user/accessory/Pasted%20image%2020250206151734.png)
 
-#### **Bit Packing**
+#### Bit Packing
 这里的基本思想是 人们经常声明的属性 往往比实际要大很多
 比如说 int32 
 ![Pasted image 20250206152130.png|400](/img/user/accessory/Pasted%20image%2020250206152130.png)
@@ -203,16 +203,16 @@ MySQL是怎么实现的？  MySQL InnoDB
 无所压缩的其余值 用原始形式存储
 ![Pasted image 20250206152554.png](/img/user/accessory/Pasted%20image%2020250206152554.png)
 
-#### **bitmap encoding**
+#### bitmap encoding
 如果存在一个基数较低的属性  具有少数独特值
 这时候 不在存储实际值  而是维护位图  根据向量的偏移量来确定 元组是否具有该值
 有些数据库的位图索引  本质上是差不多的
 ![Pasted image 20250206153700.png](/img/user/accessory/Pasted%20image%2020250206153700.png)
 
-#### **delta encoding**
+#### delta encoding
 ![Pasted image 20250206153946.png](/img/user/accessory/Pasted%20image%2020250206153946.png)
 
-#### **Dictionary compression**
+#### Dictionary compression
 将频繁的值替换为较小的固定长度代码，然后维护从代码到原始值的映射（字典）
 理想的字典方案支持对点和范围查询进行快速编码和解码 
 ![Pasted image 20250206154351.png](/img/user/accessory/Pasted%20image%2020250206154351.png)

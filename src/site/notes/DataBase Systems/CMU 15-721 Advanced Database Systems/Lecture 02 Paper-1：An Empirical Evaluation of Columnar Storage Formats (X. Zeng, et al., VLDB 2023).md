@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-26T13:23:59.253+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-28T16:47:30.869+08:00"}
 ---
 
 
@@ -83,3 +83,66 @@ Rarquet和ORC最初都是为Hadoop设计的，我查了一下Hadoop,是2006年�
 Arrow是一种列式的内存格式，他的主要思想是在内存中进行列式存储，不需要序列化或者反序列化，对于Parquet和ORC来说他们更像是压紧了，而且这个压缩是按块压缩的，所以拿到内存中是解压缩然后哪里面的数据，而对于Arrow来说，本来就在内存中按列存储好了的，更像是一种传输格式，并不是长期磁盘存储设计的格式，所以这篇paper并没有评估Arrow
 然后文中提到了最近的Lakehouse趋势，只是加了层 不改变存储格式，lakehouse基本的架构已经很熟悉了 详见[[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 paper-1： Lakehouse： A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics(M.Armbrust, et al., CIDR 2021)\|Lecture 01 paper-1： Lakehouse： A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics(M.Armbrust, et al., CIDR 2021)]]
 在高性能计算HPC中，还有一类专门的科学数据存储格式，比如HDF5, BP5, NetCDF, Zarr等广泛应用于科学模拟，气候建模，基因组等领域，主要是针对复杂数据，可能是多层次组织之类的数据，通常是多维数组存储，而不是按列示存储，不支持列示存储特性，所以数据库很少使用
+
+### Feature Taxonomy
+在这一节，会介绍Parquet和ORC的一些特征，对于每个特征，都会介绍Parquet和ORC的共同设计，然后介绍直接的差异
+![Pasted image 20250728132943.png](/img/user/accessory/Pasted%20image%2020250728132943.png)
+但是值得注意的一个点是，我们论文中的说法可能会跟Parquet和ORC的一些说法不同，但本质上是一样的
+![Pasted image 20250728133525.png](/img/user/accessory/Pasted%20image%2020250728133525.png)
+比如对于论文中Row Group，在Parquet和ORC中的叫法不同，但本质上都是一种将tuple先按行分配再按列分配，而那个按行分配 就是分成了 行组 Row Group
+包括对于Zone Map，Parquet和ORC中的叫法和实现方法也是有差别的，但本质上最后的效果是一个东西
+
+> [!tip] Feeling
+> 另外，这里我多说一嘴，在3.1的时候，其实是提到了PAX格式，vectorized query processing(向量化查询处理) ，包括一直在提的zone map，现在看的时候都会记起来在CMU15445中都学过，啊啊啊啊啊啊啊 就很奇妙的感觉  我以为我把学了的东西都还给Andy老师了 但是碰到的时候我却知道
+> 
+
+Parquet和ORC的示意图
+![Pasted image 20250728134652.png](/img/user/accessory/Pasted%20image%2020250728134652.png)
+
+### 3.1 Format Layout
+首先，Parquet和ORC都使用的PAX(Partition Attributes Across)格式, 这是一种混合存储格式，结合了行存储和列存储的优点，其实这在CMU15445的基础课程中学过[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression#storage models\|Lecture 05 Storage Models & Compression#storage models]]，当时学的时候是介绍到了行存储(N-array Storage Model(NSM), row storage), 纯列存储(Decomposition Storage Model(DSM), column storage), 以及Hybrid Storage Model: Partition Attributes Across(PAX)，而且当时Andy老实说过说现在所说的列存储都是指的第三种PAX，而且还举到了Parquet和ORC的例子，只不过当时我不知道这是啥
+总之，这里的核心思想是行存储和列存储的一种结合，表首先被划分为多个行组(row group), 每组包含多各行，然后在row group内部按列划分，形成了列块(column chunk).
+这样的结构的优点在于不会向行存储那样引入额外的无用数据，因为有meta-data会标记每个列数据的偏移量，也不会像纯列存储那样数据不相邻。
+而且PAX格式很适合vectorized query processing(向量化查询处理)，所谓的vectorized query processing, 其实就是数据在语法树中的传输是成批成批流动的，这种方式在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1\|Lecture 12 Query Execution Part 1]]中提到过，当时提到了Iterator Model, Materialization Models以及Vectorization Model. Iteractor Model的核心思想是一行一行的流，Materialization Models的思想是一整个表扔进去，而Vectorization Model是行组行组的那样
+对于Parquet和ORC来说，都会对每个块先做lightweight encoding(轻量级编码), 在使用general-purpose block compression algorithms(通用块压缩算法)进行处理. 对于Encoding的处理，其实在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression#column-level\|Lecture 05 Storage Models & Compression#column-level]]中提到过一些方法，比如run-length encoding, bit-packing encoding, bitmap encoding, delta encoding, incremental encoding, dictionary encoding... 论文中前面是一直在提dictionary encoding. 在做完encoding之后，会进行compression, 以减少磁盘使用
+Parquet和ORC的文件入口都是footer，这里说的是整个文件好多个Row Group外的footer, footer中会存很多meta-data(元数据)，包括表模式(table schema)(其实这个我们在CMU15445的Project中体会过), tuple count, row group meta-data, 每个column chunk的偏移量，以及zone maps for each column chunk等等，能看到图中Parquet和ORC的结构是不太一样的。
+按图上的说法，对于Parquet是所有的Row Group外有一个footer，footer里面存了整个文件的metadata(比如table schema，row group的offset)同时在这里面还存了每个Row Group的metadata，然后每个Row Group中存放这每个column chunk的metadata，比如说offset, zone maps等等，这里的核心关键在于它是存在一起了
+![Pasted image 20250728152257.png|500](/img/user/accessory/Pasted%20image%2020250728152257.png)
+而ORC是有总的footer，但是每个column chunk的metadata是存在了对应的row group中
+![Pasted image 20250728152534.png|500](/img/user/accessory/Pasted%20image%2020250728152534.png)
+
+zone maps在这里已经不算是第一次提到了，zone map在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 12 Query Execution Part 1\|Lecture 12 Query Execution Part 1]]中提到过
+![Pasted image 20250327133943.png|500](/img/user/accessory/Pasted%20image%2020250327133943.png)
+本质上就是会整合一些信息，来达到可以跳过这个column chunk的效果
+Difference 1: Row Group大小的定义不同 -- Parquet按行数来定义row group的大小，比如论文中提到的例子是1M行一个row group；而ORC是使用固定的物理存储大小来定义row group，比如64MB作为一个row group -- Parquet的想法是保证行数进而保证vectorized query processing,但是如果一个表的属性特别多的话，这个row group的内存占用的会很大；而ORC的想法是保证内存的使用，但可能会因为表的属性多而导致条目不足
+Difference 2: 压缩单元与zone mao的映射不同 -- Parquet是压缩单元和zone map单位是对应的，但ORC的压缩单元和zone map是独立设计  -- ORC能更灵活的单独控制压缩效果，但是可能值会跨边界
+
+#### Encoding
+首先lightweight compression是为了减少磁盘占用和降低网络传输成本
+Parquet和ORC都支持Dictionary Encoding, Run-Lengh Encoding, Bitpacking
+默认情况下，Parquet对每一列都积极的应用Dictionary Encoding,而不关注数据类型，而ORC只对字符串应用
+Parquet对整数进行Dictionary Encoding的好处是可以将大值压缩，比如一个整数类型好多位100000000这样，且出现次数很多，通过Dictionary Encoding就会变成一个小的数；但是造成的结果是，可能会影响到Delta Encoding和Frame-of-Reference Encoding(POR)的第二次压缩
+这里提到了Delta Encoding和POR, Dleta Encoding在[[DataBase Systems/CMU 15-445：Database Systems/Lecture 05 Storage Models & Compression#delta encoding\|Lecture 05 Storage Models & Compression#delta encoding]]中提到了，如下图
+![Pasted image 20250206153946.png](/img/user/accessory/Pasted%20image%2020250206153946.png)
+Dleta Encoding本质上是一种数据关系的差值，是一种相邻元素的差值，而POR是一种对于基准值（基准值是选出来的，对于异常特殊的值，比如说很大的值会单独存储）的差值，但本质上都是一种数据关系，而通过Dictionary Encoding可能会损失这种数据关系原来是连续递增 `[100, 101, 102, 103]`，编码后变成 `[2, 0, 3, 1]`，就没法通过Delta Encoidng和POR进行压缩了，所以说Parquet只能通过Bitpacking和RLE来进一步压缩Dictionary Encoding后的数据
+Parquet和ORC对Dictionary Encoding存在着不同的策略，因为字典的建立需要占据一定的空间，所以Parquet和ORC都设置了一定的临界点。对于Parquet来说，他的核心是在于限制字典的总大小不能超过1MB（默认）如果NDV(number of different value)高，说明数据分散，如果建出来的字典大小超过1MB就会放弃；而ORC的策略是通过判断NDV Ratio，所谓的NDV Ratio是NDV与总行数的比值，如果不同的值占比太高，比如ORC的默认阈值可能是0.8，那就不适用字典压缩
+刚刚上面提到了，Parquet由于对整数也采用了Dictionary Encoding，所以二次压缩只能采用RLE和Bitpacking，那选择哪一种呢？ Parquet采取的方式是比较重复次数是否超过8次，如果超过8次，就是用RLE，但是值得注意的是，作者在论文中说他们发现这个8是个硬编码，也就意味着并不可调，说明这可能是他们找到的最优的数值了
+而ORC不同于Parquet，他没有对整数采用Dictionary Encoding, 所以他对整数的编码存在着四种方式，RLE, Bitpacking, Delta Encoding, POR. 在ORC中是存在一种规则驱动的贪心算法来决定在不同子序列中的最优压缩方式，规则是这样的
+从序列的开始，使用一个最大值为512的look-ahead buffer(前瞻缓冲区)用来判断这段子序列使用何种方式
+- 如果子序列中存在3-10个重复值，使用RLE
+- 如果连续相同的值超过10个，或者值是单调递增递减，就是用Delta Encoding
+- 对于即不重复也不单调的，如果没有异常值就用bitpacking
+- 其他的使用PFOR或者其变体
+
+总结一下就是ORC的编码方式多样，且效果可能会更好，但是解码慢，因为是多种编码混合使用的，需要先去找元数据查看这一段子序列是何种编码方式
+
+#### Compression
+Parquet和ORC都支持block compression(块级压缩)，通用的块压缩算法的特点在于类型不可知，所以说直接就把数据当纯字节流压缩了
+大多数块压缩算法包含配置“压缩级别”的参数，以在压缩比和压缩/解压缩速度之间进行权衡，Parquet是把这个调整旋钮暴露给用户了可以选择不同的粒度进行压缩，而ORC只有两个选项，一个是optimize for speed(快但是压缩率低)，optimize for compression(压得小但慢)
+有一个很有意思的事情是作者最后发现在现代硬件下，列式存储使用block compression对查询性能的帮助不大，甚至可能变差。因为压缩的只是原始字节，而不是列内部结构，对于本来通过encoding就压缩的很好的数据，解压，解码就变成了两次工作，在后文作者证明了这个结论
+
+#### Type System
+Parquet只支持以小组primitive types，如INT32, FLOAT, BYTE_ARRAY, 其他类型比如INT8, DATE, TIMESTAMP都是映射到原始类型上实现的，比如INT8实际上可能就存储为INT32，这样的type system比较简单，统一，紧凑，而且可以统一在INT32上做一些很好的压缩
+而ORC的做法是INT8, INT16, TIMESTAMP, BOOLEAN等都有自己专属的reader, writer, encoder, decoder全套的实现，有点是可以对特定的类型进行优化，但是这样实现比较臃肿，系统更复杂
+两者在complex types都支持struct(比如Json), List, Map. 但是Parquet不支持Union但是ORC支持. Union允许同一列具有不同的类型，在动态schema或者数据不一致的环境下，可能有优点，比如我们的Json日志中其中有一个是event_value，在Parquet下可能一开始只是浮点数，但是后期可能还要保存或者想变成字符串，那么Parquet就需要手动更改schema，而ORC支持`Union<TypeA, TypeB>`
+并且有研究表明，如果如果 Parquet 支持 `Union`，可以更好地优化其内部的 Dremel 模型(一种嵌套数据表示和解析方式)

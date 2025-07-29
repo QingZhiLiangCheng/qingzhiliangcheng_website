@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-28T17:06:52.406+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-29T17:53:59.959+08:00"}
 ---
 
 
@@ -146,3 +146,136 @@ Parquet只支持以小组primitive types，如INT32, FLOAT, BYTE_ARRAY, 其他�
 而ORC的做法是INT8, INT16, TIMESTAMP, BOOLEAN等都有自己专属的reader, writer, encoder, decoder全套的实现，有点是可以对特定的类型进行优化，但是这样实现比较臃肿，系统更复杂
 两者在complex types都支持struct(比如Json), List, Map. 但是Parquet不支持Union但是ORC支持. Union允许同一列具有不同的类型，在动态schema或者数据不一致的环境下，可能有优点，比如我们的Json日志中其中有一个是event_value，在Parquet下可能一开始只是浮点数，但是后期可能还要保存或者想变成字符串，那么Parquet就需要手动更改schema，而ORC支持`Union<TypeA, TypeB>`
 并且有研究表明，如果如果 Parquet 支持 `Union`，可以更好地优化其内部的 Dremel 模型(一种嵌套数据表示和解析方式)
+
+#### Index and Filter
+Parquet和ORC都支持zone map和Bloom Filters. Zone map在上面已经提到过了，Bloom Filters在CMU15445[[DataBase Systems/CMU 15-445：Database Systems/Lecture 07 Hash Tables#chained hashing\|Lecture 07 Hash Tables#chained hashing]]有过介绍
+在Parquet和ORC中的zone map都会记录某个区域内的最大值, 最小值, 行数等元信息，如果某个zone的值范围与查询条件不匹配，整个zone就可以被跳过
+但是Parquet和ORC对于zone map的粒度有区别，Parquet和ORC都支持文件级和row group上使用zone map, 但是Parquet的最小粒度是page(可选) ，但ORC的zone map粒度是按行数配置的，默认是10000行一个zone，所以这就造成了前面多的问题，由于ORC的zone map和压缩单元可能不匹配，所以就会造成一些特殊性
+过去旧版本Parquet的zone map最低粒度是放在每个page的page header中的，当指向检查zone map是否跳过的时候，就会出现很多随机I/O，因为我们是以Row Group为单位进行跳过的，在检查某一列的值是否匹配以确定是否跳过的时候，就需要把column chunk中的每个page都拿出来看一下page header, 换句话说，因为page中还有页体，所以存储是不连续的
+在Parquet2.9.0版本后，这以问题通过新增的组件PageIndex得到了解决；但是这是可选的，如果不启用最低粒度，那么zone maps实际上是存储在图中游侠佳偶的column中的metadata中
+![Pasted image 20250729142041.png|500](/img/user/accessory/Pasted%20image%2020250729142041.png)
+而ORC的zone map一直存放在了Row Group的开头，所以一直都是连续的
+![Pasted image 20250729142428.png|500](/img/user/accessory/Pasted%20image%2020250729142428.png)
+
+Parquet和ORC的Bloom Filters都是可选功能。ORC中的Bloom Filter的最小粒度和zone map是相同的，并且存储在一起了，放在了Stripe(Row Group在ORC中的名字)开头的index区域；Parquet中的Bloom Filter是按column chunk粒度生成的，原因是PageIndex可选的，PageIndex的最低粒度是开到page的，所以事实上Bloom Filter是粒度更粗了的，但Parquet使用了一种叫做Split Block Bloom Filter(SBBF)的结构，可以提供更好的CPU缓存命中率和SIMD加速支持
+Apache Arrow和DuckDB在读写Parquet时，只启用了row group粒度的zone map，InfluxDB和Spark启用了PageIndex和Bloom Filters； 这里可能的想法（我认为） 可能DuckDB和Apache Arrow认为最小粒度的zone map剪枝能力有限，但节省空间；而InfluxDB和Spark则是牺牲存储空间来换取更强的选择性过滤功能
+读取ORC的时候，Arrow, Spark, Presto 都默认开启row index(zone map), 关闭Bloom Filter.
+Zone map的剪枝效果是依赖于数据大致排序，同类值集中的，如果数据是完全乱序的，min/max 范围会很大，zone map 就基本剪不掉任何内容，而且一个有趣的问题是，随着硬件越来越快，IO成本的下降，或许就不需要更多的加入这些冗余的数据结构来减少IO了
+#### Nested Data Model
+![Pasted image 20250729145005.png](/img/user/accessory/Pasted%20image%2020250729145005.png)
+随着半结构化数据集变得流行，开放格式都支持嵌套数据。  这里的半结构化数据其实在CMU15721的[[DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 01 lecture：Modern Analytical Database Systems\|Lecture 01 lecture：Modern Analytical Database Systems]]中提到了，非结构化数据是Lakehouse中提到的像PDF，音频，视频等，半结构化数据指的是JSON等
+Parquet中的嵌套数据模型基于的是Google的Dremel，Dremel是一篇单独的论文，但总体思想像图3(a), 3(b)中那样，将每个叶字段作为单独的列，每一列都与两个整数相关联，分别是repetition level(R)和definition level(D).
+- R是说我这是不是一行新的数据，R=0是说这是新的一列，而R=1是说这是后续值，比如说在tag中，b的R就是1，因为它是和a在同一条数据中
+- D其实代表的是某个值定义到了哪一层，比如说在first中，第二行中的D=1，是说这个数据没有first值但是定义了第一层的name值
+
+其实他给的这个表的逻辑上应该是这样的
+
+| first | last | tag |
+| ----- | ---- | --- |
+| Mike  | Lee  | a,b |
+|       | Hill |     |
+| Joe   |      | c   |
+然后Parquet是列存储，所以first, last, tag是三列，只不过因为由于是Json，有层级关系，比如其实first和last是name下的，所以又加了R和D来
+
+ORC采用的方式更直观，如图3(b), ORC采用了presence 一个布尔列来标记某一位置的值是否存在(是没有这个定义 还是 null), 通过length一个整数列来标记某个repeated数组有多长。比如在例子中的first，值列是`["Mike", "Joe"]`，p列式`[1, 0, 1]`，就很直观
+
+所以说ORC的方式是给嵌套结构创建单独的列（比如例子中的name和tags）,而Parquet是通过R和D将这种结构信息展现出嵌套结构来
+
+### Columnar Storage Benchmark
+对Parquet和ORC进行性能和空间效率的压力测试
+市面上常用的标准的OLAP基准测试，如SSB，TPC-H, TPC-DS都是均匀的数据集，而有些数据集像YCSB, DSB和BigDataBench允许用户设置倾斜度，但还是无法接近正式世界的数据集分布
+所以作者他们设计了一个基于真实数据的基准框架来评价列式存储的数据集，他们定义了一些值分布的一些特征，比如排序程度，偏斜模式，然后从真实数据中提取这些属性，构造预定义workload模版，用来代表不同场景的应用负载，比如BI，ML。在使用的时候，只需要配置文件来配置比如偏斜程度，是否排序等，然后workload生成器就会生成模拟数据
+#### Column Properties
+这里介绍了列值分布的核心属性，有
+- NDV Ratio: 不同值的比率
+- Null Ratio: 空值的比例
+- Value Range: 数值或字符串的跨度
+- Sortedness: 有序程度
+- Skew Pattern: 倾斜程度
+
+**NDV Ratio**
+$$
+f_{cr} = \frac{NDV}{N}
+$$
+NDV -- number of distinct values, 是不同值的个数，换句话说其实就是列表中的选项的选择个数，N是总记录数 -> 很多东西都是NDV低的，比如中国这么多人，但是省份就只有那么多选项，NDV低代表着所有记录的重复值多，可能就更适合Dictionary Encoding, RLE...
+**Null Ratio**
+$$
+f_{\text{nr}} = \frac{|\{ i \mid a_i \text{ is null} \}|}{N}
+
+$$
+空值可压缩
+**Value Range**
+数值关注其平均值和方差，当然范围小的占位可能更少，更适合使用bitpacking
+**Sortedness**
+排序程序 -- 评估对RLE, Delta, zone map的影响
+作者他们提出了一种度量，对默认512个条目，计算排序度指标
+$$
+\begin{align*}
+\text{asc} &= \left| \left\{ i \mid 1 \le i < n,\, a_i < a_{i+1} \right\} \right| \\
+\text{desc} &= \left| \left\{ i \mid 1 \le i < n,\, a_i > a_{i+1} \right\} \right| \\
+\text{eq} &= \left| \left\{ i \mid 1 \le i < n,\, a_i = a_{i+1} \right\} \right| \\
+f_{\text{sortedness}} &= \frac{\max(\text{asc}, \text{desc}) + \text{eq} - \left\lfloor \frac{N}{2} \right\rfloor}{\left\lceil \frac{N}{2} \right\rceil - 1}
+\end{align*}
+
+$$
+其中，asc为升序对数，desc为降序对数，eq为相等对数，通过这些来统计相邻元素之间是升序，降序或相等的次数
+对于sortedness
+- 取最大方向（升序或降序）加上“相等对”。
+- 再减去一半的长度，目的是让乱序序列得到分数趋近 0。
+- 分母是归一化项，使得全排序（如 strictly ascending）得分为 1。
+
+**skewness**
+使用了Zipfian分布(presudo-zipfian distribution)对列中的偏斜度进行建模
+![Pasted image 20250729162558.png|500](/img/user/accessory/Pasted%20image%2020250729162558.png)
+数据偏斜分为四类
+
+| Skew Pattern  | s 值范围    | 描述                     |
+| ------------- | -------- | ---------------------- |
+| Uniform       | s≤0.01   | 每个值出现的概率近似相等，类似随机分布。   |
+| Gentle Zipf   | 0.01<s≤2 | 温和的偏斜，有热门值，但长尾仍占据很多空间。 |
+| Hotspot       | s>2      | 高度偏斜，极少的热门值覆盖几乎整个列。    |
+| Single/Binary | 特殊情况     | 整列只有一个或两个不同值的极端例子。     |
+
+当然，越偏斜 压得会越好
+
+#### Parameter Distribution in Real-World Data
+作者通过真是世界的数据集来描述了上面提到的参数
+- 商业智能类数据集: Public BI Benchmark，来自Tableau的真实数据和查询，包含206个表
+- 数据仓库型OLAP工作负载: ClickHouse, 来自ClickHouse 官方教程中的示例数据集
+- 机器学习训练数据集: UCL-ML, UCI 机器学习数据集集合, 用于ML训练的622个数据集的集合。作者选择了9个大于100 MB的数据集。所有都是数字数据，不包括非结构化图像和嵌入
+- Yelp: Yelp 平台的商户信息、用户评价和用户基本资料
+- LOG: EDGAR（美国证券交易委员会公开数据库）网站上的访问日志，结构化日志记录，如时间戳、用户 IP、请求路径、状态码等
+- Geonames: 全球地理信息，包括国家、城市、坐标、行政等级
+- IMDb: 电影基本信息（标题、演员、导演、语言、评分等）
+
+结果: 这是堆叠柱状图可以从网上学一下怎么看 
+![Pasted image 20250729171912.png](/img/user/accessory/Pasted%20image%2020250729171912.png)
+- NDV Ratio: 超过80%的整数列和60%的字符串列其NDV radio<0,01 -> 大多数数据的可选的种类非常少，换句话说就是数据高度重复，即使是浮点列也有 60% NDV ratio < 0.1 -> 大多数真实数据都适合Dictionary Encoding
+- Null Ratio: Null比例整体偏低，String相比Integer和Float来说null会多一点 但也就50%左右 -> 编译器不必多度NULL优化
+- Skwe Pattern: 极少Uniform, 意味着值不是均匀分布的，Gentle Zipf和Hotspot占绝大多数 -> 列示格式需要高效处理这两种偏斜的情况
+- Sortedness: 极化分布，不是排好序就是完全无序 -> Delta Encoding和FOR可以发挥好的作用
+- Int Value Range: 长整数不多 -> Bitpacking会很好的起作用
+- String Length: 长字符串占比少 -> Run-Length和Dictionary Encoding
+
+作者真实世界的公共对象存储做出了分析，也是这么个结果
+
+#### Predefined Workloads
+根据真实数据集，做了五个预定义的工作负载，用于前面介绍的配置参数和生成数据
+- bi(Business Intelligence): 基于公共BI基准
+- classic: 基于IMDb，Yelp和Clickhouse样本数据集的子集
+- geo(地理信息): 基于Geonames、ClickHouse的Cell Towers和Air Traffic数据集
+- log(日志): 基于XML和来自Clickhouse的机器生成的日志数据集
+- ml（机器学习): 基于UCL-ML训练集
+
+每种工作负载各种数据类型占比
+![Pasted image 20250729174813.png](/img/user/accessory/Pasted%20image%2020250729174813.png)
+每个工作负载的参数设置
+![Pasted image 20250729174903.png](/img/user/accessory/Pasted%20image%2020250729174903.png)
+calssic工作负载: NDV比例高，偏斜系数高，字符串占比大
+log工作负载: NDV比例低，重复值多，整体排序较好
+classic和geo中字符串密集，log和ml浮点密集
+混合负载: 50% bi + 21% classic + 7%geo + 7%log + 15%ml
+
+除此之外还设置了查询选择率(Selectivity)设置, bi和classic具有高选择性，因为这些场景通常涉及大扫描; geo和log中使用低选择性，因为它们的查询请求来自小地理区域或特定时间窗口的数据
+
+### Experimental Evaluation

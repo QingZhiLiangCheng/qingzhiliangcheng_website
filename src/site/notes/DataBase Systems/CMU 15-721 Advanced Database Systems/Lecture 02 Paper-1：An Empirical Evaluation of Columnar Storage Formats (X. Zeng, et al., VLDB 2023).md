@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-30T18:31:43.287+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-30T18:40:45.722+08:00"}
 ---
 
 
@@ -55,7 +55,7 @@ Rarquet和ORC最初都是为Hadoop设计的，我查了一下Hadoop,是2006年�
 
 研究结果发现
 - Finding 1:
-	- Parquet的文件大小占优势：原因是its aggressive dictionary encoding，换句话说就是Parquet的字典编码更激进，就是说重复次数稍微多一点就用字典编码
+	- Parquet的文件大小占优势：原因是its aggressive dictionary encoding 其实看了后面就知道了Parquet先对数值类型做了Dictionary Encoding但ORC没有，并且Parquet的Dictionary Encoding更激进？
 	- Parquet的列解码更快 -- 因为Parquet具有更简单的整数编码算法
 	- ORC在selection pruning(选择性修剪)方面更有效 -- 因为ORC的zone map具有更细的粒度 -- zone map是什么？ -- 一种索引结构，记录每一块数据的某一列的最大值和最小值，比如谓词搜索范围是x>500，而某个zone的最大值是300，就可以直接跳过这个区域
 - Finding 2: 现实世界的数据集中，大多数列具有较小的唯一值 -- 换句话说其实就好比有好多条数据，但是选项就这个几个，比如就几十个省份，就这么多科目 -- 这是非常适合使用字典压缩的 -- 就好比男用1 女用0差不多 -- 所以说压缩，字典编码 的算法的效率 就是关键
@@ -175,6 +175,7 @@ Parquet中的嵌套数据模型基于的是Google的Dremel，Dremel是一篇单�
 | Mike  | Lee  | a,b |
 |       | Hill |     |
 | Joe   |      | c   |
+
 然后Parquet是列存储，所以first, last, tag是三列，只不过因为由于是Json，有层级关系，比如其实first和last是name下的，所以又加了R和D来
 
 ORC采用的方式更直观，如图3(b), ORC采用了presence 一个布尔列来标记某一位置的值是否存在(是没有这个定义 还是 null), 通过length一个整数列来标记某个repeated数组有多长。比如在例子中的first，值列是`["Mike", "Joe"]`，p列式`[1, 0, 1]`，就很直观

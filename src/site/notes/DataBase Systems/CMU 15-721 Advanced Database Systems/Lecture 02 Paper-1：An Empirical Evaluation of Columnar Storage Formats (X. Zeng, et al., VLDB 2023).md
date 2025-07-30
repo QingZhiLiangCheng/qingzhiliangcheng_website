@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-29T17:53:59.959+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-30T18:31:43.287+08:00"}
 ---
 
 
@@ -279,3 +279,91 @@ classic和geo中字符串密集，log和ml浮点密集
 除此之外还设置了查询选择率(Selectivity)设置, bi和classic具有高选择性，因为这些场景通常涉及大扫描; geo和log中使用低选择性，因为它们的查询请求来自小地理区域或特定时间窗口的数据
 
 ### Experimental Evaluation
+goal: 实验 -> 知道下一列存储格式的设计
+以此介绍
+- 5.1 Experiment Setup(实验装置)
+- 5.2 Benchmark Result Overview
+- 5.3 - 5.7 设置对照实验来检查格式的关键组件
+- 5.8 ML工作负载
+- 5.9 GPU能力 (不过在Lecture02中只考虑CPU)
+
+#### Experiment Setup
+实验运行在 Amazon EC2 的 `i3.2xlarge` 实例上。这是一种高 IO 性能实例，配置如下：
+- 8 核 CPU（Intel Xeon E5-2686 v4）
+- 61 GB 内存
+- 1.7 TB 的本地 NVMe 固态硬盘
+- 操作系统为 Ubuntu 20.04 LTS
+
+使用 Apache Arrow v9.0.0 来生成测试所需的 Parquet 和 ORC 文件
+两种格式的参数配置
+- Parquet
+	- row group: 1m rows
+	- Dictionary page size: 1MB
+- ORC
+	- row gourp: 64MB
+	- Dictionary Encoding: NDV-radio: 0.8
+
+使用Snappy压缩
+Parquet 使用的是 Arrow C++ 集成实现， 但为了评估最低粒度的Zone Map，用的Rust实现的Parquet(v32)
+ORC 使用 v1.8
+编译器版本是 g++ 9.4
+
+评估指标
+- File Size
+- Scan Performance With Filters
+
+三次取平均值
+不能使用Arrow Table作为评估基准: Parquet 与 Arrow 紧密集成，解码时可以直接生成 Arrow 的结构（如 DictionaryArray）。ORC 则不行，它先要转成中间结构 `ColumnVectorBatch`，再转成 Arrow 表，多了转换成本。  ->  采取原始扫描策略，系统使用固定大小的内存缓冲区，读取每块数据后写入缓冲区
+
+#### Benchmark Result Overview
+1. 默认配置下，对前面定义好的五种workload
+2. 对每种workload, 生成一个20列，1m row的表，并保存为Parquet或ORC文件
+3. 对文件顺序扫描进bufferPool，记录扫描所用的时间
+4. 清空buffer cache，执行30个查询，查询filter的选择率或者说命中率按照前面的table4的数据设置的
+
+![Pasted image 20250730172021.png](/img/user/accessory/Pasted%20image%2020250730172021.png)
+
+**File Size**
+no clear winner
+在log和ml的workload上，Parquet文件更小: 因为Parquet对float应用了Dictionary Encoding，实际上这些数据的NDV radio较低(Figure 5a中展示了), 所以适合字典压缩，而ORC只对字符采用了Dictionary Encoding
+在classic和geo上，ORC的文件更小，因为这些数据字符串多 ORC对字符串处理的好
+**Scan Time**
+从6b来看 Parquet的扫描性能更好
+因为Parquet对整数的方式更为轻量，二次压缩默认是Bitpacking，当重复次数为8时，才会启用RLE（前面提到了因为Parquet对整数采用了Dictionary Encoding, 所以丧失了POR和Delta Encoding），而ORC前文也提到了, 对整数采用了4种编码方式，就需要额外记录每个子序列的Encoding的方式，并且只要重复超过3就用RLE，但是事实上，RLE阶码难以通过SIMD进行优化(SIMD（单指令多数据）是一种可以并行加速处理的 CPU 指令机制, 而RLE因为每个值的重复次数不同，导致数据展开后对齐方式复杂)
+**Select Time**
+Parquet 在大多数 workload 中查询更快，唯一例外的情况是geo
+大多数Parquet快的原因跟scan time是一样的原因
+例外出现的原因是ORC的zone map粒度更低，而Parquet的zone map粒度更粗，而geo的特点是NDV ratio高，但谓词选择低，所以更适合低粒度 跳过的更多
+
+#### Encoding Analysis
+![Pasted image 20250730175540.png](/img/user/accessory/Pasted%20image%2020250730175540.png)
+这是对1m行，20列相同数据类型的数据，通过控制变量法，改变NDV Ratio, Zipf, Sortedness, Value Range的大小对文件大小的影响(暂时禁用了Parquet和ORC的块压缩)
+- 对于Integer
+	- NDV Ratio: 在NDV低的时候Parquet更好，NDV高的时候ORC更好，因为Parquet对数值类型有Dictionary Encoding，这在different values少的时候是很有效果的，但随着NDV增加效果会变弱，Dictionary也会变大，就不如ORC了，但是Float除外hh
+	- Zipf: 随着数据更偏斜(重复数据更多)，压缩效果越好，但是ORC会更早的体现出压缩效果来，因为ORC的RLE在三个重复值就启用，而Parquet要8个
+	- Sortedness: ORC优，其实前面也提到过，因为ORC多了Delta Encoding和FOR
+	- Value Range: 对于数值，Parquet的文件大小是稳定的，因为Parquet对整数应用字典编码，并仅对字典代码使用Bitpacking + RLE，而ORC的文件大小随着值范围增大而增大，是因为ORC直接对原始数据进行编码
+- 对String都差不多太多，因为都差不多是Dictionary Encoding
+- 对FLoat来说Parquet都表现的好，因为字典编码对真实的世界中的浮点数非常有效
+
+对未来的建议：虽然现实世界的NDV比率低，但是Parquet对虽有的数据都默认字典策略，作者认为是否可以设置一个阈值，来选择其他的算法
+
+![Pasted image 20250730181559.png](/img/user/accessory/Pasted%20image%2020250730181559.png)
+这是解码速度实验的结果，还是采用了上一个实验的数据，使用full table scan(全表扫描), means不使用谓词下推等，测了IO时间和解码时间
+8a现实的是在整数列和字符串列上，Parquet 的解码速度快于 ORC，原因:
+- Parquet 更依赖快速的 Bitpacking（位打包编码），相比之下不那么激进地使用 RLE
+- Parquet的整数的选择的机制少，ORC的预测算法并不好，实验说明，在解码过程中，ORC 在四种整数编码算法间频繁切换，导致的分支预测失败次数是 Parquet 的 3 倍，如下图![Pasted image 20250730181943.png](/img/user/accessory/Pasted%20image%2020250730181943.png)
+- ORC具有比Parquet多4倍要解码的序列![Pasted image 20250730182340.png](/img/user/accessory/Pasted%20image%2020250730182340.png)
+
+Parquet 使用 SIMD 指令和代码生成优化了解码中的 bit-unpacking（解包）过程，以减少不必要的分支判断
+虽然ORC的算法选择并不友好，而且解码序列多，但是int类型Parquet只占了一丢丢优势说明Parquet额外的Dictionary的解码有一定的开销
+
+![Pasted image 20250730182650.png](/img/user/accessory/Pasted%20image%2020250730182650.png)
+为了进一步展示 Bitpacking 和 RLE 在性能与空间上的权衡，论文中又构造了一个字符串列，其中每个字符串值在列中连续重复 `r` 次，而图9展示的是Parquet和ORC在不同重复次数下的解码速度和文件大小
+实验表明，对于短重复序列，RLE 的解码时间比 Bitpacking 更长。随着重复次数增大，RLE 和 Bitpacking 之间的性能差距迅速缩小。而文件大小方面呈现相反趋势：RLE 的压缩率远优于 Bitpacking。
+对于浮点数，ORC 的解码性能优于 Parquet，因为 ORC 不对浮点值使用任何编码算法。尽管ORC中的浮点列占用的空间比Parquet中的字典编码列大得多（如图7所示），但使用现代NVMe SSD节省的计算量超过了I/O开销。
+
+**未来的建议**
+- 关注解码速度，并不是压缩的越好就越好，要保持开放简单，编码方式多了并不好
+- 选择在真实数据上更有优势的Encoding算法
+- 未来的格式可能不想使任何轻量级编码算法成为“强制性的”，因为IO的影响越来越小

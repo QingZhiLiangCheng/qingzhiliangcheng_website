@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"dg-publish":true,"permalink":"/math/Linear Algebra/Linear Algebra/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-25T14:33:58.533+08:00","updated":"2025-07-30T13:36:11.431+08:00"}
+{"tags":["folder"],"dg-publish":true,"comments":"false","permalink":"/math/Linear Algebra/Linear Algebra/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-25T14:33:58.533+08:00","updated":"2025-07-31T18:51:47.083+08:00"}
 ---
 
 **MIT 18.06 Linear Algebra & 《Introduce to Linear Algebra》**

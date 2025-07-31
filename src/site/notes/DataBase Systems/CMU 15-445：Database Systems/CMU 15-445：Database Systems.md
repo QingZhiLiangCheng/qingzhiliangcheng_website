@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"comments":"false","permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-07-31T18:46:54.100+08:00"}
+{"tags":["folder"],"sticker":"lucide//database","dg-publish":true,"dg-pinned":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/CMU 15-445：Database Systems/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2025-01-20T08:46:32.906+08:00","updated":"2025-07-31T20:36:29.192+08:00"}
 ---
 
 📅date: 2025.1.20 - ing

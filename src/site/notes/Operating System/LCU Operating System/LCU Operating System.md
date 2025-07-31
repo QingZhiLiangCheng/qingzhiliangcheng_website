@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-06-30T17:42:19.510+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统","folder"],"comments":"false","permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-07-31T18:50:33.340+08:00"}
 ---
 
 ### LCU Operating System Lab

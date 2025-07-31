@@ -74,6 +74,27 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
       {% for imp in dynamics.notes.afterContent %}
         {% include imp %}
       {% endfor %}
+
+            {% if comments != "false" %}
+              <section id="comments">
+              <script src="https://giscus.app/client.js"
+                       data-repo="QingZhiLiangCheng/web-comments"
+                       data-repo-id="R_kgDOPV6qiA"
+                       data-category="Announcements"
+                       data-category-id="DIC_kwDOPV6qiM4Ctn_L"
+                       data-mapping="pathname"
+                       data-strict="0"
+                       data-reactions-enabled="1"
+                       data-emit-metadata="0"
+                       data-input-position="top"
+                       data-theme="preferred_color_scheme"
+                       data-lang="zh-CN"
+                       crossorigin="anonymous"
+                       async>
+               </script>
+
+              </section>
+            {% endif %}
     </main>
 
     {% if settings.dgShowBacklinks === true or settings.dgShowLocalGraph === true or settings.dgShowToc === true%}
@@ -116,26 +137,7 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
         });
       </script>
 
-      {% if comments != "false" %}
-        <section id="comments">
-        <script src="https://giscus.app/client.js"
-                 data-repo="QingZhiLiangCheng/web-comments"
-                 data-repo-id="R_kgDOPV6qiA"
-                 data-category="Announcements"
-                 data-category-id="DIC_kwDOPV6qiM4Ctn_L"
-                 data-mapping="pathname"
-                 data-strict="0"
-                 data-reactions-enabled="1"
-                 data-emit-metadata="0"
-                 data-input-position="top"
-                 data-theme="preferred_color_scheme"
-                 data-lang="zh-CN"
-                 crossorigin="anonymous"
-                 async>
-         </script>
 
-        </section>
-      {% endif %}
 
 
 

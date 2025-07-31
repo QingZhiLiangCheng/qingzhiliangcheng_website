@@ -1,5 +1,5 @@
 ---
-{"tags":["csapp"],"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-20T18:32:46.730+08:00","updated":"2025-07-21T15:56:05.984+08:00"}
+{"tags":["csapp"],"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-20T18:32:46.730+08:00","updated":"2025-07-31T15:39:00.626+08:00"}
 ---
 
 
@@ -108,3 +108,75 @@ Methods 3: Best Fit(最佳适配算法): 找最接近的，这就需要排序了
 所以其实可以用字节对齐中的碎片
 allocated不需要知道大小 free的需要知道大小
 
+### Garbage Collection
+有一种称为Implicit Memory Management(隐式内存管理器)的内存管理器，为我们完成释放内存工作，这种想法就是Garbage Collection(垃圾回收)
+有什么垃圾？
+![Pasted image 20250731142318.png|400](/img/user/accessory/Pasted%20image%2020250731142318.png)
+这个申请的128的地址存储在指针类型的变量p中，而变量是在栈区的，一旦return，这个指针就会永远丢失，那p指向的内存块就是garbage
+那么Garbage Collection就会自动识别谁是垃圾并自动调用free -- 调用的是相同的free
+
+那memory manager是如何知道内存合适可以被free？
+如果我们知道将来不会请求访问该块 -- 就可以释放 但是很难预测
+一种想法是扫描内存中的所有被分配的内存块，如果没有pointer指向 就认为是garbage
+那么内存就需要能够区分指针和非指针，但是做不到，我们遇到一个64位的数，我们不知道这是一个块的起始地址还是一个大数
+同时所有指针需要指向块头，因为我们free的时候要free到整个空间， 但事实上是会有一些指针指向内部
+
+这些是一些挑战，最早研究garbage Collection可以追溯到1960年，直到今天也有人研究多线程的垃圾回收…… 不过今天只看最简单的
+
+我们如何建立一个Garbage Collection？
+首先我们把内存视为有向图，每个节点对应一个分配的块，每个边都是一个包含在该块某处的指针
+![Pasted image 20250731143444.png|500](/img/user/accessory/Pasted%20image%2020250731143444.png)
+然后有一些称为根节点的特殊节点，它包含指向堆的指针，但不是堆的一部分，比如这是存储在栈上的指针，或者在寄存器中的指针变量，他们指向堆中的内存位置
+如果对于heap中的已分配的块来说，如果存在一个来自root node的路径，那就不是垃圾
+
+我们可以在每个内存块的头部额外加一个标记位，然后从根开始，通过遍历算法遍历能到达的每个节点并标记；然后清楚节点只需要遍历堆上的所有内存块，如果那个标记还是0，就说明是垃圾，可以free
+![Pasted image 20250731144240.png|600](/img/user/accessory/Pasted%20image%2020250731144240.png)
+
+事实上C语言没法区分是不是指针，但如果知道是指针的话，怎么找到beginning of the block?
+Solution: 通过一个平衡二叉树来追踪所有已分配的内存块，没次分配一个新的内存块，就把他作为起始地址插入树中，查找的时候可以通过任意地址定位到它属于哪个块
+```plaintext
+Allocated Blocks:
+[0x1000 ~ 0x1100)
+[0x2000 ~ 0x2100)
+[0x3000 ~ 0x3100)
+
+Balanced Tree:
+      0x2000
+     /      \
+ 0x1000    0x3000
+
+If you get a pointer 0x2060, you search for <= key:
+→ find 0x2000 → found the block!
+因为这里 这个指针一定是被分配的空间 所以在树中最近的那个就是他的开头
+```
+
+每个块的头部都可以额外的用两个字来保存树的指针信息  -- 为了使树节点之间相互连接 -- 每个块都要保存left和right 如果是AVL或者红黑树的话，还可能会parent -- 这就是内嵌式树结构
+![Pasted image 20250731145612.png|500](/img/user/accessory/Pasted%20image%2020250731145612.png)
+
+### Memory-Related Perils and Pitfalls
+内存错误 is the worst the worst.
+在C语言中，这一切都可能跟指针有关，所以需要好好理解指针
+理解指针操作的第一步是要了解C语言中的运算优先级
+![Pasted image 20250731150111.png|500](/img/user/accessory/Pasted%20image%2020250731150111.png)
+
+![Pasted image 20250731151449.png|500](/img/user/accessory/Pasted%20image%2020250731151449.png)
+好好理解
+- 第一个是int类型的指针 `int*`  变量名叫p(其实不同的编译器是不一样的，CLion会把这个指针符号跟着后面，而VS会跟着前面的int，我是趋向于第一种)，而指针是一个地址，所以p打印出来就是地址，`*p`是解引用
+- 第二个的核心在于数组运算符的优先级高于指针运算符，所以首先这是一个数组，数组名叫p，里面元素的类型是`int*`类型，所以这是一个`int*`类型的数组，里面的元素指向一个int类型的空间，而里面可以放一个数组，通过指针来访问数组，这就是一个逻辑上变长的二维数组了
+- `int **p`  p是指向int的指针的指针; 事实上可以看作是一个指针指向了一个数组，这与`chat*`指向字符串的机制是一样的
+- `int (*p)[13]` 这是一个指向大小为13的int型数组的指针
+- `int *f()`  函数
+- `int (*f)()` 一个函数指针，函数返回的是int
+- 后面的就算了呃呃呃
+
+下面是一些经典的错误
+经典的scanf错误 The classic scanf bug
+![Pasted image 20250731153444.png|300](/img/user/accessory/Pasted%20image%2020250731153444.png)
+如果不传取值符号，scanf就不知道把数据放到哪里
+
+Assuming that heap data is ini alized to zero 经典的读取未初始化内存
+分配错误大小的对象
+覆盖内存
+缓冲区溢出
+误解指针运算
+....

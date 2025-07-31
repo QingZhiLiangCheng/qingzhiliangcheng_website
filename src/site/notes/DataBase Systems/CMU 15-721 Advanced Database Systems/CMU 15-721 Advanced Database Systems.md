@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721","folder"],"dg-publish":true,"sticker":"lucide//database","comments":"false","permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-30T20:29:38.980+08:00","updated":"2025-07-31T18:51:07.774+08:00"}
+{"tags":["CMU15721","folder"],"dg-publish":true,"sticker":"lucide//database","permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/CMU 15-721 Advanced Database Systems/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-06-30T20:29:38.980+08:00","updated":"2025-07-31T20:35:09.310+08:00"}
 ---
 
 

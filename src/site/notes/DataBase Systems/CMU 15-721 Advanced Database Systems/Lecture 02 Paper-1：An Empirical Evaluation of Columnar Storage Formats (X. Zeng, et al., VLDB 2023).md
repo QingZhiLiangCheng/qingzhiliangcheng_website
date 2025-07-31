@@ -1,5 +1,5 @@
 ---
-{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-30T18:40:45.722+08:00"}
+{"tags":["CMU15721"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-721 Advanced Database Systems/Lecture 02 Paper-1：An Empirical Evaluation of Columnar Storage Formats (X. Zeng, et al., VLDB 2023)/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-12T11:54:58.043+08:00","updated":"2025-07-31T11:15:03.762+08:00"}
 ---
 
 
@@ -350,7 +350,7 @@ Parquet 在大多数 workload 中查询更快，唯一例外的情况是geo
 对未来的建议：虽然现实世界的NDV比率低，但是Parquet对虽有的数据都默认字典策略，作者认为是否可以设置一个阈值，来选择其他的算法
 
 ![Pasted image 20250730181559.png](/img/user/accessory/Pasted%20image%2020250730181559.png)
-这是解码速度实验的结果，还是采用了上一个实验的数据，使用full table scan(全表扫描), means不使用谓词下推等，测了IO时间和解码时间
+这是解码速度实验的结果,只看a和d啊，a和d是未使用快压缩的结果，还是采用了上一个实验的数据，使用full table scan(全表扫描), means不使用谓词下推等，测了IO时间和解码时间
 8a现实的是在整数列和字符串列上，Parquet 的解码速度快于 ORC，原因:
 - Parquet 更依赖快速的 Bitpacking（位打包编码），相比之下不那么激进地使用 RLE
 - Parquet的整数的选择的机制少，ORC的预测算法并不好，实验说明，在解码过程中，ORC 在四种整数编码算法间频繁切换，导致的分支预测失败次数是 Parquet 的 3 倍，如下图![Pasted image 20250730181943.png](/img/user/accessory/Pasted%20image%2020250730181943.png)
@@ -368,3 +368,85 @@ Parquet 使用 SIMD 指令和代码生成优化了解码中的 bit-unpacking（�
 - 关注解码速度，并不是压缩的越好就越好，要保持开放简单，编码方式多了并不好
 - 选择在真实数据上更有优势的Encoding算法
 - 未来的格式可能不想使任何轻量级编码算法成为“强制性的”，因为IO的影响越来越小
+
+#### Block Compression
+研究快压缩对格式的性能和空间权衡 -- 比较了Snappy, Zstd的压缩算法 -- 重复了之前的解码速度实验
+结果说明Snappy速度快，压缩率一般；Zsts压缩率高，解压慢
+与未使用快压缩的数据相比，能发现Zstd在所有数据类型上都比Snappy有更好的压缩比
+还能说明块压缩对ORC中的浮点列是有效的，因为它们包含原始值，但对于其余列的压缩效果是有限的
+然后论文进一步研究了在 AWS 上不同类型的存储设备中，对 Parquet 应用块压缩时带来的 I/O 好处和计算开销。
+![Pasted image 20250731101815.png](/img/user/accessory/Pasted%20image%2020250731101815.png)
+图中的横轴的存储层是按读取带宽递增排序，这个图是通过核心工作负载生成1m行20列的表，在禁用和启用Zstd情况下的结果
+对于结果来说，对于慢速设备(如st1)，使用zstd的整体时间变短了，因为在慢速设备上IO占支配地位，压缩使得IO变少（减少了传输的次数和总大小）
+但对于快速设备如SSD和nvme来说，使用zstd的时间反而不用不使用快压缩，这是因为在快速设备中，IO时间并不再占主导作用，反而是解码时间占主导作用，而快压缩的解码又需要时间
+但是对于S3来说，虽然它带宽不错，但是访问延迟高，读取一个Parquet文件的过程可能涉及到多个http请求，所以IO还是占主导因素，而压缩使得文件更小，请求更小
+#### Wide-Table Projection
+![Pasted image 20250731103339.png](/img/user/accessory/Pasted%20image%2020250731103339.png)
+在这个实验中，生成10k行，选择10列进行投影
+结果发现随着wide-table的列数或者说属性增加，元数据解析时间线性增长 -- 原因是元数据必须逐个解码 -- Parquet和ORC中的页脚结构不支持有效的随机访问。模式信息在Thrift（Parquet）或协议缓冲区（ORC）中序列化，仅支持顺序解码 -- 所以说读取所有列就需要顺序扫描前面的所有列直到找到这10列
+另一个发现是当表变得wide的时候，ORC的性能下降，原因是因为ORC的row group是按size定义的而不是行数，所以说表越宽，每个行组的行就越少，行组就越多，需要随机访问扫描的元数据就多
+-> Parquet和ORC的元数据布局对宽表投影并不友好: 未来希望能够支持快速定位目标列的元信息，而非线性遍历
+
+#### Index and Filters
+测试了 Parquet 和 ORC 中内建的 Zone Map 和 Bloom Filter 对查询加速的效果，查询条件（谓词）具有不同的选择性（selectivity）
+结果总的来看：Zone Map和Bloom Filter对低选择查询效果很好
+其中Zone Map对聚类良好或者有序的列效果良好，Bloom Filter适用于等值查询
+
+#### Nested Data Model
+为了 纯粹测试嵌套结构对性能的影响，使用 float 类型作为数据内容，并关闭了编码与压缩，避免其他优化干扰测试结果
+![Pasted image 20250731104710.png](/img/user/accessory/Pasted%20image%2020250731104710.png)
+构造了12a的结构
+结果表明
+随着嵌套深度的增加，Parquet膨胀的更快 -- 原因是因为Parquet使用的是Dremel编码模型，嵌套越深，每个叶节点编码越长
+转换成Arrow表的时间 Parquet更快 -- 是因为ORC需要中间结构
+在 扫描时解码嵌套结构的开销，ORC 的开销随深度增长明显变大，Parquet 的增长相对更缓 -- 是因为ORC必须重构每一层struct和list的结果；而Parquet有一连串编码只需解析 叶子节点的数据 + def/rep levels
+建议
+- 未来文件格式应更关注如何降低嵌套数据的解码与结构转换开销
+- 可优化的方向：
+    - 改进 in-memory 转换机制
+    - 结构化嵌套信息的编码方式（支持随机访问或更紧凑编码）
+    - 混合 def/rep 和 struct 模型的自适应嵌套策略
+
+#### Machine Learning Workloads
+ML workloads下数据特点:
+- 包含原始数据（如图像 URL、文本）和元数据（如图像尺寸、标签）；
+- 包含向量嵌入（vector embeddings）：通常是浮点数向量，用于相似度搜索（similarity search）；
+- 这些数据常以 嵌套 list 格式 存储在 Parquet 文件中
+
+
+##### Compression Ratio and Deserialization Performance with Vector Embeddings
+
+![Pasted image 20250731105624.png](/img/user/accessory/Pasted%20image%2020250731105624.png)
+实验选取30 个含向量嵌入的数据集，来自 Hugging Face 的 top downloaded 和 trending 榜单，存储为4中结构：Parquet, ORC, HDF5(层次化存储), Zarr(分块存储，面向科学计算)
+实验发现所有格式的压缩率都不理想，即使是为数值数据优化的 Zarr，也未能显著压缩向量嵌入 -> 说明现有通用的压缩方法在浮现向量压缩上效果有限
+实验还发现Parquet和ORC扫描更慢，Zarr的扫描更快 -- 这是因为Zarr 将固定长度向量嵌入 按块分割（grid chunks），支持 并行解码与扫描；而Parquet和ORC仅支持row group范围内顺序解码
+
+**Discussion**
+现有的列式格式并未为“向量嵌入”这类 **ML-specific 数据结构** 做优化
+所以未来要引入面向浮点向量压缩的专用数据类型/结构并增强并行解码能力，提高大规模 ML 数据加载效率
+
+##### Integration with Vector Search Pipeline
+![Pasted image 20250731110816.png](/img/user/accessory/Pasted%20image%2020250731110816.png)
+实验选取LAION-5B 图文数据集前 1 亿条用于构建向量库，使用 FAISS 向量索引（内存中自动调优），对剩下的嵌入做 top-10 相似查询。先检索向量 ID，再从 Parquet/ORC 中读取图像 URL 和文本。使用批量查询（batch）减少读取放大（read amplification），在本地NVMe SSD和AWS S3上分别实验
+在本地，ORC的查询速度快于Parquet，因为ORC使用更细粒度的zone map
+而在S3，Parquet的效果更好，是因为ORC 查询过程中产生了 ≈4 倍 S3 GET 请求，ORC 的 zone map 分布在各个 row-group footer 中，Parquet 的 zone map 集中在文件 footer，访问开销低
+
+-> 在对象存储中减少小 I/O 操作，如聚合 zone map结构; 细粒度的索引
+
+##### Storage of Unstructured Data
+许多深度学习数据集包含非结构化数据，比如图片、音频、视频；一种常见做法是只存储外部 URL（如 LAION-5B），优点是文件小；但需要大量 HTTP GET 请求，网络开销大且不稳定且URL可能失效
+-> 因此，将非结构化数据存储在同一个文件中是有益的 (给出了论文支撑证明这个idea)
+
+![Pasted image 20250731110829.png](/img/user/accessory/Pasted%20image%2020250731110829.png)
+使用LAION-5 B数据集在Parquet上对此进行了评估，其中图像URL被原始二进制文件替换。生成的Parquet文件为13 GB，包含219 K行，存储在NVMe SSD上
+使用五个不同的过滤器（filter_0 - filter_4）执行扫描，它们的选择性分别为1、0.1、0.01、0.001和0.0001
+开启了列块并行读取和预缓冲
+图15 a显示了投影图像列时的查询时间(即需要读取大二进制列)，而图15 b显示了仅投影表格列时的查询时间
+结果说明
+带图片投影较小的row group效果好，because row group 小 → row group 数多 → 可并行异步读取多个大二进制块
+对于仅投影表格列的情况，较大的row group效果好，因为ow group 小导致压缩效果变差，结构化数据占用更多空间，进而IO开销大
+
+-> 将大二进制数据与结构化数据混合存储，并用默认的 row group 大小，效率很低
+-> 未来应该区分，但在逻辑层保持统一接口
+
+后面GPU先不看了

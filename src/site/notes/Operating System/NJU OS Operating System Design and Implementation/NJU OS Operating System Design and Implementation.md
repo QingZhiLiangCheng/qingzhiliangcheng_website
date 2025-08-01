@@ -1,5 +1,5 @@
 ---
-{"tags":["folder","NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/NJU OS Operating System Design and Implementation/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-08T15:22:57.470+08:00","updated":"2025-07-31T20:35:04.408+08:00"}
+{"tags":["folder","NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/NJU OS Operating System Design and Implementation/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-08T15:22:57.470+08:00","updated":"2025-08-01T18:55:26.509+08:00"}
 ---
 
 我看的是2022spring的课程
@@ -11,6 +11,7 @@
 - [[Operating System/NJU OS Operating System Design and Implementation/vi\|vi]]
 - [[Operating System/NJU OS Operating System Design and Implementation/tmux\|tmux]]
 - [[Operating System/NJU OS Operating System Design and Implementation/gdb\|gdb]]
+- 一个简化掉Shell中路径显示的好方法`export PS1="\[\e[1;32m\]\u@\h \[\e[1;34m\]\W\[\e[0m\] \$ "`
 
 **Lecture**
 - [[Operating System/NJU OS Operating System Design and Implementation/Lecture 02 操作系统上的程序\|Lecture 02 操作系统上的程序]]

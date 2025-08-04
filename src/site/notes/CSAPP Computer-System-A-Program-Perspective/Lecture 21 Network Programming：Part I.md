@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 21 Network Programming：Part I/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-08-04T14:22:23.312+08:00","updated":"2025-08-04T16:59:44.100+08:00"}
+{"dg-publish":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/Lecture 21 Network Programming：Part I/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-08-04T14:22:23.312+08:00","updated":"2025-08-04T17:10:08.531+08:00"}
 ---
 
 ![[21-netprog1.pdf]]
@@ -96,6 +96,11 @@ Socket是许多结构体(其实就是一层抽象)
 这是程序员对client-server系统的完整流程的理解
 ![Pasted image 20250804163524.png|600](/img/user/accessory/Pasted%20image%2020250804163524.png)
 最上方的getaddrinfo相当于是整个流程的开端，实际上是用于查找从域名到IP地址的映射
+![Pasted image 20250804170726.png|400](/img/user/accessory/Pasted%20image%2020250804170726.png)
+返回的是一个列表，比如说前面的传入twitter，会返回四个不同的IP地址，实际上就会返回五个节点的链表，头结点是规范名，之后每一个节点都会有一个IP地址
+整个节点的结构
+![Pasted image 20250804170957.png|600](/img/user/accessory/Pasted%20image%2020250804170957.png)
+
 客户端和服务器要做的第一步都是通过调用socket函数来创建连接，它只在整个程序内部起作用，不适用操作系统，也不往网络上发任何内容，只是创建一个socket
 ![Pasted image 20250804164323.png|500](/img/user/accessory/Pasted%20image%2020250804164323.png)
 比如例子中的`AF_INET`是告诉我们这是一个32位的IPv4地址, `SOCK_STREAM`表明了这是一个TCP连接 返回了一个 int类型，之前讲过socket实际上是一个文件描述符，有一些整数，特别是一些很小的整数，是指代一些底层的文件
@@ -106,5 +111,4 @@ connet函数 创建一个客户端到服务器的连接
 ![Pasted image 20250804165606.png](/img/user/accessory/Pasted%20image%2020250804165606.png)
 Server上的第二个点(红色的那个)就是accept函数返回的另一个文件描述符，这样做的原因是想与多个client通信
 真正的通信操作是通过rio开头的这些函数，这些都是内核中安全的IO函数
-当完成通信的时候，client会发送一个请求，然后服务器读取文件会有一个EOF标志，就明白这个特定的连接结束了
-
+当完成通信的时候，client会发送一个请求，然后服务器读取文件会有一个EOF标志，就明白

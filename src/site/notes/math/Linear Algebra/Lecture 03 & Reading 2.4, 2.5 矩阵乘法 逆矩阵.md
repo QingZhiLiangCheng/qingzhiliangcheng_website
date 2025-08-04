@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/math/Linear Algebra/Lecture 03 & Reading 2.4, 2.5 矩阵乘法 逆矩阵/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-08-01T14:23:29.236+08:00","updated":"2025-08-01T17:34:52.783+08:00"}
+{"dg-publish":true,"permalink":"/math/Linear Algebra/Lecture 03 & Reading 2.4, 2.5 矩阵乘法 逆矩阵/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-08-01T14:23:29.236+08:00","updated":"2025-08-04T10:39:37.694+08:00"}
 ---
 
 
@@ -90,5 +90,16 @@ I&A^{-1}
 \right]
 $$
 原理其实很简单，通过行变换(左乘各种E矩阵)，把A变成I矩阵，这时候做的这个多个行变换左乘E矩阵的 总和效果 E'矩阵的效果其实就是$A^{-1}$ 那么同样的行变换作用到$I$矩阵上，实际上最后得到的结果就是$A^{-1}$
+
+#### AB可逆 (AB)的逆
+$$
+(AB)^{-1} = B^{-1}A^{-1}
+$$
+事实上
+$$
+(AB)(B^{-1}A^{-1})=I
+$$
+因为之前讲过可以任意结合(结合律), 可以变成$(A(BB^{-1})A)=I$ 
+对于逆来说你会发现$(B^{-1}A^{-1})(AB)=I$ 是可以颠倒的，但是对于一般的矩阵来说AB不一定等于BA
 
 

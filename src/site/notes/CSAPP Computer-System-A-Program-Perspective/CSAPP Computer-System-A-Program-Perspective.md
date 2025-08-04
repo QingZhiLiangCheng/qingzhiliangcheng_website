@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-07-31T20:35:39.397+08:00"}
+{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-08-04T14:23:17.968+08:00"}
 ---
 
 📅date: 2024.12.24 - ing
@@ -56,6 +56,8 @@ Book:CSAPP
 [[CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts\|Lecture 17 Virtual Memory：Concepts]]
 [[CSAPP Computer-System-A-Program-Perspective/Lecture 18 Virtual Memory：Systems\|Lecture 18 Virtual Memory：Systems]]
 [[CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts\|Lecture 19 Dynamic Memory Allocation：Basic Concepts]]
+[[CSAPP Computer-System-A-Program-Perspective/Lecture 20：Dynamic Memory Allocation：Advanced Concepts\|Lecture 20：Dynamic Memory Allocation：Advanced Concepts]]
+[[CSAPP Computer-System-A-Program-Perspective/Lecture 21 Network Programming：Part I\|Lecture 21 Network Programming：Part I]]
 
 ![[cmu15213 fall2015.components]]
 

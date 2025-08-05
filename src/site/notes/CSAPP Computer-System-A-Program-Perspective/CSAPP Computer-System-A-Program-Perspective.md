@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-08-04T14:23:17.968+08:00"}
+{"tags":["folder"],"sticker":"emoji//1f60d","color":"","dg-publish":true,"dg-pinned":true,"permalink":"/CSAPP Computer-System-A-Program-Perspective/CSAPP Computer-System-A-Program-Perspective/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-11-29T12:31:23.842+08:00","updated":"2025-08-04T17:14:50.612+08:00"}
 ---
 
 📅date: 2024.12.24 - ing
@@ -39,25 +39,26 @@ Book:CSAPP
 > 			[[CSAPP Computer-System-A-Program-Perspective/Loops and Swith\|Loops and Swith]]
 
 前面一直都在看书  突然发现了课程CMU 15-213CSAPP  所以 又从课程重新开始看
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 02 03 Bits, Bytes, and Integer\|Lecture 02 03 Bits, Bytes, and Integer]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 04 Floating Point\|Lecture 04 Floating Point]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 05 Machine-Level Programming I： Basics\|Lecture 05 Machine-Level Programming I： Basics]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 06 Machine-Level Programming II：Control\|Lecture 06 Machine-Level Programming II：Control]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 07 Machine-Level Programming III：Procedures\|Lecture 07 Machine-Level Programming III：Procedures]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 08 Machine-Level Programming IV：Data\|Lecture 08 Machine-Level Programming IV：Data]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 09 Machine-Level Programming V：Advanced Topics\|Lecture 09 Machine-Level Programming V：Advanced Topics]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 10 Code Optimization\|Lecture 10 Code Optimization]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 11 The Memory Hierarchy\|Lecture 11 The Memory Hierarchy]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 12 Cache Memories\|Lecture 12 Cache Memories]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 13 Linking\|Lecture 13 Linking]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes\|Lecture 14 Exceptional Control Flow： Exceptions and Processes]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps\|Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 16 System-Level IO\|Lecture 16 System-Level IO]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts\|Lecture 17 Virtual Memory：Concepts]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 18 Virtual Memory：Systems\|Lecture 18 Virtual Memory：Systems]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts\|Lecture 19 Dynamic Memory Allocation：Basic Concepts]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 20：Dynamic Memory Allocation：Advanced Concepts\|Lecture 20：Dynamic Memory Allocation：Advanced Concepts]]
-[[CSAPP Computer-System-A-Program-Perspective/Lecture 21 Network Programming：Part I\|Lecture 21 Network Programming：Part I]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 02 03 Bits, Bytes, and Integer\|Lecture 02 03 Bits, Bytes, and Integer]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 04 Floating Point\|Lecture 04 Floating Point]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 05 Machine-Level Programming I： Basics\|Lecture 05 Machine-Level Programming I： Basics]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 06 Machine-Level Programming II：Control\|Lecture 06 Machine-Level Programming II：Control]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 07 Machine-Level Programming III：Procedures\|Lecture 07 Machine-Level Programming III：Procedures]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 08 Machine-Level Programming IV：Data\|Lecture 08 Machine-Level Programming IV：Data]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 09 Machine-Level Programming V：Advanced Topics\|Lecture 09 Machine-Level Programming V：Advanced Topics]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 10 Code Optimization\|Lecture 10 Code Optimization]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 11 The Memory Hierarchy\|Lecture 11 The Memory Hierarchy]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 12 Cache Memories\|Lecture 12 Cache Memories]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 13 Linking\|Lecture 13 Linking]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 14 Exceptional Control Flow： Exceptions and Processes\|Lecture 14 Exceptional Control Flow： Exceptions and Processes]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps\|Lecture 15 Exceptional Control Flow： Signals and Nonlocal Jumps]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 16 System-Level IO\|Lecture 16 System-Level IO]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 17 Virtual Memory：Concepts\|Lecture 17 Virtual Memory：Concepts]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 18 Virtual Memory：Systems\|Lecture 18 Virtual Memory：Systems]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 19 Dynamic Memory Allocation：Basic Concepts\|Lecture 19 Dynamic Memory Allocation：Basic Concepts]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 20：Dynamic Memory Allocation：Advanced Concepts\|Lecture 20：Dynamic Memory Allocation：Advanced Concepts]]
+- [[CSAPP Computer-System-A-Program-Perspective/Lecture 21 Network Programming：Part I\|Lecture 21 Network Programming：Part I]]
+- Lecture 22 Network Programming: Part II 
 
 ![[cmu15213 fall2015.components]]
 

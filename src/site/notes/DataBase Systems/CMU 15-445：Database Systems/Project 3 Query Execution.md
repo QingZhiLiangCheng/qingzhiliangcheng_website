@@ -1,5 +1,5 @@
 ---
-{"tags":["bustub","project","cmu15445"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 3 Query Execution/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-05-15T20:21:35.866+08:00","updated":"2025-08-05T23:27:48.166+08:00"}
+{"tags":["bustub","project","cmu15445"],"dg-publish":true,"permalink":"/DataBase Systems/CMU 15-445：Database Systems/Project 3 Query Execution/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-05-15T20:21:35.866+08:00","updated":"2025-08-05T23:35:19.601+08:00"}
 ---
 
 ### Overview
@@ -71,8 +71,8 @@ Bustub 采用 Top-to-Bottom和Iterator Model
 ![Pasted image 20250322161802.png](/img/user/accessory/Pasted%20image%2020250322161802.png)
 
 #### 整体结构
-**Catlog**
 ![Pasted image 20250805232746.png](/img/user/accessory/Pasted%20image%2020250805232746.png)
+**Catlog**
 BusTub有一个Catlog。Catlog提供了一系列API，例如CreateTable(), GetTable(), CreateIndex(), GetIndex()等等。Catlog事实上是两部分：
 - 一部分是维护了table的hashmap，保存了table id和table name到table info的映射关系, 其中table id是由Catlog在新建table时自动分配的, table name由用户指定；事实上在源码中存的是一个关于table id和table info的哈希表，和一个关于table id和table name的哈希白哦
 - 另一部分是维护了index的hashmap, 保存了index oid到index info, index name到index info的映射关系

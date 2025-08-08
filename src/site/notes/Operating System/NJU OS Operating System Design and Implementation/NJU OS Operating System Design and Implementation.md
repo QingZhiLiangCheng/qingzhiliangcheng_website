@@ -1,5 +1,5 @@
 ---
-{"tags":["folder","NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/NJU OS Operating System Design and Implementation/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-08T15:22:57.470+08:00","updated":"2025-08-06T14:33:52.245+08:00"}
+{"tags":["folder","NJU-jjy-OS"],"dg-publish":true,"permalink":"/Operating System/NJU OS Operating System Design and Implementation/NJU OS Operating System Design and Implementation/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-02-08T15:22:57.470+08:00","updated":"2025-08-08T23:20:38.284+08:00"}
 ---
 
 我看的是2022spring的课程
@@ -18,6 +18,7 @@
 - [[Operating System/NJU OS Operating System Design and Implementation/Lecture 03 多处理器编程：从入门到放弃\|Lecture 03 多处理器编程：从入门到放弃]]
 - [[Operating System/NJU OS Operating System Design and Implementation/Lecture 04 多处理器编程：理解并发程序执行\|Lecture 04 多处理器编程：理解并发程序执行]]
 - [[Operating System/NJU OS Operating System Design and Implementation/Lecture 05 并发控制：互斥\|Lecture 05 并发控制：互斥]]
+- [[Operating System/NJU OS Operating System Design and Implementation/Lecture 06 并发控制：同步\|Lecture 06 并发控制：同步]]
 
 **《Operating Systems: Three Easy Pieces》**
 

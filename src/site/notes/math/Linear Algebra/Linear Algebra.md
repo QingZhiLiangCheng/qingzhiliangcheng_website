@@ -1,5 +1,5 @@
 ---
-{"tags":["folder"],"dg-publish":true,"permalink":"/math/Linear Algebra/Linear Algebra/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-25T14:33:58.533+08:00","updated":"2025-08-06T13:26:21.888+08:00"}
+{"tags":["folder"],"dg-publish":true,"permalink":"/math/Linear Algebra/Linear Algebra/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-07-25T14:33:58.533+08:00","updated":"2025-08-08T12:22:50.283+08:00"}
 ---
 
 这是对MIT经典线性代数课程18.06 Linear Algebra, 其授课教授Gilbert Strang的教材《Introduction to Linear Algebra》，以及Youtube系列《线性代数的本质(Essence of Linear Algebra)》等内容的综合整理。
@@ -13,4 +13,5 @@
 - [[math/Linear Algebra/Lecture 03 & Reading 2.4, 2.5 矩阵乘法 逆矩阵\|Lecture 03 & Reading 2.4, 2.5 矩阵乘法 逆矩阵]]
 - [[math/Linear Algebra/Lecture 04 & Reading 2.6 矩阵的LU, LRU分解\|Lecture 04 & Reading 2.6 矩阵的LU, LRU分解]]
 - [[math/Linear Algebra/Lecture 05 & Reading 2.7, 3.1 转置 对称 置换 向量空间\|Lecture 05 & Reading 2.7, 3.1 转置 对称 置换 向量空间]]
+- [[math/Linear Algebra/Lecture 06 & Reading 3.1, 3.2 向量空间与子空间 列空间 零空间\|Lecture 06 & Reading 3.1, 3.2 向量空间与子空间 列空间 零空间]]
 - 

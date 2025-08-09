@@ -1,5 +1,5 @@
 ---
-{"tags":["folder","LCU机组"],"sticker":"emoji//1f3e2","dg-publish":true,"dg-pinned":true,"permalink":"/LCU principles of computer composition/LCU principles of computer composition/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T19:30:09.057+08:00","updated":"2025-07-31T20:34:42.520+08:00"}
+{"tags":["folder","LCU机组"],"sticker":"emoji//1f3e2","dg-publish":true,"dg-pinned":true,"permalink":"/LCU principles of computer composition/LCU principles of computer composition/","pinned":true,"dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T19:30:09.057+08:00","updated":"2025-08-09T15:13:50.677+08:00"}
 ---
 
 📅date: 2024.10.30 - 2025.01.03完结✅
@@ -8,7 +8,7 @@
 最后面我总结了考试的专题  大题都考到了
 👉课程视频: [计算机组成原理（哈工大刘宏伟）135讲（全）高清_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1t4411e7LH/?spm_id_from=333.337.search-card.all.click)
 👉我的课程笔记:[[LCU principles of computer composition/LCU principles of computer composition\|LCU principles of computer composition]]
-👉我的LCU课程资料 期末复习, 实验: https://pan.baidu.com/s/1wrDehpVJHtN8AU-xaIX0Gw?pwd=qzlc 提取码: qzlc
+👉我的LCU课程资料 期末复习, 实验: https://pan.baidu.com/s/12TbtticvRQA9LYWjo6M0oA?pwd=qzlc 提取码: qzlc 
 
 ---
 

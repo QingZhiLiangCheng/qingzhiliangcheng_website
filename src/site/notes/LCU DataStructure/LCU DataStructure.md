@@ -1,5 +1,5 @@
 ---
-{"tags":["#folder","LCU数据结构"],"sticker":"emoji//1f3d7-fe0f","dg-publish":true,"permalink":"/LCU DataStructure/LCU DataStructure/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T17:16:56.309+08:00","updated":"2025-07-31T20:36:57.438+08:00"}
+{"tags":["#folder","LCU数据结构"],"sticker":"emoji//1f3d7-fe0f","dg-publish":true,"permalink":"/LCU DataStructure/LCU DataStructure/","dgPassFrontmatter":true,"noteIcon":"","created":"2024-09-22T17:16:56.309+08:00","updated":"2025-08-09T15:13:58.604+08:00"}
 ---
 
 
@@ -8,7 +8,7 @@
 当时才开始学着用obsidian这个笔记 记得很零散 而且水平有限
 只参考一下期末复习的专题就可以
 👉我的笔记：[[LCU DataStructure/LCU DataStructure\|LCU DataStructure]]
-👉数据结构课程设计两次小实验报告, 数据结构大作业, 数据结构期末复习的相关资料都在这个百度网盘链接中:  https://pan.baidu.com/s/1ynhy6GBWodQREPO1Wa0oWg?pwd=qzlc 提取码: qzlc 
+👉数据结构课程设计两次小实验报告, 数据结构大作业, 数据结构期末复习的相关资料都在这个百度网盘链接中:  https://pan.baidu.com/s/15FBZYJ55n3kMdya_Un_Ddw?pwd=qzlc 提取码: qzlc 
 (🤣老实说 我的大作业使用Rust写了一个简单的虚拟货币交易系统 但是最后因为当时水平的原因并没有真正完成)
 
 [[LCU DataStructure/线性表\|线性表]]

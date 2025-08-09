@@ -1,8 +1,9 @@
 ---
-{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-07-31T20:34:11.185+08:00"}
+{"sticker":"lucide//database","dg-publish":true,"tags":["LCU数据库"],"permalink":"/DataBase Systems/LCU Database System/LCU Database System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-09T13:35:44.736+08:00","updated":"2025-08-09T15:48:19.323+08:00"}
 ---
 
-资料连接：
+📅spring2025 date: 2025.04.09 - 2025.06.27 完结✅
+👉课本pdf, 我与其他学长学姐的实验报告，课程设计，以及一些试题见 https://pan.baidu.com/s/1yo-lD_jTpgOsvyeGK8I6KA?pwd=QZLC 提取码: QZLC 
 ### LCU Database System Lab
 LCU的数据库课的lab使用的是SQL Server数据库
 老师提供了一个远程服务器 但是因为权限问题 有些操作需要在本地环境上实现
@@ -58,7 +59,8 @@ LCU的数据库课的lab使用的是SQL Server数据库
 - [[DataBase Systems/LCU Database System/专题六：存储过程\|专题六：存储过程]]
 - [[DataBase Systems/LCU Database System/考前速背耶耶\|考前速背耶耶]]
 
-但最后我们这一届的期末考试题 没有考触发器和存储过程呃呃 哈哈哈 白复习了
+但最后我们这一届的期末考试题 没有考触发器和存储过程呃呃 哈哈哈 白复习了, 感觉整体不难，填空题应该是满分了hh
+最后来更新: 我期末试卷考了93分 还可以吧hh
 
 
 

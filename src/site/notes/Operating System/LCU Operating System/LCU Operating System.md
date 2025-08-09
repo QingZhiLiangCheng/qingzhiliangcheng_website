@@ -1,7 +1,9 @@
 ---
-{"dg-publish":true,"tags":["LCU操作系统","folder"],"comments":"false","permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-07-31T18:50:33.340+08:00"}
+{"dg-publish":true,"tags":["LCU操作系统","folder"],"permalink":"/Operating System/LCU Operating System/LCU Operating System/","dgPassFrontmatter":true,"noteIcon":"","created":"2025-04-12T16:38:23.016+08:00","updated":"2025-08-09T15:47:59.073+08:00"}
 ---
 
+📅spring2025 date: 2025.04.12 - 2025.06.25 完结✅
+👉课程ppt, some 试题，一些我跟其他学长学姐的课程设计以及实验报告见 https://pan.baidu.com/s/1HIcpzeoRkAaLhoJcCmxp8Q?pwd=QZLC 提取码: QZLC 
 ### LCU Operating System Lab
 LCU的操作系统课的实验分为三个部分 分别是进程调度实验, 资源管理实验和存储器管理实验。三个实验主要就是用C/C++编写模拟程序，我感觉实验指导书给的很详细了，给了大量的代码，只需要补全部分代码即可，但需要去了解整个代码的含义和过程。
 个人感觉做着比CMU15445的Project简单很多
@@ -35,4 +37,5 @@ LCU的操作系统课的实验分为三个部分 分别是进程调度实验, �
 
 [[Operating System/LCU Operating System/LCU OS小知识点\|LCU OS小知识点]]
 
-呃呃最后我们这一届一点综合的大题都没考到，就是单纯调度算法写算法过程，单纯银行家，单纯地址转换，单纯磁盘调度，单纯PV操作 感觉复习的一半都没用上😭
+呃呃最后我们这一届一点综合的大题都没考到，就是单纯调度算法写算法过程，单纯银行家，单纯地址转换，单纯磁盘调度，单纯PV操作 感觉复习的一半都没用上😭 
+最后来更新: 我期末试卷考了93分 还可以吧hh
